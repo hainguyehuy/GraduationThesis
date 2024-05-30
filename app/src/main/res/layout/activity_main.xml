@@ -4,22 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <me.relex.circleindicator.CircleIndicator3
-        android:id="@+id/indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp" />
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#EEEEEE"
+    >
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_page2"
+        android:id="@+id/viewpager2"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_marginTop="50dp"
+
+        />
+    <LinearLayout
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:layout_below="@+id/viewpager2"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:layout_above="@id/indicator"/>
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_below="@id/slider">
+        <Button
+            android:id="@+id/btnDangNhap"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:text="Đăng Nhập"
+            android:backgroundTint="#FF7D29"/>
+
+        <Button
+            android:id="@+id/btnDangKy"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:text="Đăng ký"
+            android:backgroundTint="#FF7D29"/>
+
+    </LinearLayout>
+
+
 
 </RelativeLayout>

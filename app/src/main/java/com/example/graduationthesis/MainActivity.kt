@@ -1,36 +1,104 @@
 package com.example.graduationthesis
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.viewpager2.widget.ViewPager2
-import me.relex.circleindicator.CircleIndicator3
+import com.example.graduationthesis.models.ImgItem
+import com.example.graduationthesis.adapters.ImageAdapter
+import com.example.graduationthesis.views.LoginFragment
+import com.example.graduationthesis.views.RegisterFragment
+import java.util.UUID
+
 
 class MainActivity : AppCompatActivity() {
-    private var tvList = mutableListOf<String>()
-    private var imgList = mutableListOf<Int>()
-    private lateinit var view_page2:ViewPager2
+    private lateinit var viewPager2: ViewPager2
+    private lateinit var slider :LinearLayout
+    private lateinit var btnDangNhap: Button
+    private lateinit var btnDangKy :Button
+    private lateinit var pageChangeListener: ViewPager2.OnPageChangeCallback
+    private val params = LinearLayout.LayoutParams(
+        LinearLayout.LayoutParams.WRAP_CONTENT,
+        LinearLayout.LayoutParams.WRAP_CONTENT
+    ).apply {
+        setMargins(10,0,10,0)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        postToList()
-        view_page2 = findViewById(R.id.view_page2)
-        view_page2.adapter = ViewPagerAdapter(tvList,imgList)
-        view_page2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        val indicator3 = findViewById<CircleIndicator3>(R.id.indicator)
-        indicator3.setViewPager(view_page2)
+        viewPager2 = findViewById(R.id.viewpager2)
+        slider = findViewById(R.id.slider)
 
+        val imageList = arrayListOf(
+            ImgItem(
+                UUID.randomUUID().toString(),
+                "android.resource://" + packageName + "/" +R.drawable.hinhnen
+            ),
+            ImgItem(
+                UUID.randomUUID().toString(),
+                "android.resource://" + packageName + "/" +R.drawable.hinhnen2
+            ),ImgItem(
+                UUID.randomUUID().toString(),
+                "android.resource://" + packageName + "/" +R.drawable.hinhnen3
+            )
+        )
+        val imageAdapter = ImageAdapter()
+        viewPager2.adapter = imageAdapter
+        imageAdapter.submitList(imageList)
 
-
-    }
-    private fun addToList(tv:String,img:Int){
-        tvList.add(tv)
-        imgList.add(img)
-    }
-    private fun postToList(){
-        for(i in 1..5){
-            addToList("tv $i",R.mipmap.ic_launcher_round)
+        slider = findViewById(R.id.slider)
+        val dotImage = Array(imageList.size){
+            ImageView(this)
         }
+
+        dotImage.forEach {
+            it.setImageResource(
+                R.drawable.non_active_dot
+            )
+            slider.addView(it,params)
+        }
+
+        //default first dot selected
+        dotImage[0].setImageResource(R.drawable.active_dot)
+
+        pageChangeListener = object :ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                dotImage.mapIndexed { index, imageView ->
+                    if(position==index){
+                        imageView.setImageResource(
+                            R.drawable.active_dot
+                        )
+                    }
+                    else{
+                        imageView.setImageResource(
+                            R.drawable.non_active_dot
+                        )
+                    }
+                }
+                super.onPageSelected(position)
+            }
+        }
+        viewPager2.registerOnPageChangeCallback(pageChangeListener)
+
+
+        btnDangNhap = findViewById(R.id.btnDangNhap)
+        btnDangKy = findViewById(R.id.btnDangKy)
+
+        btnDangNhap.setOnClickListener{
+            it -> val intent = Intent(applicationContext, LoginFragment::class.java)
+        }
+        btnDangKy.setOnClickListener{
+                it -> val intent = Intent(applicationContext, RegisterFragment::class.java)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewPager2.unregisterOnPageChangeCallback(pageChangeListener)
     }
 
 }
