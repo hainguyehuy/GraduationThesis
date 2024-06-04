@@ -6,11 +6,11 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.viewpager2.widget.ViewPager2
+import com.example.graduationthesis.GUI.LoginActivity
+import com.example.graduationthesis.GUI.SignUpActivity
 import com.example.graduationthesis.models.ImgItem
 import com.example.graduationthesis.adapters.ImageAdapter
 import com.example.graduationthesis.databinding.ActivityMainBinding
-import com.example.graduationthesis.views.LoginFragment
-import com.example.graduationthesis.views.RegisterFragment
 import java.util.UUID
 
 
@@ -30,11 +30,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnDangNhap.setOnClickListener{
-            it -> val intent = Intent(applicationContext, LoginFragment::class.java)
+            it -> val intent = Intent(applicationContext, LoginActivity::class.java)
             startActivity(intent)
         }
         binding.btnDangKy.setOnClickListener{
-            it -> val intent = Intent(applicationContext, RegisterFragment::class.java)
+            it -> val intent = Intent(applicationContext, SignUpActivity::class.java)
             startActivity(intent)
         }
 
