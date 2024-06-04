@@ -19,12 +19,12 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
-        binding.textView.setOnClickListener {
+        binding.btnSignUp.setOnClickListener {
             val intent = Intent(this,SignUpActivity::class.java)
             startActivity(intent)
         }
 
-        binding.button.setOnClickListener {
+        binding.btnSignIn.setOnClickListener {
             val email = binding.emailEt.text.toString()
             val password = binding.passET.text.toString()
             if(email.isNotEmpty() && password.isNotEmpty()){

@@ -2,4 +2,5 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="bar">#FF7D29</color>
 </resources>

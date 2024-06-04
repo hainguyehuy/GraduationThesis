@@ -39,11 +39,11 @@ class BeginActivity : AppCompatActivity() {
         val imageList = arrayListOf(
             ImgItem(
                 UUID.randomUUID().toString(),
-                "android.resource://" + packageName + "/" +R.drawable.hinhnen
+                "android.resource://" + packageName + "/" +R.drawable.hinhnen2
             ),
             ImgItem(
                 UUID.randomUUID().toString(),
-                "android.resource://" + packageName + "/" +R.drawable.hinhnen2
+                "android.resource://" + packageName + "/" +R.drawable.hinhnen
             ), ImgItem(
                 UUID.randomUUID().toString(),
                 "android.resource://" + packageName + "/" +R.drawable.hinhnen3
