@@ -20,15 +20,15 @@
         android:name=".GUI.SignUpActivity"
         android:exported="false" />
     <activity
-        android:name=".GUI.LoginActivity"
-        android:exported="false" />
+        android:name=".MainActivity"
+        android:exported="true" />
     <activity
         android:name=".GUI.LoginActivity"
         android:exported="false"
         android:label="@string/title_activity_login"
         tools:ignore="DuplicateActivity" />
     <activity
-        android:name=".MainActivity"
+        android:name=".GUI.BeginActivity"
         android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
