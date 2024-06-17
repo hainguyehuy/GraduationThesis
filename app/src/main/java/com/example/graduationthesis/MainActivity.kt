@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavi.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.home -> replaceFragment(HomeFragment())
-                R.id.category -> replaceFragment(CartFragment())
-                R.id.account -> replaceFragment(AccountFragment())
+                R.id.cart -> replaceFragment(CartFragment())
+                R.id.profile -> replaceFragment(AccountFragment())
                 R.id.notif -> replaceFragment(NotifFragment())
                 R.id.cart -> replaceFragment(CartFragment())
             }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "186335481566",
+    "project_id": "graduationthesis-ed3ac",
+    "storage_bucket": "graduationthesis-ed3ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186335481566:android:f23361bf69d8a879cafc4f",
+        "android_client_info": {
+          "package_name": "com.example.graduationthesis"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzagUDjiTxrAyOsaZC38EQOpRbeYi4_xM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
