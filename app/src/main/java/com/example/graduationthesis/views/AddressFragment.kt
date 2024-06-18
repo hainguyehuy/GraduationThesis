@@ -45,13 +45,13 @@ class AddressFragment : Fragment() {
         addressRecyclerView = view.findViewById(R.id.rvAddress)
         addressRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
         addressRecyclerView.setHasFixedSize(true)
+        adapter = AddressAdapter()
+        addressRecyclerView.adapter = adapter
 
 
         viewModel = ViewModelProvider(this).get(AddressViewModel::class.java)
 
         viewModel.allAddress.observe(viewLifecycleOwner, Observer {
-            addressRecyclerView.adapter = adapter
-            adapter = AddressAdapter()
             adapter.updateAddressList(it)
         })
     }

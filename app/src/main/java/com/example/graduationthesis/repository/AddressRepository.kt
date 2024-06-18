@@ -1,6 +1,7 @@
 package com.example.graduationthesis.repository
 
 import android.provider.CalendarContract.Instances
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.graduationthesis.dataClass.Address
 import com.google.firebase.database.DataSnapshot
@@ -13,6 +14,7 @@ class AddressRepository {
      private val databaseReference : DatabaseReference = FirebaseDatabase.getInstance().getReference("address")
 
     @Volatile private var INSTANCE : AddressRepository ?= null
+
     fun getInstance() : AddressRepository{
         return INSTANCE ?: synchronized(this){
             val instance = AddressRepository()
