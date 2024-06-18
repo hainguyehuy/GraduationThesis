@@ -8,6 +8,17 @@
     tools:context=".GUI.BeginActivity"
     android:orientation="vertical"
     android:background="#EEEEEE">
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="WELCOME"
+      android:textSize="30sp"
+      android:fontFamily="sans-serif-black"
+      android:layout_marginTop="5dp"
+      android:layout_centerHorizontal="true"
+      />
+
   <androidx.viewpager2.widget.ViewPager2
       android:id="@+id/viewpager2"
       android:layout_width="match_parent"
@@ -35,7 +46,8 @@
         android:layout_width="200dp"
         android:layout_height="45dp"
         android:text="Đăng Nhập"
-        android:backgroundTint="#FF7D29"/>
+        android:backgroundTint="#FF7D29"
+        />
 
     <Button
         android:id="@+id/btnDangKy"

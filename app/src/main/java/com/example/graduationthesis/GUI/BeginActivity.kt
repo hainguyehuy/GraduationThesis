@@ -9,7 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.graduationthesis.R
 import com.example.graduationthesis.adapters.ImageAdapter
 import com.example.graduationthesis.databinding.ActivityBeginBinding
-import com.example.graduationthesis.models.ImgItem
+import com.example.graduationthesis.dataClass.ImgItem
 import java.util.UUID
 
 class BeginActivity : AppCompatActivity() {
@@ -39,15 +39,20 @@ class BeginActivity : AppCompatActivity() {
         val imageList = arrayListOf(
             ImgItem(
                 UUID.randomUUID().toString(),
-                "android.resource://" + packageName + "/" +R.drawable.hinhnen2
+                "android.resource://" + packageName + "/" +R.drawable.hinhnen1
             ),
             ImgItem(
                 UUID.randomUUID().toString(),
                 "android.resource://" + packageName + "/" +R.drawable.hinhnen
-            ), ImgItem(
+            ),
+            ImgItem(
                 UUID.randomUUID().toString(),
-                "android.resource://" + packageName + "/" +R.drawable.hinhnen3
-            )
+                "android.resource://" + packageName + "/" +R.drawable.hinhnen4
+            ),
+            ImgItem(
+                UUID.randomUUID().toString(),
+                "android.resource://" + packageName + "/" +R.drawable.hinhnen5
+            ),
         )
         val imageAdapter = ImageAdapter()
         binding.viewpager2.adapter = imageAdapter

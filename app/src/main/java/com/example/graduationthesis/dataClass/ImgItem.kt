@@ -1,4 +1,4 @@
-package com.example.graduationthesis.models
+package com.example.graduationthesis.dataClass
 
 data class ImgItem(
     val id: String,
