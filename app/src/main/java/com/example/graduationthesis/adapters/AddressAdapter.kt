@@ -10,17 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationthesis.R
 import com.example.graduationthesis.dataClass.Address
 
-class AddressAdapter :RecyclerView.Adapter<AddressAdapter.AddressViewHolder>() {
-    private val addressList = ArrayList<Address>()
-    inner class AddressViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val nameAddress : TextView = itemView.findViewById(R.id.tvNameAddress)
-        val titleAddress : TextView = itemView.findViewById(R.id.tvTitleAddress)
-        val pNumberAddress : TextView = itemView.findViewById(R.id.tvPhoneNumber)
-    }
+class AddressAdapter(private var addressList : ArrayList<Address>) :RecyclerView.Adapter<AddressAdapter.AddressViewHolder>() {
 
-    fun updateAddressList(addressList : List<Address>){
-        this.addressList.clear()
-        this.addressList.addAll(addressList)
+//    fun updateAddressList(addressList : List<Address>){
+//        this.addressList.clear()
+//        this.addressList.addAll(addressList)
+//        notifyDataSetChanged()
+//    }
+    fun setFilteredList(addressList: ArrayList<Address>){
+        this.addressList = addressList
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressViewHolder {
@@ -37,5 +35,10 @@ class AddressAdapter :RecyclerView.Adapter<AddressAdapter.AddressViewHolder>() {
         holder.nameAddress.text = current.nameAddress
         holder.titleAddress.text = current.titleAddress
         holder.pNumberAddress.text = current.pNumberAddress
+    }
+    inner class AddressViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+        val nameAddress : TextView = itemView.findViewById(R.id.tvNameAddress)
+        val titleAddress : TextView = itemView.findViewById(R.id.tvTitleAddress)
+        val pNumberAddress : TextView = itemView.findViewById(R.id.tvPhoneNumber)
     }
 }

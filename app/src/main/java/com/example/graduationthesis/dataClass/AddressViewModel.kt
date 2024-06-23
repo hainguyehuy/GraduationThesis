@@ -6,13 +6,11 @@ import androidx.lifecycle.ViewModel
 import com.example.graduationthesis.repository.AddressRepository
 
 class AddressViewModel :ViewModel() {
-    private val repository : AddressRepository
-    private val _allAddress = MutableLiveData<List<Address>>()
-    val allAddress : LiveData<List<Address>> = _allAddress
-
-    init{
-        repository = AddressRepository().getInstance()
-        repository.loadData(_allAddress)
-
-    }
+//    private val repository : AddressRepository = AddressRepository().getInstance()
+//    private val _allAddress = MutableLiveData<List<Address>>()
+//    val allAddress : LiveData<List<Address>> = _allAddress
+//
+//    init{
+//        repository.loadData(_allAddress)
+//    }
 }

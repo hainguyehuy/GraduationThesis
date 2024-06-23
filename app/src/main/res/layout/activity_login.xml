@@ -106,6 +106,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:background="#FF7D29"
+        android:backgroundTint="#FF7D29"
         android:text="Đăng Ký"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

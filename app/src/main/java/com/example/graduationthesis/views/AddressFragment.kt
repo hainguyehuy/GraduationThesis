@@ -6,13 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationthesis.R
 import com.example.graduationthesis.adapters.AddressAdapter
+import com.example.graduationthesis.dataClass.Address
 import com.example.graduationthesis.dataClass.AddressViewModel
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import java.util.Locale
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,10 +33,12 @@ private const val ARG_PARAM2 = "param2"
  * Use the [AddressFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-private lateinit var viewModel : AddressViewModel
+//private lateinit var viewModel : AddressViewModel
 private lateinit var addressRecyclerView: RecyclerView
-lateinit var adapter : AddressAdapter
-
+private lateinit var searchView : androidx.appcompat.widget.SearchView
+private lateinit var databaseReference : DatabaseReference
+private lateinit var addressArrayList: ArrayList<Address>
+private lateinit var adapter: AddressAdapter
 class AddressFragment : Fragment() {
 
     override fun onCreateView(
@@ -43,16 +54,68 @@ class AddressFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         addressRecyclerView = view.findViewById(R.id.rvAddress)
-        addressRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
+        addressRecyclerView.layoutManager = LinearLayoutManager(context)
         addressRecyclerView.setHasFixedSize(true)
-        adapter = AddressAdapter()
-        addressRecyclerView.adapter = adapter
+        addressArrayList = arrayListOf<Address>()
+        getAddress()
 
+        searchView = view.findViewById(R.id.searchAddress)
+        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
 
-        viewModel = ViewModelProvider(this).get(AddressViewModel::class.java)
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    filterList(newText)
+                }
+                return true
+            }
 
-        viewModel.allAddress.observe(viewLifecycleOwner, Observer {
-            adapter.updateAddressList(it)
+        })
+
+//        viewModel = ViewModelProvider(this).get(AddressViewModel::class.java)
+//
+//        viewModel.allAddress.observe(viewLifecycleOwner, Observer {
+//            adapter.updateAddressList(it)
+//        })
+
+    }
+
+    private fun filterList(text: String) {
+        if(text != null){
+            val filteredList = ArrayList<Address>()
+            for(i in addressArrayList){
+                if(i.nameAddress?.lowercase(Locale.ROOT)?.contains(text) == true)
+                    filteredList.add(i)
+            }
+            if(addressArrayList.isEmpty()){
+                Toast.makeText(context,"No Address Found", Toast.LENGTH_LONG).show()
+            }
+            else{
+                adapter = AddressAdapter(ArrayList<Address>())
+                adapter.setFilteredList(filteredList)
+            }
+        }
+
+    }
+
+    private fun getAddress() {
+        databaseReference  = FirebaseDatabase.getInstance().getReference("Address")
+        databaseReference.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.exists()){
+                    for (addressSnapshot in snapshot.children){
+                        val address = addressSnapshot.getValue(Address::class.java)
+                        addressArrayList.add(address!!)
+                    }
+                    addressRecyclerView.adapter = AddressAdapter(addressArrayList)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
         })
     }
 }
