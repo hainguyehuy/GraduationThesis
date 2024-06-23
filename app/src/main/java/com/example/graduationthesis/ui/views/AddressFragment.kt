@@ -1,26 +1,20 @@
-package com.example.graduationthesis.views
+package com.example.graduationthesis.ui.views
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationthesis.R
-import com.example.graduationthesis.adapters.AddressAdapter
-import com.example.graduationthesis.dataClass.Address
-import com.example.graduationthesis.dataClass.AddressViewModel
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
+import com.example.graduationthesis.ui.adapters.AddressAdapter
+import com.example.graduationthesis.data.model.Address
+import com.example.graduationthesis.ui.viewModel.AddressViewModel
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import java.util.Locale
 
 // TODO: Rename parameter arguments, choose names that match
@@ -39,6 +33,8 @@ private lateinit var searchView : androidx.appcompat.widget.SearchView
 private lateinit var databaseReference : DatabaseReference
 private lateinit var addressArrayList: ArrayList<Address>
 private lateinit var adapter: AddressAdapter
+private lateinit var viewModel: AddressViewModel
+
 class AddressFragment : Fragment() {
 
     override fun onCreateView(
@@ -56,9 +52,17 @@ class AddressFragment : Fragment() {
         addressRecyclerView = view.findViewById(R.id.rvAddress)
         addressRecyclerView.layoutManager = LinearLayoutManager(context)
         addressRecyclerView.setHasFixedSize(true)
-        addressArrayList = arrayListOf<Address>()
-        getAddress()
+        adapter = AddressAdapter()
+        addressRecyclerView.adapter = adapter
+        viewModel = ViewModelProvider(this).get(AddressViewModel::class.java)
+        viewModel.allAddress.observe(viewLifecycleOwner, Observer {
+            adapter.updateAddressList(it)
+        })
 
+        addressArrayList = arrayListOf<Address>()
+//        getAddress()
+
+        // event Search address
         searchView = view.findViewById(R.id.searchAddress)
         searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -74,11 +78,7 @@ class AddressFragment : Fragment() {
 
         })
 
-//        viewModel = ViewModelProvider(this).get(AddressViewModel::class.java)
-//
-//        viewModel.allAddress.observe(viewLifecycleOwner, Observer {
-//            adapter.updateAddressList(it)
-//        })
+
 
     }
 
@@ -93,29 +93,28 @@ class AddressFragment : Fragment() {
                 Toast.makeText(context,"No Address Found", Toast.LENGTH_LONG).show()
             }
             else{
-                adapter = AddressAdapter(ArrayList<Address>())
+                adapter = AddressAdapter()
                 adapter.setFilteredList(filteredList)
             }
         }
 
     }
 
-    private fun getAddress() {
-        databaseReference  = FirebaseDatabase.getInstance().getReference("Address")
-        databaseReference.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.exists()){
-                    for (addressSnapshot in snapshot.children){
-                        val address = addressSnapshot.getValue(Address::class.java)
-                        addressArrayList.add(address!!)
-                    }
-                    addressRecyclerView.adapter = AddressAdapter(addressArrayList)
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
-
-        })
-    }
+//    private fun getAddress() {
+//        databaseReference  = FirebaseDatabase.getInstance().getReference("Address")
+//        databaseReference.addValueEventListener(object : ValueEventListener{
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                if(snapshot.exists()){
+//                    for (addressSnapshot in snapshot.children){
+//                        val address = addressSnapshot.getValue(Address::class.java)
+//                        addressArrayList.add(address!!)
+//                    }
+//                    addressRecyclerView.adapter = AddressAdapter(addressArrayList)
+//                }
+//            }
+//            override fun onCancelled(error: DatabaseError) {
+//            }
+//
+//        })
+//    }
 }

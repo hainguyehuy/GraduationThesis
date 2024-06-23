@@ -1,4 +1,4 @@
-package com.example.graduationthesis.GUI
+package com.example.graduationthesis.ui.GUI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.example.graduationthesis.R
-import com.example.graduationthesis.adapters.ImageAdapter
+import com.example.graduationthesis.ui.adapters.ImageAdapter
 import com.example.graduationthesis.databinding.ActivityBeginBinding
-import com.example.graduationthesis.dataClass.ImgItem
+import com.example.graduationthesis.data.model.ImgItem
 import java.util.UUID
 
 class BeginActivity : AppCompatActivity() {

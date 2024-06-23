@@ -1,4 +1,4 @@
-package com.example.graduationthesis.adapters
+package com.example.graduationthesis.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.graduationthesis.R
-import com.example.graduationthesis.dataClass.ImgItem
+import com.example.graduationthesis.data.model.ImgItem
 
 
-class ImageAdapter : ListAdapter<ImgItem,ImageAdapter.ViewHolder>(DiffCallback()){
+class ImageAdapter : ListAdapter<ImgItem, ImageAdapter.ViewHolder>(DiffCallback()){
 
     class DiffCallback : DiffUtil.ItemCallback<ImgItem>(){
         override fun areItemsTheSame(oldItem: ImgItem, newItem: ImgItem): Boolean {

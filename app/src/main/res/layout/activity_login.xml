@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GUI.LoginActivity">
+    tools:context=".ui.GUI.LoginActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -99,15 +99,15 @@
         app:layout_constraintTop_toBottomOf="@+id/btnSignIn"
         app:layout_constraintVertical_bias="0.158" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:background="#FF7D29"
-        android:backgroundTint="#FF7D29"
         android:text="Đăng Ký"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

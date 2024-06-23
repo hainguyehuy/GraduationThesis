@@ -1,4 +1,4 @@
-package com.example.graduationthesis.views
+package com.example.graduationthesis.ui.views
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,16 +14,16 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [CartFragment.newInstance] factory method to
+ * Use the [AccountFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class CartFragment : Fragment() {
+class AccountFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_cart,container,false)
+        return inflater.inflate(R.layout.fragment_account,container,false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

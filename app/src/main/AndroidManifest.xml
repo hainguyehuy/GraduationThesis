@@ -17,18 +17,18 @@
     android:theme="@style/Theme.GraduationThesis"
     tools:targetApi="31">
     <activity
-        android:name=".GUI.SignUpActivity"
+        android:name=".ui.GUI.SignUpActivity"
         android:exported="false" />
     <activity
-        android:name=".MainActivity"
+        android:name=".ui.MainActivity"
         android:exported="true" />
     <activity
-        android:name=".GUI.LoginActivity"
+        android:name=".ui.GUI.LoginActivity"
         android:exported="false"
         android:label="@string/title_activity_login"
         tools:ignore="DuplicateActivity" />
     <activity
-        android:name=".GUI.BeginActivity"
+        android:name=".ui.GUI.BeginActivity"
         android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />

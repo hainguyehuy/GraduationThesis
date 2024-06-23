@@ -1,14 +1,15 @@
-package com.example.graduationthesis
+package com.example.graduationthesis.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.graduationthesis.R
 import com.example.graduationthesis.databinding.ActivityMainBinding
-import com.example.graduationthesis.views.AccountFragment
-import com.example.graduationthesis.views.AddressFragment
-import com.example.graduationthesis.views.CartFragment
-import com.example.graduationthesis.views.HomeFragment
-import com.example.graduationthesis.views.NotifFragment
+import com.example.graduationthesis.ui.views.AccountFragment
+import com.example.graduationthesis.ui.views.AddressFragment
+import com.example.graduationthesis.ui.views.CartFragment
+import com.example.graduationthesis.ui.views.HomeFragment
+import com.example.graduationthesis.ui.views.NotifFragment
 
 
 class MainActivity : AppCompatActivity() {

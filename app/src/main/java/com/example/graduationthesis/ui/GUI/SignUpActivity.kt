@@ -1,4 +1,4 @@
-package com.example.graduationthesis.GUI
+package com.example.graduationthesis.ui.GUI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +19,7 @@ class SignUpActivity : AppCompatActivity() {
 
         firebaseAuth= FirebaseAuth.getInstance()
         binding.btnSignIn.setOnClickListener {
-            val intent = Intent(this,LoginActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
         }
         binding.btnSignUp.setOnClickListener {
             val email = binding.emailEt.text.toString()
@@ -30,7 +30,7 @@ class SignUpActivity : AppCompatActivity() {
                 if(password == confirmPass){
                     firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
                         if(it.isSuccessful){
-                            val intent = Intent(this,LoginActivity::class.java)
+                            val intent = Intent(this, LoginActivity::class.java)
                             startActivity(intent)
                         }
                         else{

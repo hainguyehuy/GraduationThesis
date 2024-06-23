@@ -1,11 +1,10 @@
-package com.example.graduationthesis.GUI
+package com.example.graduationthesis.ui.GUI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.graduationthesis.MainActivity
-import com.example.graduationthesis.R
+import com.example.graduationthesis.ui.MainActivity
 import com.example.graduationthesis.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -20,7 +19,7 @@ class LoginActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
         binding.btnSignUp.setOnClickListener {
-            val intent = Intent(this,SignUpActivity::class.java)
+            val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
 
@@ -30,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
             if(email.isNotEmpty() && password.isNotEmpty()){
                 firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener {
                     if(it.isSuccessful){
-                        val intent = Intent(this,MainActivity::class.java)
+                        val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                     }
                     else{
@@ -48,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if(firebaseAuth.currentUser!= null){
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 

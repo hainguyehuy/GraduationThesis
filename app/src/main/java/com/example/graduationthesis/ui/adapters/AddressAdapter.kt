@@ -1,22 +1,21 @@
-package com.example.graduationthesis.adapters
+package com.example.graduationthesis.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView.ItemView
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationthesis.R
-import com.example.graduationthesis.dataClass.Address
+import com.example.graduationthesis.data.model.Address
 
-class AddressAdapter(private var addressList : ArrayList<Address>) :RecyclerView.Adapter<AddressAdapter.AddressViewHolder>() {
+class AddressAdapter() :RecyclerView.Adapter<AddressAdapter.AddressViewHolder>() {
+    private var addressList = ArrayList<Address>()
 
-//    fun updateAddressList(addressList : List<Address>){
-//        this.addressList.clear()
-//        this.addressList.addAll(addressList)
-//        notifyDataSetChanged()
-//    }
+    fun updateAddressList(addressList : List<Address>){
+        this.addressList.clear()
+        this.addressList.addAll(addressList)
+        notifyDataSetChanged()
+    }
     fun setFilteredList(addressList: ArrayList<Address>){
         this.addressList = addressList
         notifyDataSetChanged()
