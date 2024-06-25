@@ -3,21 +3,22 @@ package com.example.graduationthesis.ui.viewModel
 import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.graduationthesis.R
 import com.example.graduationthesis.data.model.Banner
 import com.example.graduationthesis.data.repository.BannerRepository
 
-class BannerViewModel {
+class BannerViewModel : ViewModel() {
     private val _banner = MutableLiveData<Banner>()
-    val banner : LiveData<Banner> = _banner
+//    val banner : LiveData<Banner> = _banner
     private val banners = BannerRepository().getBanners()
     private var currentIndex = 0
-    private val delay = 3000L
+    private val delay = 1500L
 
     init {
         loopMovies()
     }
-
+    fun getBanner() : LiveData<Banner> = _banner
 
     fun updateBanner(){
         currentIndex++

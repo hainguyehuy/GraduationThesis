@@ -1,5 +1,6 @@
 package com.example.graduationthesis.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import com.example.graduationthesis.databinding.ActivityMainBinding
 import com.example.graduationthesis.ui.views.AccountFragment
 import com.example.graduationthesis.ui.views.AddressFragment
 import com.example.graduationthesis.ui.views.CartFragment
+import com.example.graduationthesis.ui.views.CategoryFragment
 import com.example.graduationthesis.ui.views.HomeFragment
 import com.example.graduationthesis.ui.views.NotifFragment
 
@@ -27,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.cart -> replaceFragment(CartFragment())
                 R.id.profile -> replaceFragment(AccountFragment())
                 R.id.notif -> replaceFragment(NotifFragment())
-                R.id.cate -> replaceFragment(AddressFragment())
+                R.id.cate -> replaceFragment(CategoryFragment())
             }
             true
         }
@@ -38,6 +40,9 @@ class MainActivity : AppCompatActivity() {
             replace(R.id.frLayout,fragment)
             commit()
         }
-
+    }
+    private fun startActivity(activity: AppCompatActivity){
+        intent = Intent(this, activity::class.java)
+        startActivity(intent)
     }
 }

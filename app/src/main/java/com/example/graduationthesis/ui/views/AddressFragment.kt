@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,15 +29,14 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 //private lateinit var viewModel : AddressViewModel
-private lateinit var addressRecyclerView: RecyclerView
-private lateinit var searchView : androidx.appcompat.widget.SearchView
-private lateinit var databaseReference : DatabaseReference
-private lateinit var addressArrayList: ArrayList<Address>
-private lateinit var adapter: AddressAdapter
-private lateinit var viewModel: AddressViewModel
+
 
 class AddressFragment : Fragment() {
-
+    private lateinit var addressRecyclerView: RecyclerView
+    private lateinit var searchView : androidx.appcompat.widget.SearchView
+    private lateinit var addressArrayList: ArrayList<Address>
+    private lateinit var adapter: AddressAdapter
+    private lateinit var viewModel: AddressViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,6 +54,7 @@ class AddressFragment : Fragment() {
         addressRecyclerView.setHasFixedSize(true)
         adapter = AddressAdapter()
         addressRecyclerView.adapter = adapter
+
         viewModel = ViewModelProvider(this).get(AddressViewModel::class.java)
         viewModel.allAddress.observe(viewLifecycleOwner, Observer {
             adapter.updateAddressList(it)
