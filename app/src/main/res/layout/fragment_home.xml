@@ -37,19 +37,20 @@
         app:tint="#FF7D29"
         tools:ignore="MissingConstraints" />
 
+
     <ImageView
         android:id="@+id/imgBanner"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="12dp"
-        android:src="@drawable/address"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/banner2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchAddress"
-        app:tint="#FF7D29"
         tools:ignore="MissingConstraints" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,17 +64,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgBanner"
         app:layout_constraintVertical_bias="0.025"
+        android:background="@drawable/stroke_searchview"
         tools:ignore="MissingConstraints">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:background="@color/black"
             android:id="@+id/rvItemProduct"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="MissingConstraints"
-            tools:itemCount="1"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="5"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="188dp"
-            tools:listitem="@layout/item_hotproduct" />
+            tools:listitem="@layout/item_hotproduct"
+            />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

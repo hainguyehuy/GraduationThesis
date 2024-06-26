@@ -1,12 +1,15 @@
 package com.example.graduationthesis.data.repository
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.graduationthesis.data.model.Category
 import com.example.graduationthesis.data.model.HotProduct
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.gson.Gson
 
 class HPRepository {
     private val databaseReference : DatabaseReference = FirebaseDatabase.getInstance().getReference("HotProduct")
@@ -25,15 +28,14 @@ class HPRepository {
         databaseReference.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 try {
-                    val _hpListList :List<HotProduct> = snapshot.children.map {
-                            dataSnapshot -> dataSnapshot.getValue(HotProduct ::class.java)!!
-                    }
-                    hotProductList.postValue(_hpListList)
+                    var gson = Gson()
+                    val json = Gson().toJson(snapshot.value)
+                    val data = gson.fromJson(json, HotProduct::class.java)
+                    hotProductList.postValue(listOf(data))
                 }catch (e: Exception ){
-
+                    Log.e("error",e.message.toString())
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }

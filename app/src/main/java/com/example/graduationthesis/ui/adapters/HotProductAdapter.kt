@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.graduationthesis.R
 import com.example.graduationthesis.data.model.HotProduct
+import com.example.graduationthesis.databinding.ItemHotproductBinding
 
 class HotProductAdapter() : RecyclerView.Adapter<HotProductAdapter.HotCateViewHolder>() {
 
@@ -20,7 +22,7 @@ class HotProductAdapter() : RecyclerView.Adapter<HotProductAdapter.HotCateViewHo
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HotCateViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_hotproduct,parent,false)
+        val itemView = ItemHotproductBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return HotCateViewHolder(itemView)
     }
 
@@ -29,14 +31,12 @@ class HotProductAdapter() : RecyclerView.Adapter<HotProductAdapter.HotCateViewHo
     }
 
     override fun onBindViewHolder(holder: HotCateViewHolder, position: Int) {
-        val current = hotCategory[position]
-        holder.titleHotProduct.text = current.titleHP
-        holder.imgHotProduct.setImageResource(current.urlImg)
+        holder.binding.tvTitleHotProduct.text = hotCategory[position].titleHP
+        Glide.with(holder.binding.imgHotProduct).load(hotCategory[position].urlImg).into(holder.binding.imgHotProduct)
 
     }
-    inner class HotCateViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val titleHotProduct : TextView = itemView.findViewById(R.id.tvTitleHotProduct)
-        val imgHotProduct : ImageView = itemView.findViewById(R.id.imgHotProduct)
+    inner class HotCateViewHolder(val binding : ItemHotproductBinding) : RecyclerView.ViewHolder(binding.root){
+
 
     }
 }

@@ -1,6 +1,7 @@
 package com.example.graduationthesis.data.model
 
 data class HotProduct(
-    val urlImg : Int,
+    val idHP : String,
+    val urlImg : String,
     val titleHP : String
 )

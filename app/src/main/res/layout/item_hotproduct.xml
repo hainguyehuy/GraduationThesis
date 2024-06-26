@@ -2,26 +2,26 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imgHotProduct"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/address"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/hinhnen3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="#FF7D29"
             tools:ignore="MissingConstraints" />
 
         <TextView
@@ -29,15 +29,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="4dp"
             android:text="Sale 50%"
             android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgHotProduct"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

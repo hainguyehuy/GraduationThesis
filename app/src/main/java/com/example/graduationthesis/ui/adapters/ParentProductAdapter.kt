@@ -33,7 +33,6 @@ class ParentProductAdapter( ) :RecyclerView.Adapter<ParentProductAdapter.ParentP
         val parentProduct = parentProducts[position]
         holder.binding.tvNameCategory.text = parentProduct.name
         val childProductAdapter = ChildProductAdapter(parentProduct.Products)
-        holder.binding.recyclerView.layoutManager = LinearLayoutManager(holder.binding.root.context)
         holder.binding.recyclerView.adapter = childProductAdapter
     }
 

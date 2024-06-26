@@ -3,6 +3,7 @@ package com.example.graduationthesis.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.graduationthesis.data.model.Product
 import com.example.graduationthesis.databinding.ItemProductBinding
 
@@ -23,6 +24,6 @@ class ChildProductAdapter(private val childProducts : List<Product>): RecyclerVi
     override fun onBindViewHolder(holder: ChildProductViewHolder, position: Int) {
        holder.binding.tvNameProduct.text = childProducts[position].namePD
        holder.binding.tvPriceProduct.text = childProducts[position].pricePD
-       holder.binding.imgProDuct.setImageResource(childProducts[position].urlPD)
+       Glide.with(holder.binding.imgProDuct.context).load(childProducts[position].urlPD).into(holder.binding.imgProDuct)
     }
 }
