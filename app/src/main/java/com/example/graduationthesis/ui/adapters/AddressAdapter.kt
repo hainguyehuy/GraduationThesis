@@ -1,43 +1,34 @@
 package com.example.graduationthesis.ui.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.graduationthesis.R
 import com.example.graduationthesis.data.model.Address
+import com.example.graduationthesis.data.model.ItemAddress
+import com.example.graduationthesis.databinding.FragmentAddressBinding
 
-class AddressAdapter() :RecyclerView.Adapter<AddressAdapter.AddressViewHolder>() {
-    private var addressList = ArrayList<Address>()
+class AddressAdapter() : RecyclerView.Adapter<AddressAdapter.AddressViewHolder>()  {
+    private var listAddress = ArrayList<Address>()
 
     fun updateAddressList(addressList : List<Address>){
-        this.addressList.clear()
-        this.addressList.addAll(addressList)
+        this.listAddress.clear()
+        this.listAddress.addAll(addressList)
         notifyDataSetChanged()
     }
-    fun setFilteredList(addressList: ArrayList<Address>){
-        this.addressList = addressList
-        notifyDataSetChanged()
-    }
+
+    inner class AddressViewHolder(val binding : FragmentAddressBinding) : RecyclerView.ViewHolder(binding.root)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_address,parent,false)
-        return AddressViewHolder(itemView)
+        var binding = FragmentAddressBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return AddressViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
-        return addressList.size
+        return listAddress.size
     }
 
     override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
-        val current = addressList[position]
-        holder.nameAddress.text = current.nameAddress
-        holder.titleAddress.text = current.titleAddress
-        holder.pNumberAddress.text = current.pNumberAddress
-    }
-    inner class AddressViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val nameAddress : TextView = itemView.findViewById(R.id.tvNameAddress)
-        val titleAddress : TextView = itemView.findViewById(R.id.tvTitleAddress)
-        val pNumberAddress : TextView = itemView.findViewById(R.id.tvPhoneNumber)
+        val itemAddressAdapter = ItemAddressAdapter(listAddress[position].ItemAddress)
+        holder.binding.rvAddress.adapter = itemAddressAdapter
     }
 }

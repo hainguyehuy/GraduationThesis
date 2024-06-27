@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.graduationthesis.data.model.Address
+import com.example.graduationthesis.data.model.ItemAddress
 import com.example.graduationthesis.data.repository.AddressRepository
 
 class AddressViewModel :ViewModel() {
@@ -13,6 +14,6 @@ class AddressViewModel :ViewModel() {
 
     init{
         repository= AddressRepository().getInstance()
-        repository.loadData(_allAddress)
+        repository.loadAddressData(_allAddress)
     }
 }

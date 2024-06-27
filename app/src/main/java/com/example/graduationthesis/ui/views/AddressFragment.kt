@@ -6,16 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationthesis.R
-import com.example.graduationthesis.ui.adapters.AddressAdapter
 import com.example.graduationthesis.data.model.Address
+import com.example.graduationthesis.ui.adapters.ItemAddressAdapter
+import com.example.graduationthesis.data.model.ItemAddress
+import com.example.graduationthesis.ui.adapters.AddressAdapter
 import com.example.graduationthesis.ui.viewModel.AddressViewModel
-import com.google.firebase.database.DatabaseReference
 import java.util.Locale
 
 // TODO: Rename parameter arguments, choose names that match
@@ -34,8 +34,9 @@ private const val ARG_PARAM2 = "param2"
 class AddressFragment : Fragment() {
     private lateinit var addressRecyclerView: RecyclerView
     private lateinit var searchView : androidx.appcompat.widget.SearchView
-    private lateinit var addressArrayList: ArrayList<Address>
+    private lateinit var addressArrayList: ArrayList<ItemAddress>
     private lateinit var adapter: AddressAdapter
+    private lateinit var adapterItem: ItemAddressAdapter
     private lateinit var viewModel: AddressViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,33 +60,29 @@ class AddressFragment : Fragment() {
         viewModel.allAddress.observe(viewLifecycleOwner, Observer {
             adapter.updateAddressList(it)
         })
-
-        addressArrayList = arrayListOf<Address>()
+        addressArrayList = arrayListOf<ItemAddress>()
 //        getAddress()
 
         // event Search address
-        searchView = view.findViewById(R.id.searchAddress)
-        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                if (newText != null) {
-                    filterList(newText)
-                }
-                return true
-            }
-
-        })
-
-
+//        searchView = view.findViewById(R.id.searchAddress)
+//        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                if (newText != null) {
+//                    filterList(newText)
+//                }
+//                return true
+//            }
+//        })
 
     }
 
     private fun filterList(text: String) {
         if(text != null){
-            val filteredList = ArrayList<Address>()
+            val filteredList = ArrayList<ItemAddress>()
             for(i in addressArrayList){
                 if(i.nameAddress?.lowercase(Locale.ROOT)?.contains(text) == true)
                     filteredList.add(i)
@@ -94,8 +91,8 @@ class AddressFragment : Fragment() {
                 Toast.makeText(context,"No Address Found", Toast.LENGTH_LONG).show()
             }
             else{
-                adapter = AddressAdapter()
-                adapter.setFilteredList(filteredList)
+                adapterItem = ItemAddressAdapter(addressArrayList)
+                adapterItem.setFilteredList(filteredList)
             }
         }
 

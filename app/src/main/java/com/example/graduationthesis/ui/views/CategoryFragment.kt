@@ -8,13 +8,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.graduationthesis.R
-import com.example.graduationthesis.data.model.Category
 import com.example.graduationthesis.databinding.FragmentCategoryBinding
-import com.example.graduationthesis.databinding.FragmentHomeBinding
-import com.example.graduationthesis.ui.adapters.AddressAdapter
-import com.example.graduationthesis.ui.adapters.ParentProductAdapter
-import com.example.graduationthesis.ui.viewModel.AddressViewModel
+import com.example.graduationthesis.ui.adapters.CategorysAdapter
 import com.example.graduationthesis.ui.viewModel.MainProductViewModel
 
 // TODO: Rename parameter arguments, choose names that match
@@ -28,7 +23,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class CategoryFragment : Fragment() {
-    private lateinit var adapter: ParentProductAdapter
+    private lateinit var adapter: CategorysAdapter
     private lateinit var viewModel: MainProductViewModel
     private lateinit var binding : FragmentCategoryBinding
 
@@ -46,12 +41,12 @@ class CategoryFragment : Fragment() {
         binding.rvMainProduct.layoutManager = LinearLayoutManager(context)
         binding.rvMainProduct.setHasFixedSize(true)
 
-        adapter = ParentProductAdapter()
+        adapter = CategorysAdapter()
         binding.rvMainProduct.adapter = adapter
 
         viewModel = ViewModelProvider(this).get(MainProductViewModel::class.java)
-        viewModel.parentProduct.observe(viewLifecycleOwner, Observer {
-            adapter.updateProducts(it)
+        viewModel.parentCategory.observe(viewLifecycleOwner, Observer {
+            adapter.updateCategorys(it)
         })
 
     }

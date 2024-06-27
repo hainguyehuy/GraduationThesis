@@ -52,32 +52,21 @@
         app:layout_constraintTop_toBottomOf="@+id/searchAddress"
         tools:ignore="MissingConstraints" />
 
-    <LinearLayout
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvItemHotProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="342dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgBanner"
-        app:layout_constraintVertical_bias="0.025"
-        android:background="@drawable/stroke_searchview"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_hotproduct" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvItemProduct"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="5"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="188dp"
-            tools:listitem="@layout/item_hotproduct"
-            />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
