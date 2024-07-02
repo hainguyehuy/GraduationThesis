@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationthesis.R
 import com.example.graduationthesis.data.model.ItemAddress
+import com.example.graduationthesis.databinding.ItemAddressBinding
 
 class ItemAddressAdapter(private var addressList : List<ItemAddress>) :RecyclerView.Adapter<ItemAddressAdapter.AddressViewHolder>() {
 
@@ -15,23 +16,19 @@ class ItemAddressAdapter(private var addressList : List<ItemAddress>) :RecyclerV
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_address,parent,false)
-        return AddressViewHolder(itemView)
+        val binding = ItemAddressBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return AddressViewHolder(binding)
     }
-
     override fun getItemCount(): Int {
         return addressList.size
     }
-
     override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
         val current = addressList[position]
-        holder.nameAddress.text = current.nameAddress
-        holder.titleAddress.text = current.titleAddress
-        holder.pNumberAddress.text = current.pNumberAddress
+        holder.binding.tvNameAddress.text = current.nameAddress
+        holder.binding.tvTitleAddress.text = current.titleAddress
+        holder.binding.tvPhoneNumber.text = current.pNumberAddress
     }
-    inner class AddressViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val nameAddress : TextView = itemView.findViewById(R.id.tvNameAddress)
-        val titleAddress : TextView = itemView.findViewById(R.id.tvTitleAddress)
-        val pNumberAddress : TextView = itemView.findViewById(R.id.tvPhoneNumber)
+    inner class AddressViewHolder(val binding : ItemAddressBinding) : RecyclerView.ViewHolder(binding.root){
+
     }
 }

@@ -1,6 +1,6 @@
-package com.example.graduationthesis.data.model
+package com.example.graduationthesis.data.model.lining
 
-data class Product(
+data class ProductLining(
     val idPD: String,
     val urlPD: String,
     val namePD: String,

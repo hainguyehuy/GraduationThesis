@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.graduationthesis.R
 import com.example.graduationthesis.databinding.ActivityMainBinding
+import com.example.graduationthesis.ui.adapters.BeginCategoryFragment
 import com.example.graduationthesis.ui.views.AccountFragment
 import com.example.graduationthesis.ui.views.AddressFragment
 import com.example.graduationthesis.ui.views.CartFragment
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.cart -> replaceFragment(CartFragment())
                 R.id.profile -> replaceFragment(AccountFragment())
                 R.id.notif -> replaceFragment(NotifFragment())
-                R.id.cate -> replaceFragment(CategoryFragment())
+                R.id.cate -> replaceFragment(BeginCategoryFragment())
             }
             true
         }

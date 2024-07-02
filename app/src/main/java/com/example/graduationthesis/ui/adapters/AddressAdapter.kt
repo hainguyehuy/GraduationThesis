@@ -15,18 +15,15 @@ class AddressAdapter() : RecyclerView.Adapter<AddressAdapter.AddressViewHolder>(
         this.listAddress.addAll(addressList)
         notifyDataSetChanged()
     }
-
     inner class AddressViewHolder(val binding : FragmentAddressBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressViewHolder {
         var binding = FragmentAddressBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return AddressViewHolder(binding)
     }
-
     override fun getItemCount(): Int {
         return listAddress.size
     }
-
     override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
         val itemAddressAdapter = ItemAddressAdapter(listAddress[position].ItemAddress)
         holder.binding.rvAddress.adapter = itemAddressAdapter

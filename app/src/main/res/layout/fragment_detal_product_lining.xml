@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.adapters.liningAdapter.DetalProductLiningFragment">
+
+    <ImageView
+        android:id="@+id/imgProductLining"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/banner2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tvPricePD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="285dp"
+        android:text="298.000đ"
+        android:textColor="#FF0000"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgProductLining"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tvNamePD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Name"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPricePD"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tvChoseColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="10dp"
+        android:text="Chọn màu "
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnRed"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamePD"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/btnRed"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginEnd="10dp"
+        android:text="Red"
+        app:layout_constraintEnd_toStartOf="@+id/btnBlue"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamePD"
+
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="189dp" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/btnBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginEnd="10dp"
+        android:text="Blue"
+        app:layout_constraintEnd_toStartOf="@+id/btnYellow"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamePD"
+
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="189dp" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/btnYellow"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginEnd="10dp"
+        android:text="Yellow"
+        app:layout_constraintEnd_toStartOf="@+id/btnBlack"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamePD"
+
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="189dp" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/btnBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:text="Black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamePD"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tvChoseSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="Chọn kích thước "
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/tv36"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRed"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/tv39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="39"
+        app:layout_constraintEnd_toStartOf="@+id/tv40"
+        app:layout_constraintTop_toBottomOf="@+id/btnRed"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/tv40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="40"
+        app:layout_constraintEnd_toStartOf="@+id/tv41"
+        app:layout_constraintTop_toBottomOf="@+id/btnRed"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/tv41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="41"
+        app:layout_constraintEnd_toStartOf="@+id/tv42"
+        app:layout_constraintTop_toBottomOf="@+id/btnRed"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/tv42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="42"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/btnRed"
+        tools:layout_editor_absoluteX="301dp"
+        tools:layout_editor_absoluteY="240dp" />
+    <TextView
+        android:id="@+id/tv38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="38"
+        app:layout_constraintEnd_toStartOf="@+id/tv39"
+        app:layout_constraintTop_toBottomOf="@+id/btnRed"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tv37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="37"
+        app:layout_constraintEnd_toStartOf="@+id/tv38"
+        app:layout_constraintTop_toBottomOf="@+id/btnRed"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tv36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="36"
+        app:layout_constraintEnd_toStartOf="@+id/tv37"
+        app:layout_constraintTop_toBottomOf="@+id/btnRed"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,12 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
+import com.example.graduationthesis.data.model.lining.CategorysLining
+import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.FragmentCategoryBinding
-import com.example.graduationthesis.ui.adapters.CategorysAdapter
-import com.example.graduationthesis.ui.viewModel.MainProductViewModel
+import com.example.graduationthesis.ui.adapters.liningAdapter.CategorysLiningAdapter
+import com.example.graduationthesis.ui.viewModel.ProductLiningViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,9 +28,11 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class CategoryFragment : Fragment() {
-    private lateinit var adapter: CategorysAdapter
-    private lateinit var viewModel: MainProductViewModel
+    private lateinit var adapter: CategorysLiningAdapter
+    private lateinit var viewModel: ProductLiningViewModel
     private lateinit var binding : FragmentCategoryBinding
+    private lateinit var itemDecoration: ItemDecoration
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +40,7 @@ class CategoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCategoryBinding.inflate(inflater,container,false)
+        adapter = CategorysLiningAdapter(::onItemClick)
         return binding.root
     }
 
@@ -40,14 +48,18 @@ class CategoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.rvMainProduct.layoutManager = LinearLayoutManager(context)
         binding.rvMainProduct.setHasFixedSize(true)
-
-        adapter = CategorysAdapter()
+        itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        binding.rvMainProduct.addItemDecoration(itemDecoration)
+        adapter = CategorysLiningAdapter(::onItemClick)
         binding.rvMainProduct.adapter = adapter
 
-        viewModel = ViewModelProvider(this).get(MainProductViewModel::class.java)
+        viewModel = ViewModelProvider(this)[ProductLiningViewModel::class.java]
         viewModel.parentCategory.observe(viewLifecycleOwner, Observer {
             adapter.updateCategorys(it)
         })
 
+    }
+    private fun onItemClick(itemResponse: CategorysLining){
+        Toast.makeText(context,"Aaaa",Toast.LENGTH_LONG).show()
     }
 }

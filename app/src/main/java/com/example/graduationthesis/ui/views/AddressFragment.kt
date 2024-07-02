@@ -14,6 +14,8 @@ import com.example.graduationthesis.R
 import com.example.graduationthesis.data.model.Address
 import com.example.graduationthesis.ui.adapters.ItemAddressAdapter
 import com.example.graduationthesis.data.model.ItemAddress
+import com.example.graduationthesis.databinding.FragmentAddressBinding
+import com.example.graduationthesis.databinding.FragmentHomeBinding
 import com.example.graduationthesis.ui.adapters.AddressAdapter
 import com.example.graduationthesis.ui.viewModel.AddressViewModel
 import java.util.Locale
@@ -32,8 +34,8 @@ private const val ARG_PARAM2 = "param2"
 
 
 class AddressFragment : Fragment() {
-    private lateinit var addressRecyclerView: RecyclerView
     private lateinit var searchView : androidx.appcompat.widget.SearchView
+    private lateinit var binding : FragmentAddressBinding
     private lateinit var addressArrayList: ArrayList<ItemAddress>
     private lateinit var adapter: AddressAdapter
     private lateinit var adapterItem: ItemAddressAdapter
@@ -42,26 +44,23 @@ class AddressFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_address, container, false)
+        val binding = FragmentAddressBinding.inflate(inflater,container,false)
+        return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        addressRecyclerView = view.findViewById(R.id.rvAddress)
-        addressRecyclerView.layoutManager = LinearLayoutManager(context)
-        addressRecyclerView.setHasFixedSize(true)
+        val binding = FragmentAddressBinding.inflate(layoutInflater)
+        binding.rvAddress.layoutManager = LinearLayoutManager(context)
+        binding.rvAddress.setHasFixedSize(true)
         adapter = AddressAdapter()
-        addressRecyclerView.adapter = adapter
+        binding.rvAddress.adapter = adapter
 
         viewModel = ViewModelProvider(this).get(AddressViewModel::class.java)
         viewModel.allAddress.observe(viewLifecycleOwner, Observer {
             adapter.updateAddressList(it)
         })
         addressArrayList = arrayListOf<ItemAddress>()
-//        getAddress()
 
         // event Search address
 //        searchView = view.findViewById(R.id.searchAddress)
@@ -79,7 +78,6 @@ class AddressFragment : Fragment() {
 //        })
 
     }
-
     private fun filterList(text: String) {
         if(text != null){
             val filteredList = ArrayList<ItemAddress>()
@@ -98,21 +96,5 @@ class AddressFragment : Fragment() {
 
     }
 
-//    private fun getAddress() {
-//        databaseReference  = FirebaseDatabase.getInstance().getReference("Address")
-//        databaseReference.addValueEventListener(object : ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                if(snapshot.exists()){
-//                    for (addressSnapshot in snapshot.children){
-//                        val address = addressSnapshot.getValue(Address::class.java)
-//                        addressArrayList.add(address!!)
-//                    }
-//                    addressRecyclerView.adapter = AddressAdapter(addressArrayList)
-//                }
-//            }
-//            override fun onCancelled(error: DatabaseError) {
-//            }
-//
-//        })
-//    }
+
 }

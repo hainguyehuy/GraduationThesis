@@ -38,20 +38,19 @@ class HomeFragment : Fragment() {
         }
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.rvItemHotProduct.layoutManager = LinearLayoutManager(context)
-//        binding.rvItemHotProduct.setHasFixedSize(true)
-//        adapterHP = ListHotProductAdapter()
-//
-//        binding.rvItemHotProduct.adapter = adapterHP
-//
-//        viewModelHP = ViewModelProvider(this).get(HotProductViewModel::class.java)
-//        viewModelHP.allHP.observe(viewLifecycleOwner, Observer {
-//            adapterHP.updateLHPList(it)
-//        })
+        binding.rvItemHotProduct.layoutManager = LinearLayoutManager(layoutInflater.context)
+        binding.rvItemHotProduct.setHasFixedSize(true)
+        adapterHP = ListHotProductAdapter()
+
+        binding.rvItemHotProduct.adapter = adapterHP
+
+        viewModelHP = ViewModelProvider(this).get(HotProductViewModel::class.java)
+        viewModelHP.allHP.observe(viewLifecycleOwner, Observer {
+            adapterHP.updateLHPList(it)
+        })
     }
     override fun onResume() {
         super.onResume()

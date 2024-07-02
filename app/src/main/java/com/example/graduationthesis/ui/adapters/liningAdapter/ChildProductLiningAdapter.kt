@@ -1,13 +1,13 @@
-package com.example.graduationthesis.ui.adapters
+package com.example.graduationthesis.ui.adapters.liningAdapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.graduationthesis.data.model.Product
+import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.ItemProductBinding
 
-class ChildProductAdapter(private val childProducts : List<Product>): RecyclerView.Adapter<ChildProductAdapter.ChildProductViewHolder>() {
+class ChildProductLiningAdapter(private val childProducts : List<ProductLining>): RecyclerView.Adapter<ChildProductLiningAdapter.ChildProductViewHolder>() {
     inner class ChildProductViewHolder(val binding : ItemProductBinding) : RecyclerView.ViewHolder(binding.root){
 
     }

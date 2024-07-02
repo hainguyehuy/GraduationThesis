@@ -23,7 +23,6 @@ class AddressRepository {
             INSTANCE = instance
             instance
         }
-
     }
     fun loadAddressData(addressList : MutableLiveData<List<Address>>){
         databaseReference.addValueEventListener(object: ValueEventListener{

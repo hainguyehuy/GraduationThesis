@@ -1,22 +1,16 @@
-package com.example.graduationthesis.ui.adapters
+package com.example.graduationthesis.ui.adapters.liningAdapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.graduationthesis.data.model.Cate
+import com.example.graduationthesis.data.model.lining.CategoryLining
 import com.example.graduationthesis.databinding.ItemCategoryBinding
 
-class ParentProductAdapter(private val parentProducts: List<Cate>) :RecyclerView.Adapter<ParentProductAdapter.ParentProductViewHolder>() {
+class ParentProductLiningAdapter(private val parentProducts: List<CategoryLining>) :RecyclerView.Adapter<ParentProductLiningAdapter.ParentProductViewHolder>() {
 
-//    fun updateProducts(productList : List<Category>){
-//        this.parentProducts.clear()
-//        this.parentProducts.addAll(productList)
-//        notifyDataSetChanged()
-//    }
     inner class ParentProductViewHolder(val binding : ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root){
 
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParentProductViewHolder {
         val binding = ItemCategoryBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ParentProductViewHolder(binding)
@@ -29,8 +23,9 @@ class ParentProductAdapter(private val parentProducts: List<Cate>) :RecyclerView
     override fun onBindViewHolder(holder: ParentProductViewHolder, position: Int) {
         val parentProduct = parentProducts[position]
         holder.binding.tvNameCategory.text = parentProduct.name
-        val childProductAdapter = ChildProductAdapter(parentProduct.Products)
+        val childProductAdapter = ChildProductLiningAdapter(parentProduct.Products)
         holder.binding.recyclerView.adapter = childProductAdapter
+
     }
 
 }
