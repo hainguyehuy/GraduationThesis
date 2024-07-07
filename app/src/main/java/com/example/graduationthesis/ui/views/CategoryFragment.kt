@@ -1,5 +1,6 @@
 package com.example.graduationthesis.ui.views
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,9 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
-import com.example.graduationthesis.data.model.lining.CategorysLining
 import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.FragmentCategoryBinding
+import com.example.graduationthesis.ui.GUI.DetailProductLiningActivity
 import com.example.graduationthesis.ui.adapters.liningAdapter.CategorysLiningAdapter
 import com.example.graduationthesis.ui.viewModel.ProductLiningViewModel
 
@@ -30,19 +31,19 @@ private const val ARG_PARAM2 = "param2"
 class CategoryFragment : Fragment() {
     private lateinit var adapter: CategorysLiningAdapter
     private lateinit var viewModel: ProductLiningViewModel
-    private lateinit var binding : FragmentCategoryBinding
+    private lateinit var binding: FragmentCategoryBinding
     private lateinit var itemDecoration: ItemDecoration
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCategoryBinding.inflate(inflater,container,false)
+        binding = FragmentCategoryBinding.inflate(inflater, container, false)
         adapter = CategorysLiningAdapter(::onItemClick)
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,7 +60,16 @@ class CategoryFragment : Fragment() {
         })
 
     }
-    private fun onItemClick(itemResponse: CategorysLining){
-        Toast.makeText(context,"Aaaa",Toast.LENGTH_LONG).show()
+
+    private fun onItemClick(itemResponse: ProductLining) {
+
+        var intent = Intent(context,DetailProductLiningActivity::class.java).apply {
+            putExtra("namePD",itemResponse.namePD)
+            putExtra("urlPD",itemResponse.urlPD)
+            putExtra("pricePD",itemResponse.pricePD)
+        }
+        startActivity(intent)
+
+        Toast.makeText(context, "Aaaa", Toast.LENGTH_LONG).show()
     }
 }

@@ -44,13 +44,13 @@ class AddressFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentAddressBinding.inflate(inflater,container,false)
+        binding = FragmentAddressBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentAddressBinding.inflate(layoutInflater)
+        binding = FragmentAddressBinding.inflate(layoutInflater)
         binding.rvAddress.layoutManager = LinearLayoutManager(context)
         binding.rvAddress.setHasFixedSize(true)
         adapter = AddressAdapter()

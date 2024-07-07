@@ -4,15 +4,23 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationthesis.data.model.lining.CategoryLining
+import com.example.graduationthesis.data.model.lining.CategorysLining
+import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.ItemCategoryBinding
 
-class ParentProductLiningAdapter(private val parentProducts: List<CategoryLining>) :RecyclerView.Adapter<ParentProductLiningAdapter.ParentProductViewHolder>() {
+class ParentProductLiningAdapter(
+    private val parentProducts: List<CategoryLining>,
+    val onClickItem: (ProductLining) -> Unit
+) : RecyclerView.Adapter<ParentProductLiningAdapter.ParentProductViewHolder>() {
 
-    inner class ParentProductViewHolder(val binding : ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ParentProductViewHolder(val binding: ItemCategoryBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParentProductViewHolder {
-        val binding = ItemCategoryBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding =
+            ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ParentProductViewHolder(binding)
     }
 
@@ -23,7 +31,7 @@ class ParentProductLiningAdapter(private val parentProducts: List<CategoryLining
     override fun onBindViewHolder(holder: ParentProductViewHolder, position: Int) {
         val parentProduct = parentProducts[position]
         holder.binding.tvNameCategory.text = parentProduct.name
-        val childProductAdapter = ChildProductLiningAdapter(parentProduct.Products)
+        val childProductAdapter = ChildProductLiningAdapter(parentProduct.Products, onClickItem)
         holder.binding.recyclerView.adapter = childProductAdapter
 
     }

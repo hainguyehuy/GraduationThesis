@@ -4,20 +4,24 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.graduationthesis.data.model.lining.CategoryLining
 import com.example.graduationthesis.data.model.lining.CategorysLining
 import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.FragmentCategoryBinding
 
-class CategorysLiningAdapter(private val onItemClick: (CategorysLining) -> Unit) : RecyclerView.Adapter<CategorysLiningAdapter.CategorysViewHolder>() {
+class CategorysLiningAdapter(private val onItemClick: (ProductLining) -> Unit) :
+    RecyclerView.Adapter<CategorysLiningAdapter.CategorysViewHolder>() {
     private val categoryList = ArrayList<CategorysLining>()
 
-    fun updateCategorys(categoryList: List<CategorysLining>){
+    fun updateCategorys(categoryList: List<CategorysLining>) {
         this.categoryList.clear()
         this.categoryList.addAll(categoryList)
         notifyDataSetChanged()
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategorysViewHolder {
-        val binding = FragmentCategoryBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding =
+            FragmentCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CategorysViewHolder(binding)
     }
 
@@ -26,19 +30,14 @@ class CategorysLiningAdapter(private val onItemClick: (CategorysLining) -> Unit)
     }
 
     override fun onBindViewHolder(holder: CategorysViewHolder, position: Int) {
-        val current  = categoryList[position]
-        val parentProductAdapter = ParentProductLiningAdapter(current.Category)
+        val current = categoryList[position]
+        val parentProductAdapter = ParentProductLiningAdapter(current.Category, onItemClick)
         holder.binding.rvMainProduct.adapter = parentProductAdapter
-        current.let{
-            holder.bind(it)
-        }
 
     }
-    inner class CategorysViewHolder(val binding: FragmentCategoryBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(item : CategorysLining){
-            binding.root.setOnClickListener {
-                onItemClick(item)
-            }
-        }
+
+    inner class CategorysViewHolder(val binding: FragmentCategoryBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
     }
 }

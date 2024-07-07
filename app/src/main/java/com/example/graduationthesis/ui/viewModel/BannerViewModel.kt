@@ -10,7 +10,6 @@ import com.example.graduationthesis.data.repository.BannerRepository
 
 class BannerViewModel : ViewModel() {
     private val _banner = MutableLiveData<Banner>()
-//    val banner : LiveData<Banner> = _banner
     private val banners = BannerRepository().getBanners()
     private var currentIndex = 0
     private val delay = 1500L

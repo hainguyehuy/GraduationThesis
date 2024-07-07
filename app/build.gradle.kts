@@ -73,4 +73,6 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.5.3")
     implementation ("com.github.bumptech.glide:glide:4.13.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.13.0")
+    implementation ("com.intuit.ssp:ssp-android:1.0.6")
+    implementation ("com.intuit.sdp:sdp-android:1.0.6")
 }

@@ -1,5 +1,6 @@
 package com.example.graduationthesis.ui.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +14,12 @@ import com.example.graduationthesis.R
 import com.example.graduationthesis.data.model.HotProduct
 import com.example.graduationthesis.data.model.ListHotProduct
 import com.example.graduationthesis.databinding.FragmentHomeBinding
+import com.example.graduationthesis.ui.GUI.AddressActivity
 import com.example.graduationthesis.ui.adapters.HotProductAdapter
 import com.example.graduationthesis.ui.adapters.ListHotProductAdapter
 import com.example.graduationthesis.ui.viewModel.BannerViewModel
 import com.example.graduationthesis.ui.viewModel.HotProductViewModel
+import com.google.firebase.database.FirebaseDatabase
 
 
 class HomeFragment : Fragment() {
@@ -24,6 +27,8 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel : BannerViewModel
     private lateinit var viewModelHP : HotProductViewModel
     private lateinit var adapterHP: ListHotProductAdapter
+    private lateinit var adapter: HotProductAdapter
+    private var listHotProduct = mutableListOf<HotProduct>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,26 +36,30 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater,container,false)
         binding.imgAddressShop.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.frLayout, AddressFragment())
-                .addToBackStack(null)
-                .commit()
+//            parentFragmentManager.beginTransaction()
+//                .replace(R.id.frLayout, AddressFragment())
+//                .addToBackStack(null)
+//                .commit()
+            var intent = Intent(context,AddressActivity::class.java)
+            startActivity(intent)
         }
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        FirebaseDatabase.getInstance().getReference("HotProduct") .child("ChildHotProduct")
+            .get().addOnSuccessListener {
+                for(Doc in it.children){
+                    Doc.getValue(HotProduct::class.java)?.let { it1 -> listHotProduct.add(it1) }
+                }
+                adapter = HotProductAdapter(listHotProduct)
+                binding.rvItemHotProduct.adapter = adapter
+            }
 
-        binding.rvItemHotProduct.layoutManager = LinearLayoutManager(layoutInflater.context)
-        binding.rvItemHotProduct.setHasFixedSize(true)
-        adapterHP = ListHotProductAdapter()
-
-        binding.rvItemHotProduct.adapter = adapterHP
-
-        viewModelHP = ViewModelProvider(this).get(HotProductViewModel::class.java)
-        viewModelHP.allHP.observe(viewLifecycleOwner, Observer {
-            adapterHP.updateLHPList(it)
-        })
+//        viewModelHP = ViewModelProvider(this).get(HotProductViewModel::class.java)
+//        viewModelHP.allHP.observe(viewLifecycleOwner, Observer {
+//            adapterHP.updateLHPList(it)
+//        })
     }
     override fun onResume() {
         super.onResume()

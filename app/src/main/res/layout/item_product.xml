@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_250sdp"
         android:background="@drawable/stroke_product"
         android:layout_marginHorizontal="4dp">
 
@@ -28,8 +28,8 @@
 
         <ImageView
             android:id="@+id/imgProDuct"
-            android:layout_width="120dp"
-            android:layout_height="170dp"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
             android:layout_margin="8dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,9 +37,23 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
+        <!--        <ImageView-->
+<!--            android:id="@+id/tvStar"-->
+<!--            android:layout_width="12dp"-->
+<!--            android:layout_height="12dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:text="Giay Yonex"-->
+<!--            android:textSize="15sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/imgProDuct"-->
+<!--            android:src="@drawable/star"-->
+<!--            tools:ignore="MissingConstraints" />-->
+
         <TextView
             android:id="@+id/tvNameProduct"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Giay Yonex"
@@ -55,15 +69,30 @@
             android:id="@+id/tvPriceProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:text="Price: 300$"
+            android:textColor="#FF0000"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.053"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameProduct"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tvState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Trạng thái : Còn hàng"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.106"
+            app:layout_constraintHorizontal_bias="0.083"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNameProduct"
-            app:layout_constraintVertical_bias="0.005"
+            app:layout_constraintTop_toBottomOf="@+id/tvPriceProduct"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints" />
 
 
