@@ -13,39 +13,50 @@
         android:orientation="vertical"
         tools:context=".ui.adapters.BeginCategoryFragment">
 
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchAddress"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/stroke_searchview"
+            app:iconifiedByDefault="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="Search here ..."
+            tools:ignore="MissingConstraints" />
 
         <ImageView
             android:id="@+id/imgYonex"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="11dp"
             android:layout_marginEnd="20dp"
             android:src="@drawable/yonex"
             app:layout_constraintEnd_toStartOf="@+id/imgLining"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvText"
+            app:layout_constraintTop_toBottomOf="@+id/searchAddress"
             tools:ignore="MissingConstraints" />
 
         <ImageView
             android:id="@+id/imgLining"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="20dp"
             android:src="@drawable/lining"
             app:layout_constraintEnd_toStartOf="@+id/imgMizuno"
-            app:layout_constraintTop_toBottomOf="@+id/tvText"
+            app:layout_constraintTop_toBottomOf="@+id/searchAddress"
             tools:ignore="MissingConstraints" />
 
         <ImageView
             android:id="@+id/imgVictor"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="4dp"
-
             android:src="@drawable/victor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvText"
+            app:layout_constraintTop_toBottomOf="@+id/searchAddress"
             tools:ignore="MissingConstraints" />
 
         <ImageView
@@ -56,7 +67,7 @@
 
             android:src="@drawable/kumpo"
             app:layout_constraintEnd_toStartOf="@+id/imgVS"
-            app:layout_constraintTop_toBottomOf="@+id/tvText"
+            app:layout_constraintTop_toBottomOf="@+id/searchAddress"
             tools:ignore="MissingConstraints" />
 
         <ImageView
@@ -67,7 +78,7 @@
             android:layout_marginEnd="20dp"
             android:src="@drawable/mizuno"
             app:layout_constraintEnd_toStartOf="@+id/imgKumpo"
-            app:layout_constraintTop_toBottomOf="@+id/tvText"
+            app:layout_constraintTop_toBottomOf="@+id/searchAddress"
             tools:ignore="MissingConstraints" />
 
         <ImageView
@@ -77,29 +88,15 @@
             android:layout_marginEnd="20dp"
             android:src="@drawable/vs"
             app:layout_constraintEnd_toStartOf="@+id/imgVictor"
-            app:layout_constraintTop_toBottomOf="@+id/tvText"
-            tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:id="@+id/tvText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="61dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="62dp"
-            android:text="Hãy chọn thương hiệu bạn thích"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchAddress"
             tools:ignore="MissingConstraints" />
 
         <FrameLayout
             android:id="@+id/frmLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="638dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgKumpo"
             tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>

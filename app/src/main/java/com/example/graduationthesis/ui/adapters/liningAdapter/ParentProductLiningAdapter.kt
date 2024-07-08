@@ -4,13 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationthesis.data.model.lining.CategoryLining
-import com.example.graduationthesis.data.model.lining.CategorysLining
 import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.ItemCategoryBinding
 
 class ParentProductLiningAdapter(
     private val parentProducts: List<CategoryLining>,
-    val onClickItem: (ProductLining) -> Unit
+    val onClickItem: ((ProductLining) -> Unit)
 ) : RecyclerView.Adapter<ParentProductLiningAdapter.ParentProductViewHolder>() {
 
     inner class ParentProductViewHolder(val binding: ItemCategoryBinding) :

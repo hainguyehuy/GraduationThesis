@@ -1,6 +1,7 @@
 package com.example.graduationthesis.ui
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -25,12 +26,14 @@ class MainActivity : AppCompatActivity() {
         replaceFragment(HomeFragment())
 
         binding.bottomNavi.setOnItemSelectedListener {
+
             when(it.itemId){
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.cart -> replaceFragment(CartFragment())
                 R.id.profile -> replaceFragment(AccountFragment())
                 R.id.notif -> replaceFragment(NotifFragment())
                 R.id.cate -> replaceFragment(BeginCategoryFragment())
+
             }
             true
         }

@@ -10,11 +10,17 @@ import com.example.graduationthesis.data.model.ItemAddress
 import com.example.graduationthesis.databinding.ItemAddressBinding
 
 class ItemAddressAdapter(private var addressList : List<ItemAddress>) :RecyclerView.Adapter<ItemAddressAdapter.AddressViewHolder>() {
-
-    fun setFilteredList(addressList: ArrayList<ItemAddress>){
-        this.addressList = addressList
-        notifyDataSetChanged()
-    }
+//    private var filteredItems : List<ItemAddress> = addressList
+//    fun filter(query: String) {
+//        filteredItems = if (query.isEmpty()) {
+//            addressList
+//        } else {
+//            addressList.filter {
+//                it.nameAddress!!.contains(query, ignoreCase = true)
+//            }
+//        }
+//        notifyDataSetChanged()
+//    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressViewHolder {
         val binding = ItemAddressBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return AddressViewHolder(binding)
@@ -28,6 +34,13 @@ class ItemAddressAdapter(private var addressList : List<ItemAddress>) :RecyclerV
         holder.binding.tvTitleAddress.text = current.titleAddress
         holder.binding.tvPhoneNumber.text = current.pNumberAddress
     }
+
+    fun setFilteredList(arrayListAddress: ArrayList<ItemAddress>) {
+        this.addressList = arrayListAddress
+        notifyDataSetChanged()
+    }
+
+
     inner class AddressViewHolder(val binding : ItemAddressBinding) : RecyclerView.ViewHolder(binding.root){
 
     }

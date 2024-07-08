@@ -78,23 +78,23 @@ class AddressFragment : Fragment() {
 //        })
 
     }
-    private fun filterList(text: String) {
-        if(text != null){
-            val filteredList = ArrayList<ItemAddress>()
-            for(i in addressArrayList){
-                if(i.nameAddress?.lowercase(Locale.ROOT)?.contains(text) == true)
-                    filteredList.add(i)
-            }
-            if(addressArrayList.isEmpty()){
-                Toast.makeText(context,"No Address Found", Toast.LENGTH_LONG).show()
-            }
-            else{
-                adapterItem = ItemAddressAdapter(addressArrayList)
-                adapterItem.setFilteredList(filteredList)
-            }
-        }
-
-    }
+//    private fun filterList(text: String) {
+//        if(text != null){
+//            val filteredList = ArrayList<ItemAddress>()
+//            for(i in addressArrayList){
+//                if(i.nameAddress?.lowercase(Locale.ROOT)?.contains(text) == true)
+//                    filteredList.add(i)
+//            }
+//            if(addressArrayList.isEmpty()){
+//                Toast.makeText(context,"No Address Found", Toast.LENGTH_LONG).show()
+//            }
+//            else{
+//                adapterItem = ItemAddressAdapter(addressArrayList)
+//                adapterItem.setFilteredList(filteredList)
+//            }
+//        }
+//
+//    }
 
 
 }

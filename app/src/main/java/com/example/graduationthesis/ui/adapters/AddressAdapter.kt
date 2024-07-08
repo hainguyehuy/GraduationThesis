@@ -10,6 +10,7 @@ import com.example.graduationthesis.databinding.FragmentAddressBinding
 class AddressAdapter() : RecyclerView.Adapter<AddressAdapter.AddressViewHolder>()  {
     private var listAddress = ArrayList<Address>()
 
+
     fun updateAddressList(addressList : List<Address>){
         this.listAddress.clear()
         this.listAddress.addAll(addressList)

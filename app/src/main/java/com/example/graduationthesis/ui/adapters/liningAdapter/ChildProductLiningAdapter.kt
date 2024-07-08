@@ -4,11 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.graduationthesis.data.model.lining.CategoryLining
 import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.ItemProductBinding
 
-class ChildProductLiningAdapter(private val childProducts : List<ProductLining>,private val onItemClick: (ProductLining) -> Unit): RecyclerView.Adapter<ChildProductLiningAdapter.ChildProductViewHolder>() {
+class ChildProductLiningAdapter(private val childProducts: List<ProductLining>, private val onItemClick: ((ProductLining) -> Unit)): RecyclerView.Adapter<ChildProductLiningAdapter.ChildProductViewHolder>() {
     inner class ChildProductViewHolder(val binding : ItemProductBinding) : RecyclerView.ViewHolder(binding.root){
 
     }

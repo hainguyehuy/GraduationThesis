@@ -2,9 +2,7 @@ package com.example.graduationthesis.ui.adapters.liningAdapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.graduationthesis.data.model.lining.CategoryLining
 import com.example.graduationthesis.data.model.lining.CategorysLining
 import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.FragmentCategoryBinding

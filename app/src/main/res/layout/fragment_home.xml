@@ -19,7 +19,7 @@
             android:layout_width="331dp"
             android:layout_height="49dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/stroke_searchview"
             app:iconifiedByDefault="false"
             app:layout_constraintEnd_toStartOf="@+id/imgAddressShop"
@@ -41,12 +41,13 @@
             app:layout_constraintVertical_bias="0.432"
             app:tint="#FF7D29"
             tools:ignore="MissingConstraints" />
+
         <ImageView
             android:id="@+id/imgBanner"
             android:layout_width="match_parent"
             android:layout_height="150sp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/b1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,9 +61,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +72,23 @@
             tools:ignore="MissingConstraints"
             tools:itemCount="5"
             tools:listitem="@layout/item_hotproduct" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvItemCate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvItemHotProduct"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_category" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
