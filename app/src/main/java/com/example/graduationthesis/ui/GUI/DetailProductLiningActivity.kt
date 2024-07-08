@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.example.graduationthesis.R
 import com.example.graduationthesis.databinding.ActivityDetailProductLiningBinding
-import java.lang.StringBuilder
+import kotlin.text.StringBuilder
 
 class DetailProductLiningActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDetailProductLiningBinding
@@ -18,9 +18,15 @@ class DetailProductLiningActivity : AppCompatActivity() {
         val name = intent.getStringExtra("namePD")
         val url = intent.getStringExtra("urlPD")
         val price = intent.getStringExtra("pricePD")
+        val color = intent.getStringExtra("colorPD")
+        val title = intent.getStringExtra("titlePD")
+        val size = intent.getStringExtra("sizePD")
 
-        binding.tvNamePD.text = StringBuilder().append("Name: $name")
+        binding.tvNamePD.text = name
         binding.tvPricePD.text = price
+        binding.tvColor.text = StringBuilder().append("Màu sắc: $color")
+        binding.tvSize.text = StringBuilder().append("Kích thước: $size")
+        binding.tvTitle.text = StringBuilder().append("Mô tả: $title")
         if (url != null){
             val img = Uri.parse(url)
             Glide.with(this)

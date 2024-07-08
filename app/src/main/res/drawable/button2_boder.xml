@@ -5,6 +5,6 @@
         android:width="2dp"
         android:color="#FF7D29"
         /> <!-- Change this to your desired border color -->
-    <corners android:radius="16dp"
+    <corners android:radius="8dp"
         />
 </shape>

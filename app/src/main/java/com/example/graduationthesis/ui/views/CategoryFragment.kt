@@ -67,9 +67,12 @@ class CategoryFragment : Fragment() {
             putExtra("namePD",itemResponse.namePD)
             putExtra("urlPD",itemResponse.urlPD)
             putExtra("pricePD",itemResponse.pricePD)
+            putExtra("titlePD",itemResponse.titlePD)
+            putExtra("colorPD",itemResponse.colorPD)
+            putExtra("sizePD",itemResponse.sizePD)
         }
         startActivity(intent)
 
-        Toast.makeText(context, "Aaaa", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "${itemResponse.namePD}", Toast.LENGTH_LONG).show()
     }
 }
