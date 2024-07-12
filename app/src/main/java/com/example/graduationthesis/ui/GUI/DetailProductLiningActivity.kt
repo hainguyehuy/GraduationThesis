@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.example.graduationthesis.R
 import com.example.graduationthesis.databinding.ActivityDetailProductLiningBinding
+import com.example.graduationthesis.ui.views.BottomSheetFragmentAddCart
 import kotlin.text.StringBuilder
 
 class DetailProductLiningActivity : AppCompatActivity() {
@@ -32,6 +33,10 @@ class DetailProductLiningActivity : AppCompatActivity() {
             Glide.with(this)
                 .load(img)
                 .into(binding.imgProductLining)
+        }
+        binding.btnAddCart.setOnClickListener {
+            val bottomSheetFragment = BottomSheetFragmentAddCart()
+            bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
         }
     }
 }

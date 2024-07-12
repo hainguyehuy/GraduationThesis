@@ -26,9 +26,9 @@ import com.google.firebase.database.FirebaseDatabase
 
 
 class HomeFragment : Fragment() {
-    private lateinit var binding : FragmentHomeBinding
-    private lateinit var viewModel : BannerViewModel
-    private lateinit var viewModelHP : HotProductViewModel
+    private lateinit var binding: FragmentHomeBinding
+    private lateinit var viewModel: BannerViewModel
+    private lateinit var viewModelHP: HotProductViewModel
     private lateinit var viewModelPDLining: ProductLiningViewModel
     private lateinit var adapter: HotProductAdapter
     private lateinit var adapterProductLining: CategorysLiningAdapter
@@ -39,22 +39,19 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(inflater,container,false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.imgAddressShop.setOnClickListener {
-//            parentFragmentManager.beginTransaction()
-//                .replace(R.id.frLayout, AddressFragment())
-//                .addToBackStack(null)
-//                .commit()
-            var intent = Intent(context,AddressActivity::class.java)
+            var intent = Intent(context, AddressActivity::class.java)
             startActivity(intent)
         }
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        FirebaseDatabase.getInstance().getReference("HotProduct") .child("ChildHotProduct")
+        FirebaseDatabase.getInstance().getReference("HotProduct").child("ChildHotProduct")
             .get().addOnSuccessListener {
-                for(Doc in it.children){
+                for (Doc in it.children) {
                     Doc.getValue(HotProduct::class.java)?.let { it1 -> listHotProduct.add(it1) }
                 }
                 adapter = HotProductAdapter(listHotProduct)
@@ -68,23 +65,23 @@ class HomeFragment : Fragment() {
             adapterProductLining.updateCategorys(it)
         })
     }
-    private fun onItemClick(itemResponse: ProductLining) {
 
+    private fun onItemClick(itemResponse: ProductLining) {
         var intent = Intent(context, DetailProductLiningActivity::class.java).apply {
-            putExtra("namePD",itemResponse.namePD)
-            putExtra("urlPD",itemResponse.urlPD)
-            putExtra("pricePD",itemResponse.pricePD)
+            putExtra("namePD", itemResponse.namePD)
+            putExtra("urlPD", itemResponse.urlPD)
+            putExtra("pricePD", itemResponse.pricePD)
         }
         startActivity(intent)
 
-        Toast.makeText(context, "Aaaa", Toast.LENGTH_LONG).show()
     }
+
     override fun onResume() {
         super.onResume()
         viewModel = BannerViewModel()
         viewModel.getBanner().observe(this, Observer { banner ->
             binding.imgBanner.setImageDrawable(
-                ResourcesCompat.getDrawable(resources,banner.imgBanner,activity?.theme)
+                ResourcesCompat.getDrawable(resources, banner.imgBanner, activity?.theme)
             )
 
         })

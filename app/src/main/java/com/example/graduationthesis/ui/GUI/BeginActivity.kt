@@ -43,15 +43,15 @@ class BeginActivity : AppCompatActivity() {
             ),
             ImgItem(
                 UUID.randomUUID().toString(),
-                "android.resource://" + packageName + "/" +R.drawable.hinhnen
-            ),
-            ImgItem(
-                UUID.randomUUID().toString(),
                 "android.resource://" + packageName + "/" +R.drawable.hinhnen4
             ),
             ImgItem(
                 UUID.randomUUID().toString(),
                 "android.resource://" + packageName + "/" +R.drawable.hinhnen5
+            ),
+            ImgItem(
+                UUID.randomUUID().toString(),
+                "android.resource://" + packageName + "/" +R.drawable.hinhnen
             ),
         )
         val imageAdapter = ImageAdapter()
