@@ -8,27 +8,39 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationthesis.R
 import com.example.graduationthesis.data.model.Address
 import com.example.graduationthesis.data.model.ItemCart
+import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.ItemCartBinding
+import com.example.graduationthesis.ui.views.ButtonClickEvent
+import com.example.graduationthesis.utils.toCurrency
+import java.text.NumberFormat
 
-class ItemCartProductAdapter() : RecyclerView.Adapter<ItemCartProductAdapter.ItemCartViewHolder>()  {
+class ItemCartProductAdapter(private val onClickItemProduct: ((ItemCart) -> Unit)) : RecyclerView.Adapter<ItemCartProductAdapter.ItemCartViewHolder>() {
     private val listItemCart = ArrayList<ItemCart>()
 
-    fun updateCartList(cartList : List<ItemCart>){
+    fun updateCartList(cartList: List<ItemCart>) {
         this.listItemCart.clear()
         this.listItemCart.addAll(cartList)
         notifyDataSetChanged()
     }
-    inner class ItemCartViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
-    {
-        val nameProduct = itemView.findViewById<TextView>(R.id.tvNameProduct)!!
-        val colorProduct = itemView.findViewById<TextView>(R.id.tvColorProduct)!!
-        val priceProduct = itemView.findViewById<TextView>(R.id.tvPriceProduct)!!
-        val sizeProduct = itemView.findViewById<TextView>(R.id.tvSizeProduct)!!
+
+    var event: ButtonClickEvent? = null
+    var totalPrice: Double = 0.0
+    var sumTotalPrice : Double = 0.0
+    var count : Int = 0
+    inner class ItemCartViewHolder(val binding: ItemCartBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: ItemCart) {
+            binding.tvNameProduct.text = item.nameItemCart
+            binding.tvColorProduct.text = item.colorItemCart
+            binding.tvPriceProduct.text = item.priceItemCart.toString()
+            binding.tvSizeProduct.text = item.sizeItemCart
+
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemCartViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_cart,parent,false)
-        return ItemCartViewHolder(itemView)
+        val binding = ItemCartBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ItemCartViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -36,9 +48,45 @@ class ItemCartProductAdapter() : RecyclerView.Adapter<ItemCartProductAdapter.Ite
     }
 
     override fun onBindViewHolder(holder: ItemCartViewHolder, position: Int) {
-        holder.nameProduct.text = listItemCart[position].nameItemCart
-        holder.colorProduct.text = listItemCart[position].colorItemCart
-        holder.priceProduct.text = listItemCart[position].priceItemCart.toString()
-        holder.sizeProduct.text = listItemCart[position].sizeItemCart
+
+        holder.bind(listItemCart[position])
+        holder.binding.root.setOnClickListener {
+            holder.binding.plus.setOnClickListener {
+                count++
+                holder.binding.tvCount.text = count.toString()
+                var itemPrice = listItemCart[position].priceItemCart
+                var f = NumberFormat.getInstance()
+                var doublePricePD: Double = f.parse("${itemPrice}").toDouble()
+                totalPrice = count * doublePricePD
+                holder.binding.tvPriceProduct.text = totalPrice.toCurrency()
+            }
+            holder.binding.minus.setOnClickListener {
+                if(count > 0){
+                    count--
+                    holder.binding.tvCount.text = count.toString()
+                    var itemPrice = listItemCart[position].priceItemCart
+                    var f = NumberFormat.getInstance()
+                    var doublePricePD: Double = f.parse("${itemPrice}").toDouble()
+                    totalPrice = count * doublePricePD
+                    holder.binding.tvPriceProduct.text = totalPrice.toCurrency()
+
+                }
+            }
+        }
     }
+    fun calcTotalPrice(): Double{
+        var sum : Double = 0.0
+        listItemCart.forEach {
+            sum += it.priceItemCart
+        }
+        return sum
+    }
+    fun updateTotalPriceProduct(){
+        listItemCart.forEach {
+            sumTotalPrice = calcTotalPrice()
+            event?.updatePriceProduct(sumTotalPrice)
+            notifyDataSetChanged()
+        }
+    }
+
 }

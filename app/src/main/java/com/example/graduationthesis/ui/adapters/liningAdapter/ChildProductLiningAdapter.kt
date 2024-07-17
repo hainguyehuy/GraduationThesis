@@ -7,13 +7,17 @@ import com.bumptech.glide.Glide
 import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.ItemProductBinding
 
-class ChildProductLiningAdapter(private val childProducts: List<ProductLining>, private val onItemClick: ((ProductLining) -> Unit)): RecyclerView.Adapter<ChildProductLiningAdapter.ChildProductViewHolder>() {
-    inner class ChildProductViewHolder(val binding : ItemProductBinding) : RecyclerView.ViewHolder(binding.root){
+class ChildProductLiningAdapter(
+    private val childProducts: List<ProductLining>,
+    private val onItemClick: ((ProductLining) -> Unit)
+) : RecyclerView.Adapter<ChildProductLiningAdapter.ChildProductViewHolder>() {
+    inner class ChildProductViewHolder(val binding: ItemProductBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChildProductViewHolder {
-        val binding = ItemProductBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ChildProductViewHolder(binding)
     }
 
@@ -22,9 +26,10 @@ class ChildProductLiningAdapter(private val childProducts: List<ProductLining>, 
     }
 
     override fun onBindViewHolder(holder: ChildProductViewHolder, position: Int) {
-       holder.binding.tvNameProduct.text = childProducts[position].namePD
-       holder.binding.tvPriceProduct.text = childProducts[position].pricePD
-       Glide.with(holder.binding.imgProDuct.context).load(childProducts[position].urlPD).into(holder.binding.imgProDuct)
+        holder.binding.tvNameProduct.text = childProducts[position].namePD
+        holder.binding.tvPriceProduct.text = childProducts[position].pricePD
+        Glide.with(holder.binding.imgProDuct.context).load(childProducts[position].urlPD)
+            .into(holder.binding.imgProDuct)
         holder.binding.root.setOnClickListener {
             onItemClick(childProducts[position])
         }

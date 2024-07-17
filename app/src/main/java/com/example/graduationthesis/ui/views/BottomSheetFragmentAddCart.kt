@@ -122,7 +122,6 @@ class BottomSheetFragmentAddCart(private var price: Double) : BottomSheetDialogF
         }
         //handle click button addCart
         binding.btnAddCart.setOnClickListener {
-
             saveItemCart()
         }
         binding.rightIcon.setOnClickListener {

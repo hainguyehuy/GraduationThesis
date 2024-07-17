@@ -8,39 +8,37 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/custom_item"
-        android:backgroundTint="#FFFFFF">
+        android:backgroundTint="#FFFFFF"
+        android:layout_marginHorizontal="12dp">
 
 
         <ImageView
             android:id="@+id/imgVoucher"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginVertical="8dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
             android:src="@drawable/google"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/llText"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints" />
 
         <LinearLayout
             android:id="@+id/llText"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="12dp"
 
-            android:layout_marginEnd="52dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgVoucher"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
 
@@ -126,12 +124,13 @@
             android:id="@+id/delete"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="12dp"
             android:layout_marginBottom="20dp"
             android:src="@drawable/delete"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/edit"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/llText"
@@ -142,13 +141,15 @@
             android:id="@+id/edit"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="20dp"
-
-            android:layout_marginEnd="172dp"
+            android:layout_marginEnd="144dp"
             android:layout_marginBottom="20dp"
             android:src="@drawable/edit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout9"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/delete"
             app:layout_constraintTop_toBottomOf="@+id/llText"
             app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints" />
