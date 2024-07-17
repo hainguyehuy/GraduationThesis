@@ -54,7 +54,7 @@
 
 
             <ImageView
-                android:id="@+id/imgVoucher"
+                android:id="@+id/imgProDuctBT"
                 android:layout_width="@dimen/_50sdp"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginStart="16dp"
@@ -76,7 +76,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.007"
-                app:layout_constraintStart_toEndOf="@+id/imgVoucher"
+                app:layout_constraintStart_toEndOf="@+id/imgProDuctBT"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
                 tools:ignore="MissingConstraints">
@@ -106,7 +106,7 @@
                     android:id="@+id/tvChillCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="So luong: 1"
+                    android:text="Số lượng: 1"
                     android:textSize="12sp"
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="125dp"
@@ -116,7 +116,7 @@
                     android:id="@+id/tvSizeProduct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kich thuoc: 39"
+                    android:text="Kich thước: 39"
                     android:textSize="12sp"
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="125dp"
@@ -155,7 +155,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            android:text="Red"
+            android:text="Đỏ"
             app:layout_constraintStart_toEndOf="@+id/tvChoseColor"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
             tools:ignore="MissingConstraints" />
@@ -166,7 +166,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            android:text="blue"
+            android:text="Xanh"
             app:layout_constraintStart_toEndOf="@+id/red"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
             tools:ignore="MissingConstraints" />
@@ -177,7 +177,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            android:text="white"
+            android:text="Trắng"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/blue"
@@ -314,8 +314,8 @@
                 android:textSize="25dp" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvAddCart"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddCart"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="30dp"

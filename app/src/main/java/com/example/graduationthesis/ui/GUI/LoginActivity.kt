@@ -7,6 +7,8 @@ import android.widget.Toast
 import com.example.graduationthesis.ui.MainActivity
 import com.example.graduationthesis.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import kotlinx.coroutines.GlobalScope
 
 
 class LoginActivity : AppCompatActivity() {
@@ -51,4 +53,5 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 }

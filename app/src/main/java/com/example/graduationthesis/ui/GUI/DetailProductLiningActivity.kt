@@ -35,7 +35,13 @@ class DetailProductLiningActivity : AppCompatActivity() {
                 .into(binding.imgProductLining)
         }
         binding.btnAddCart.setOnClickListener {
-            val bottomSheetFragment = BottomSheetFragmentAddCart()
+            val bottomSheetFragment = BottomSheetFragmentAddCart(price!!.toDouble())
+            val bundle = Bundle()
+            bundle.putString("namePD",binding.tvNamePD.text.toString())
+            bundle.putString("colorPD",binding.tvColor.text.toString())
+            bundle.putString("pricePD",binding.tvPricePD.text.toString())
+            bundle.putString("urlPD",binding.imgProductLining.toString())
+            bottomSheetFragment.arguments = bundle
             bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
         }
     }

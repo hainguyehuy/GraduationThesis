@@ -72,7 +72,11 @@ class CategoryFragment : Fragment() {
             putExtra("sizePD",itemResponse.sizePD)
         }
         startActivity(intent)
-
-        Toast.makeText(context, "${itemResponse.namePD}", Toast.LENGTH_LONG).show()
+//        val namePD = itemResponse.namePD
+//        val colorPD = itemResponse.colorPD
+//        val pricePD = itemResponse.pricePD
+//        val bottomSheetFragment = BottomSheetFragmentAddCart.newInstance(namePD,colorPD,pricePD)
+//        bottomSheetFragment.show(parentFragmentManager, "BottomSheetFragmentAddCart")
+//        Toast.makeText(context, "${itemResponse.namePD}", Toast.LENGTH_SHORT).show()
     }
 }

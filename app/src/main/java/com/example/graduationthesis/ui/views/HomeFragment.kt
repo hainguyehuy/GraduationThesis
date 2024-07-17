@@ -71,6 +71,9 @@ class HomeFragment : Fragment() {
             putExtra("namePD", itemResponse.namePD)
             putExtra("urlPD", itemResponse.urlPD)
             putExtra("pricePD", itemResponse.pricePD)
+            putExtra("colorPD", itemResponse.colorPD)
+            putExtra("titlePD", itemResponse.titlePD)
+            putExtra("sizePD", itemResponse.sizePD)
         }
         startActivity(intent)
 

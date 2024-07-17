@@ -1,4 +1,4 @@
-package com.example.graduationthesis.ui.adapters
+package com.example.graduationthesis.ui.views
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationthesis.R
 import com.example.graduationthesis.data.model.Brand
 import com.example.graduationthesis.data.model.ListBrand
@@ -14,10 +13,7 @@ import com.example.graduationthesis.databinding.FragmentBeginCategoryBinding
 import com.example.graduationthesis.ui.adapters.adapterParentBrand.ParentBrandAdapter
 import com.example.graduationthesis.ui.views.CategoryFragment
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+
 
 /**
  * A simple [Fragment] subclass.

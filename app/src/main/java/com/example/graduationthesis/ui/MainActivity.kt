@@ -1,30 +1,32 @@
 package com.example.graduationthesis.ui
 
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.graduationthesis.R
 import com.example.graduationthesis.databinding.ActivityMainBinding
-import com.example.graduationthesis.ui.adapters.BeginCategoryFragment
+import com.example.graduationthesis.ui.viewModel.CartProductViewModel
+import com.example.graduationthesis.ui.views.BeginCategoryFragment
 import com.example.graduationthesis.ui.views.AccountFragment
-import com.example.graduationthesis.ui.views.AddressFragment
 import com.example.graduationthesis.ui.views.CartFragment
-import com.example.graduationthesis.ui.views.CategoryFragment
 import com.example.graduationthesis.ui.views.HomeFragment
 import com.example.graduationthesis.ui.views.NotifFragment
 
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    companion object {
+        lateinit var viewModelCart : CartProductViewModel
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(HomeFragment())
-
+        viewModelCart = CartProductViewModel()
         binding.bottomNavi.setOnItemSelectedListener {
 
             when(it.itemId){
