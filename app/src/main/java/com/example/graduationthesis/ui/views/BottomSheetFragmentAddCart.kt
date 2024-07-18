@@ -21,7 +21,7 @@ import java.text.NumberFormat
 import kotlin.text.StringBuilder
 
 
-class BottomSheetFragmentAddCart(private var price: Double) : BottomSheetDialogFragment() {
+class BottomSheetFragmentAddCart(private var price: Double,private var url : String) : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentBottomSheetAddCartBinding
     private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -136,7 +136,7 @@ class BottomSheetFragmentAddCart(private var price: Double) : BottomSheetDialogF
         val colorItemCart = binding.tvColorProduct.text.toString()
         val priceItemCart = price
         val sizeItemCart = binding.tvSizeProduct.text.toString()
-        val urlItemCart = binding.imgProDuctBT
+        val urlItemCart = url
 
         try {
             database = FirebaseDatabase.getInstance().getReference("CartProduct").push()
@@ -145,7 +145,8 @@ class BottomSheetFragmentAddCart(private var price: Double) : BottomSheetDialogF
                 nameItemCart,
                 colorItemCart,
                 priceItemCart,
-                sizeItemCart
+                sizeItemCart,
+                urlItemCart
             )
             database.setValue(itemCart)
             .addOnSuccessListener {

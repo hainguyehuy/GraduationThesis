@@ -29,18 +29,17 @@ class DetailProductLiningActivity : AppCompatActivity() {
         binding.tvSize.text = StringBuilder().append("Kích thước: $size")
         binding.tvTitle.text = StringBuilder().append("Mô tả: $title")
         if (url != null){
-            val img = Uri.parse(url)
-            Glide.with(this)
-                .load(img)
+            Glide.with(applicationContext)
+                .load(url)
                 .into(binding.imgProductLining)
         }
         binding.btnAddCart.setOnClickListener {
-            val bottomSheetFragment = BottomSheetFragmentAddCart(price!!.toDouble())
+            val bottomSheetFragment = BottomSheetFragmentAddCart(price!!.toDouble(),url!!)
             val bundle = Bundle()
             bundle.putString("namePD",binding.tvNamePD.text.toString())
             bundle.putString("colorPD",binding.tvColor.text.toString())
             bundle.putString("pricePD",binding.tvPricePD.text.toString())
-            bundle.putString("urlPD",binding.imgProductLining.toString())
+            bundle.putString("urlPD",url)
             bottomSheetFragment.arguments = bundle
             bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
         }

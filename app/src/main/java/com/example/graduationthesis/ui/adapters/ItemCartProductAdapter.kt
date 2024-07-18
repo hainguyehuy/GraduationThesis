@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.graduationthesis.R
 import com.example.graduationthesis.data.model.Address
 import com.example.graduationthesis.data.model.ItemCart
@@ -87,6 +88,65 @@ class ItemCartProductAdapter(private val onClickItemProduct: ((ItemCart) -> Unit
             event?.updatePriceProduct(sumTotalPrice)
             notifyDataSetChanged()
         }
+    }
+}
+
+
+class ItemCartAdapter(var updatePrice :(ArrayList<ItemCart>) -> Unit ) : RecyclerView.Adapter<ItemCartAdapter.ViewHolder>(){
+
+    private val listItem = ArrayList<ItemCart>()
+    inner class ViewHolder(val binding : ItemCartBinding) : RecyclerView.ViewHolder(binding.root){
+        var totalPrice: Double = 0.0
+
+        fun setData(item: ItemCart){
+            binding.tvNameProduct.text = item.nameItemCart
+            binding.tvColorProduct.text = item.colorItemCart
+            binding.tvPriceProduct.text = item.priceItemCart.toCurrency()
+            binding.tvSizeProduct.text = item.sizeItemCart
+            Glide.with(binding.imgItemProductCart.context).load(item.urlItemCart)
+                .into(binding.imgItemProductCart)
+            binding.plus.setOnClickListener {
+                item.count++
+                binding.tvCount.text = item.count.toString()
+                var itemPrice = item.priceItemCart
+                var f = NumberFormat.getInstance()
+                var doublePricePD: Double = f.parse("${itemPrice}").toDouble()
+                totalPrice = item.count * doublePricePD
+                binding.tvPriceProduct.text = totalPrice.toCurrency()
+                updatePrice.invoke(listItem)
+            }
+            binding.minus.setOnClickListener {
+                if(item.count > 0){
+                    item.count--
+                    binding.tvCount.text = item.count.toString()
+                    var itemPrice = item.priceItemCart
+                    var f = NumberFormat.getInstance()
+                    var doublePricePD: Double = f.parse("${itemPrice}").toDouble()
+                    totalPrice = item.count * doublePricePD
+                    binding.tvPriceProduct.text = totalPrice.toCurrency()
+                    updatePrice.invoke(listItem)
+                }
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(ItemCartBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+    }
+
+    override fun getItemCount(): Int {
+        return listItem.size
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.setData(listItem.get(position))
+    }
+    val listData: ArrayList<ItemCart> get() = listItem
+
+    fun setItem(listItemCart : List<ItemCart>){
+        listItem.clear()
+        listItem.addAll(listItemCart)
+        notifyDataSetChanged()
     }
 
 }

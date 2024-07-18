@@ -16,7 +16,7 @@
 
 
         <ImageView
-            android:id="@+id/imgVoucher"
+            android:id="@+id/imgItemProductCart"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
             android:layout_marginHorizontal="12dp"
@@ -38,7 +38,7 @@
             android:layout_marginEnd="4dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imgVoucher"
+            app:layout_constraintStart_toEndOf="@+id/imgItemProductCart"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
 

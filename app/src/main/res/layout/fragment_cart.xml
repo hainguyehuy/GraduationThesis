@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginEnd="100dp"
+                android:layout_marginEnd="80dp"
                 android:text="Tổng tiền thanh toán "
                 android:textSize="16sp"
                 android:textStyle="normal" />
@@ -86,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
-                android:text="1.300.000"
+                android:text="0đ"
                 android:textColor="#FE0000"
                 android:textSize="18sp"
                 android:textStyle="normal" />

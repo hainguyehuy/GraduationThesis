@@ -8,22 +8,23 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="@dimen/_235sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_200sdp"
         android:layout_margin="8dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_235sdp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp">
 
             <ImageView
                 android:id="@+id/imgProDuct"
-                android:layout_width="@dimen/_150sdp"
-                android:layout_height="@dimen/_150sdp"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
                 android:layout_margin="8dp"
+
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,9 +50,9 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:layout_marginStart="4dp"
                 android:text="Giay Yonex"
-                android:textSize="15sp"
-                android:textStyle="bold"
+                android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.131"
                 app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +66,8 @@
                 android:layout_marginTop="8dp"
                 android:text="Price: 300$"
                 android:textColor="#FF0000"
-                android:textSize="12sp"
+                android:textSize="15sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.053"
                 app:layout_constraintStart_toStartOf="parent"
