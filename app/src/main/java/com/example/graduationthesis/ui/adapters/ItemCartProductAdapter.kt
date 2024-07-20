@@ -11,7 +11,6 @@ import com.example.graduationthesis.data.model.Address
 import com.example.graduationthesis.data.model.ItemCart
 import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.ItemCartBinding
-import com.example.graduationthesis.ui.views.ButtonClickEvent
 import com.example.graduationthesis.utils.toCurrency
 import java.text.NumberFormat
 
@@ -24,7 +23,7 @@ class ItemCartProductAdapter(private val onClickItemProduct: ((ItemCart) -> Unit
         notifyDataSetChanged()
     }
 
-    var event: ButtonClickEvent? = null
+//    var event: ButtonClickEvent? = null
     var totalPrice: Double = 0.0
     var sumTotalPrice : Double = 0.0
     var count : Int = 0
@@ -85,7 +84,7 @@ class ItemCartProductAdapter(private val onClickItemProduct: ((ItemCart) -> Unit
     fun updateTotalPriceProduct(){
         listItemCart.forEach {
             sumTotalPrice = calcTotalPrice()
-            event?.updatePriceProduct(sumTotalPrice)
+//            event?.updatePriceProduct(sumTotalPrice)
             notifyDataSetChanged()
         }
     }
@@ -127,8 +126,19 @@ class ItemCartAdapter(var updatePrice :(ArrayList<ItemCart>) -> Unit ) : Recycle
                     updatePrice.invoke(listItem)
                 }
             }
+            binding.delete.setOnClickListener {
+                removeItem(layoutPosition)
+                updatePrice.invoke(listItem)
+            }
         }
     }
+
+    fun removeItem(layoutPosition: Int) {
+        listItem.removeAt(layoutPosition)
+        notifyItemRemoved(layoutPosition)
+        notifyItemRangeChanged(layoutPosition, itemCount)
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(ItemCartBinding.inflate(LayoutInflater.from(parent.context),parent,false))

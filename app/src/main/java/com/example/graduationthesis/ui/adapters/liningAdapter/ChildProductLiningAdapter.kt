@@ -14,7 +14,7 @@ class ChildProductLiningAdapter(
 ) : RecyclerView.Adapter<ChildProductLiningAdapter.ChildProductViewHolder>() {
     inner class ChildProductViewHolder(val binding: ItemProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        var price : Double =0.0
+
             fun setData(item: ProductLining){
                 binding.tvNameProduct.text = item.namePD
                 binding.tvPriceProduct.text = item.pricePD

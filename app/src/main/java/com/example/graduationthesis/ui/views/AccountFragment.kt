@@ -1,5 +1,6 @@
 package com.example.graduationthesis.ui.views
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,9 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.graduationthesis.data.model.User
+import com.example.graduationthesis.databinding.DialogChangepasswordBinding
 import com.example.graduationthesis.databinding.FragmentAccountBinding
 import com.example.graduationthesis.ui.GUI.LoginActivity
 import com.example.graduationthesis.ui.GUI.userSignIn
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -37,54 +40,9 @@ class AccountFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAccountBinding.inflate(inflater, container, false)
+
         return binding.root
     }
-
-    private fun fetchDataUser(status: Boolean) {
-//        FirebaseDatabase.getInstance().getReference("User")
-//            .addValueEventListener(object : ValueEventListener{
-//                override fun onDataChange(snapshot: DataSnapshot) {
-//                    val nameUser = snapshot.child("name").getValue(String::class.java)
-//                    binding.name.text = nameUser.toString()
-//                    val genderUser = snapshot.child("gender").getValue(String::class.java)
-//                    binding.gender.text = genderUser.toString()
-//                    val dateBirthUser = snapshot.child("dateBirht").getValue(String::class.java)
-//                   binding.gender.text = genderUser.toString()
-//                    val phoneNumberUser = snapshot.child("numberPhone").getValue(String::class.java)
-//                    binding.gender.text = genderUser.toString()
-//                    val addressUser = snapshot.child("address").getValue(String::class.java)
-//                    binding.gender.text = genderUser.toString()
-//                    val emailUser = snapshot.child("email").getValue(String::class.java)
-//                    binding.gender.text = genderUser.toString()
-//                }
-//
-//                override fun onCancelled(error: DatabaseError) {
-//                    Log.e("AccountFragment","Failed to read data user", error.toException())
-//                }
-//
-//            })
-//        database.orderByChild("status").equalTo(status)
-//            .addValueEventListener(object : ValueEventListener {
-//                override fun onDataChange(snapshot: DataSnapshot) {
-//                    if (snapshot.exists()) {
-//                        for (userSnapshot in snapshot.children) {
-//                            val user = userSnapshot.getValue(User::class.java)
-//
-//                        }
-//                    } else {
-//
-//                    }
-//                }
-//
-//                override fun onCancelled(error: DatabaseError) {
-//                    Log.e("MainActivity", "Database error: ${error.message}")
-//                }
-//
-//            })
-
-    }
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -96,9 +54,33 @@ class AccountFragment : Fragment() {
             binding.address.text = it.address
             binding.email.text = it.email
         }
+        binding.changePassWord.setOnClickListener {
+            showDialog()
+        }
         binding.logOut.setOnClickListener {
             val intent = Intent(context,LoginActivity::class.java)
             startActivity(intent)
         }
     }
+
+    private fun showDialog() {
+        val dialogBiding = DialogChangepasswordBinding.inflate(LayoutInflater.from(context))
+        val dialog = AlertDialog.Builder(context)
+            .setView(dialogBiding.root)
+            .create()
+        val newPass = dialogBiding.edtPWNEW.text.toString()
+        val confirmNewPass = dialogBiding.edtPWNEW.text.toString()
+        dialogBiding.buttonSubmit.setOnClickListener {
+            updateData(newPass,confirmNewPass)
+        }
+        dialog.show()
+    }
+
+    private fun updateData(newPass: String, confirmNewPass: String) {
+        userSignIn?.let {
+
+        }
+    }
+
+
 }

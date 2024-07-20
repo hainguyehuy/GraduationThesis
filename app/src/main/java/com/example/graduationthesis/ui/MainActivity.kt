@@ -1,6 +1,5 @@
 package com.example.graduationthesis.ui
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,11 +9,8 @@ import com.example.graduationthesis.ui.viewModel.CartProductViewModel
 import com.example.graduationthesis.ui.views.BeginCategoryFragment
 import com.example.graduationthesis.ui.views.AccountFragment
 import com.example.graduationthesis.ui.views.CartFragment
+import com.example.graduationthesis.ui.views.ClientsFragment
 import com.example.graduationthesis.ui.views.HomeFragment
-import com.example.graduationthesis.ui.views.HomeFragmentAdmin
-import com.example.graduationthesis.ui.views.NotifFragment
-
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -34,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.cart -> replaceFragment(CartFragment())
                 R.id.profile -> replaceFragment(AccountFragment())
-                R.id.notif -> replaceFragment(NotifFragment())
+                R.id.notif -> replaceFragment(ClientsFragment())
                 R.id.cate -> replaceFragment(BeginCategoryFragment())
             }
             true

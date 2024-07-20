@@ -34,51 +34,15 @@ class LoginActivity : AppCompatActivity() {
             val password = binding.passET.text.toString()
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 loginUser(email, password, "admin")
-
-
-//                firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener {
-//                    if(it.isSuccessful){
-//                        val intent = Intent(this, MainActivity::class.java)
-//                        startActivity(intent)
-//                    }
-//                    else{
-//                        Toast.makeText(this,it.exception.toString(),Toast.LENGTH_LONG).show()
-//                    }
-//                }
             } else {
                 Toast.makeText(this, "Empty field are not allowed", Toast.LENGTH_LONG).show()
             }
-
         }
 
     }
 
     private fun loginUser(email: String, password: String, status: String) {
-//        firebaseAuth.signInWithEmailAndPassword(email, password)
-//            .addOnCompleteListener(this) { task ->
-//                if (task.isSuccessful) {
-//                    val user = firebaseAuth.currentUser
-//                    user.let {
-//                        FirebaseDatabase.getInstance().getReference("User").child(user!!.uid)
-//                            .get().addOnSuccessListener { snapShot ->
-//                                val userData = snapShot.getValue(User::class.java)
-//                                if (userData != null && userData.status == status) {
-//                                    Toast.makeText(this, "Welcome ${userData?.name}", Toast.LENGTH_LONG)
-//                                        .show()
-//                                }
-//                            }
-//                            .addOnFailureListener { exception ->
-//                                Toast.makeText(
-//                                    this,
-//                                    "Failed to retrieve user data  ${exception.message}",
-//                                    Toast.LENGTH_LONG)
-//                                    .show()
-//                            }
-//                    }
-//                } else {
-//                    Log.e("1234",task.exception.toString())
-//                }
-//            }
+
         FirebaseDatabase.getInstance().getReference("User")
             .get().addOnSuccessListener { snapShot ->
                 for (Doc in snapShot.children) {
@@ -87,9 +51,12 @@ class LoginActivity : AppCompatActivity() {
                         if (userData.status == "user")
                         {
                             startActivity(Intent(this, MainActivity::class.java))
+                            Toast.makeText(this, "user", Toast.LENGTH_LONG).show()
                         }
                         else{
                             startActivity(Intent(this, MainAdminActivity::class.java))
+                            Toast.makeText(this, "admin", Toast.LENGTH_LONG).show()
+
                         }
                         userSignIn = userData
                         break

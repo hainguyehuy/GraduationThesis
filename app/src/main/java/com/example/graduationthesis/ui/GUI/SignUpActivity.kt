@@ -29,7 +29,7 @@ class SignUpActivity : AppCompatActivity() {
 
             if (email.isNotEmpty() && password.isNotEmpty() && confirmPass.isNotEmpty()) {
                 if (password == confirmPass) {
-                    registerUser(email, password, true)
+                    registerUser(email, password)
 //                    firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
 //                        if(it.isSuccessful){
 //                            val intent = Intent(this, LoginActivity::class.java)
@@ -49,13 +49,12 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun registerUser(email: String, passWord: String, status : Boolean) {
+    private fun registerUser(email: String, passWord: String) {
         firebaseAuth.createUserWithEmailAndPassword(email, passWord)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = firebaseAuth.currentUser
                     user.let {
-                        val userStatus = it?.uid
                         val userData = user?.let { it1 -> User(email = email, passWord = passWord, status = "user",id = it1.uid) }
                         userData?.let { it1 ->
                             FirebaseDatabase.getInstance().getReference("User").child(it1.id)

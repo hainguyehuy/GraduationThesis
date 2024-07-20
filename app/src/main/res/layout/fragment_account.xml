@@ -239,6 +239,7 @@
                 android:textStyle="bold" />
 
             <ImageView
+                android:id="@+id/changePassWord"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/baseline_arrow_forward_ios_24" />
