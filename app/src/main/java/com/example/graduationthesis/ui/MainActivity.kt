@@ -11,6 +11,8 @@ import com.example.graduationthesis.ui.views.AccountFragment
 import com.example.graduationthesis.ui.views.CartFragment
 import com.example.graduationthesis.ui.views.ClientsFragment
 import com.example.graduationthesis.ui.views.HomeFragment
+import com.example.graduationthesis.ui.views.ProductManagementFragment
+import com.example.graduationthesis.ui.views.StateProductFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -27,9 +29,9 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavi.setOnItemSelectedListener {
 
             when(it.itemId){
-                R.id.home -> replaceFragment(HomeFragment())
-                R.id.cart -> replaceFragment(CartFragment())
-                R.id.profile -> replaceFragment(AccountFragment())
+                R.id.home -> replaceFragment(ProductManagementFragment())
+                R.id.cart -> replaceFragment(StateProductFragment())
+                R.id.profile -> replaceFragment(CartFragment())
                 R.id.notif -> replaceFragment(ClientsFragment())
                 R.id.cate -> replaceFragment(BeginCategoryFragment())
             }

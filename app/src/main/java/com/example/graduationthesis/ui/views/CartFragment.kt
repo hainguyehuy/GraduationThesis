@@ -1,6 +1,7 @@
 package com.example.graduationthesis.ui.views
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.graduationthesis.data.model.ItemCart
 import com.example.graduationthesis.databinding.FragmentCartBinding
+import com.example.graduationthesis.ui.GUI.OrderActivity
 import com.example.graduationthesis.ui.MainActivity
 import com.example.graduationthesis.ui.adapters.ItemCartAdapter
 import com.example.graduationthesis.ui.adapters.ItemCartProductAdapter
@@ -58,6 +60,9 @@ class CartFragment : Fragment() {
             adapterNew.setItem(it)
 
         })
+        binding.btnOrder.setOnClickListener {
+            startActivity(Intent(context,OrderActivity::class.java))
+        }
     }
 
 

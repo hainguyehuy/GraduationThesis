@@ -37,12 +37,6 @@ class ChildProductLiningAdapter(
 
     override fun onBindViewHolder(holder: ChildProductViewHolder, position: Int) {
         holder.setData(childProducts.get(position))
-//        holder.binding.tvNameProduct.text = childProducts[position].namePD
-//        holder.binding.tvPriceProduct.text = childProducts[position].pricePD
-//        Glide.with(holder.binding.imgProDuct.context).load(childProducts[position].urlPD)
-//            .into(holder.binding.imgProDuct)
-//        holder.binding.root.setOnClickListener {
-//            onItemClick(childProducts[position])
-//        }
+
     }
 }

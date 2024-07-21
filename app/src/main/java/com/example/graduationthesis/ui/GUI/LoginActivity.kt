@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.emailEt.text.toString()
             val password = binding.passET.text.toString()
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                loginUser(email, password, "admin")
+                loginUser( "admin")
             } else {
                 Toast.makeText(this, "Empty field are not allowed", Toast.LENGTH_LONG).show()
             }
@@ -41,21 +41,22 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun loginUser(email: String, password: String, status: String) {
+    private fun loginUser( status: String) {
 
         FirebaseDatabase.getInstance().getReference("User")
             .get().addOnSuccessListener { snapShot ->
                 for (Doc in snapShot.children) {
                     val userData = Doc.getValue(User::class.java)
                     if (userData != null) {
-                        if (userData.status == "user")
+                        if (userData.status == "admin" )
                         {
-                            startActivity(Intent(this, MainActivity::class.java))
-                            Toast.makeText(this, "user", Toast.LENGTH_LONG).show()
-                        }
-                        else{
                             startActivity(Intent(this, MainAdminActivity::class.java))
                             Toast.makeText(this, "admin", Toast.LENGTH_LONG).show()
+                        }
+                        else{
+
+                            startActivity(Intent(this, MainActivity::class.java))
+                            Toast.makeText(this, "user", Toast.LENGTH_LONG).show()
 
                         }
                         userSignIn = userData
