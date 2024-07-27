@@ -12,8 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/custom_item"
         android:backgroundTint="#FFFFFF"
-        tools:context=".ui.views.ClientsFragment"
-        >
+        tools:context=".ui.views.AdminFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView
@@ -22,7 +21,7 @@
             android:layout_height="0dp"
 
             android:gravity="center"
-            android:text="Danh sách khách hàng"
+            android:text="Danh sách nhân viên"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold|italic"
@@ -32,7 +31,7 @@
             tools:ignore="MissingConstraints" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvClient"
+            android:id="@+id/rvAdmin"
             android:layout_width="match_parent"
             android:layout_height="650dp"
             android:layout_marginTop="10dp"

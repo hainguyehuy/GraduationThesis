@@ -1,101 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.views.OderFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
 
-    <TextView
-        android:id="@+id/tvhai"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="8dp"
-        android:text="Đơn hàng"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+    </data>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvListM"
-        android:layout_width="wrap_content"
-        android:layout_height="400dp"
-        android:scrollbars="none"
-        app:layout_constraintTop_toBottomOf="@+id/tvhai"
-        tools:ignore="MissingConstraints"
-        tools:itemCount="2"
-        tools:layout_editor_absoluteX="0dp"
-        tools:listitem="@layout/item_order" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout10"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvListM"
-        tools:ignore="MissingConstraints">
+        android:layout_height="match_parent"
+        tools:context=".ui.views.OderFragment">
+
 
         <TextView
-            android:id="@+id/tvTotalMoney"
+            android:id="@+id/tvhai"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:text="Đơn hàng"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvListM"
+            android:layout_width="wrap_content"
+            android:layout_height="400dp"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@+id/tvhai"
+            tools:ignore="MissingConstraints"
+            tools:itemCount="2"
+            tools:layout_editor_absoluteX="0dp"
+            tools:listitem="@layout/item_order" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvListM"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/tvTotalMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="80dp"
+                android:text="Tổng tiền thanh toán "
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/edtMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:text="0đ"
+                android:textColor="#FE0000"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnOrder"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="172dp"
+            android:background="@drawable/button2_boder"
+            android:text="Thanh toán"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.804"
+            app:layout_constraintStart_toEndOf="@+id/tvBackCart"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
+            app:layout_constraintVertical_bias="0.631"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tvBackCart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="80dp"
-            android:text="Tổng tiền thanh toán "
-            android:textSize="16sp"
-            android:textStyle="normal" />
-
-        <TextView
-            android:id="@+id/edtMoney"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:text="0đ"
-            android:textColor="#FE0000"
-            android:textSize="18sp"
-            android:textStyle="normal" />
-    </LinearLayout>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnOrder"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="172dp"
-        android:background="@drawable/button2_boder"
-        android:text="Tiến hành đặt hàng"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tvBackCart"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
-        app:layout_constraintVertical_bias="0.631"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/tvBackCart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="213dp"
-        android:text="Quay về giỏ hàng"
-        android:textColor="#FF7D29"
-        android:textSize="15sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="MissingConstraints" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:text="Quay về giỏ hàng"
+            android:textColor="#FF7D29"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
+            app:layout_constraintVertical_bias="0.144"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

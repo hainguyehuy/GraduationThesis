@@ -56,12 +56,16 @@ class CartFragment : Fragment() {
         binding.rvCart.adapter = adapterNew
 
         MainActivity.viewModelCart.listCartData.observe(viewLifecycleOwner, Observer {
-            binding.numberCart.text = StringBuilder().append("${it.size} SẢN PHẨM")
+//            binding.numberCart.text = StringBuilder().append("${it.size} SẢN PHẨM")
             adapterNew.setItem(it)
 
         })
         binding.btnOrder.setOnClickListener {
             startActivity(Intent(context,OrderActivity::class.java))
+//            val oderFragment = OderFragment()
+//            val bundle = Bundle()
+//            bundle.putString("price",totalPrice.toCurrency())
+//            oderFragment.arguments = bundle
         }
     }
 

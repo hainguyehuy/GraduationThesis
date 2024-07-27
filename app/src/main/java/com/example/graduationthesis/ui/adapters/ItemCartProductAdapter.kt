@@ -12,6 +12,7 @@ import com.example.graduationthesis.data.model.ItemCart
 import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.ItemCartBinding
 import com.example.graduationthesis.utils.toCurrency
+import com.google.firebase.database.DatabaseReference
 import java.text.NumberFormat
 
 class ItemCartProductAdapter(private val onClickItemProduct: ((ItemCart) -> Unit)) : RecyclerView.Adapter<ItemCartProductAdapter.ItemCartViewHolder>() {
@@ -91,7 +92,7 @@ class ItemCartProductAdapter(private val onClickItemProduct: ((ItemCart) -> Unit
 }
 
 
-class ItemCartAdapter(var updatePrice :(ArrayList<ItemCart>) -> Unit ) : RecyclerView.Adapter<ItemCartAdapter.ViewHolder>(){
+class ItemCartAdapter(var updatePrice :(ArrayList<ItemCart>) -> Unit) : RecyclerView.Adapter<ItemCartAdapter.ViewHolder>(){
 
     private val listItem = ArrayList<ItemCart>()
     inner class ViewHolder(val binding : ItemCartBinding) : RecyclerView.ViewHolder(binding.root){
@@ -128,12 +129,12 @@ class ItemCartAdapter(var updatePrice :(ArrayList<ItemCart>) -> Unit ) : Recycle
             }
             binding.delete.setOnClickListener {
                 removeItem(layoutPosition)
-                updatePrice.invoke(listItem)
             }
         }
     }
 
     fun removeItem(layoutPosition: Int) {
+        val item = listItem[layoutPosition]
         listItem.removeAt(layoutPosition)
         notifyItemRemoved(layoutPosition)
         notifyItemRangeChanged(layoutPosition, itemCount)

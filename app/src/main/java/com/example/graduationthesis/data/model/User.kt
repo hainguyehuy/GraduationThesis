@@ -7,9 +7,10 @@ data class User(
     val name : String = "",
     val address : String = "",
     val email : String = "",
-    val dateBirht : String = "",
+    val dateBirth : String = "",
     val gender : String = "",
     val numberPhone : String = "",
     val status : String = "",
-    val passWord : String = ""
+    val passWord : String = "",
+    val imgUser : String =""
 ) : Serializable

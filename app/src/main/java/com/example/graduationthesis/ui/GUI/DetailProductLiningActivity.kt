@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.example.graduationthesis.R
 import com.example.graduationthesis.databinding.ActivityDetailProductLiningBinding
 import com.example.graduationthesis.ui.views.BottomSheetFragmentAddCart
+import com.example.graduationthesis.utils.toCurrency
 import kotlin.text.StringBuilder
 
 class DetailProductLiningActivity : AppCompatActivity() {
@@ -18,13 +19,13 @@ class DetailProductLiningActivity : AppCompatActivity() {
 
         val name = intent.getStringExtra("namePD")
         val url = intent.getStringExtra("urlPD")
-        val price = intent.getStringExtra("pricePD")
+        val price = intent.getDoubleExtra("pricePD",0.0)
         val color = intent.getStringExtra("colorPD")
         val title = intent.getStringExtra("titlePD")
         val size = intent.getStringExtra("sizePD")
 
         binding.tvNamePD.text = name
-        binding.tvPricePD.text = price
+        binding.tvPricePD.text = price.toCurrency()
         binding.tvColor.text = StringBuilder().append("Màu sắc: $color")
         binding.tvSize.text = StringBuilder().append("Kích thước: $size")
         binding.tvTitle.text = StringBuilder().append("Mô tả: $title")

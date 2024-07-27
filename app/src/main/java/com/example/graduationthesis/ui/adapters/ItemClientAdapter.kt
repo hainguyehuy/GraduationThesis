@@ -17,7 +17,7 @@ class ItemClientAdapter(private val listClient: List<User>) :
             binding.tvEmailCL.text = StringBuilder().append("Email: ${user.email}")
             binding.tvAddressCL.text = StringBuilder().append("Địa chỉ: ${user.address}")
             binding.tvGenderCL.text = StringBuilder().append("Giới tính: ${user.gender}")
-            binding.tvDateBirthCL.text = StringBuilder().append("Ngày sinh: ${user.dateBirht}")
+            binding.tvDateBirthCL.text = StringBuilder().append("Ngày sinh: ${user.dateBirth}")
             binding.tvPhoneNumberCL.text = StringBuilder().append("Số điện thoại: ${user.numberPhone}")
 
         }

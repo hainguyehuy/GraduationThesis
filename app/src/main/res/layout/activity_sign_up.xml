@@ -16,22 +16,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:orientation="vertical"
+            android:background="#FF7D29"
             android:gravity="center"
-            tools:ignore="MissingConstraints"
-            android:background="#FF7D29">
-
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="80dp"
+                android:layout_height="100dp"
+                android:paddingBottom="40dp"
+                android:src="@drawable/logo"
+                app:tint="@color/white" />
             <TextView
                 android:id="@+id/tvVNB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="50sp"
-                android:textColor="@color/white"
-                android:textStyle="bold|italic"
+                android:layout_marginStart="20dp"
                 android:text="VNB Shop"
+                android:textColor="@color/white"
+                android:textSize="50sp"
+                android:textStyle="bold|italic" />
 
-                />
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout

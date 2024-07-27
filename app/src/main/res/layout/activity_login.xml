@@ -15,20 +15,29 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:orientation="vertical"
+            android:background="#FF7D29"
             android:gravity="center"
-            tools:ignore="MissingConstraints"
-            android:background="#FF7D29">
-
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="80dp"
+                android:layout_height="100dp"
+                android:paddingBottom="40dp"
+                android:src="@drawable/logo"
+                app:tint="@color/white" />
             <TextView
                 android:id="@+id/tvVNB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="50sp"
+                android:layout_marginStart="20dp"
+                android:text="VNB Shop"
                 android:textColor="@color/white"
-                android:textStyle="bold|italic"
-                android:text="VNB Shop" />
+                android:textSize="50sp"
+                android:textStyle="bold|italic" />
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -91,20 +100,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordLayout" />
 
+
+        <CheckBox
+            android:id="@+id/savePass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Nhớ mật khẩu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/passwordLayout"
+            tools:ignore="MissingConstraints" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSignIn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
             android:background="@drawable/button2_boder"
             android:text="đăng nhập"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvMissPass" />
-
+            app:layout_constraintTop_toBottomOf="@+id/savePass" />
 
         <LinearLayout
             android:layout_width="match_parent"

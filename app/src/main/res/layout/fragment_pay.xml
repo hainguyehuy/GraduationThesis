@@ -62,8 +62,8 @@
                 android:text="Địa Chỉ "
                 android:textSize="15sp" />
 
-            <EditText
-                android:id="@+id/editTextText2"
+            <TextView
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
@@ -80,7 +80,7 @@
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/text_custom"
                 android:inputType="text"
-                android:text="Ghi chú"
+                android:hint="Ghi chú cho sản phẩm"
                 android:textSize="15sp" />
         </LinearLayout>
 

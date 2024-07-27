@@ -15,9 +15,25 @@
         app:cardElevation="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="4dp">
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/numberSale"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/buttonsale"
+                android:layout_marginStart="-6dp"
+                android:text="-30%"
+                android:paddingLeft="15dp"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/imgProDuct"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
 
             <ImageView
                 android:id="@+id/imgProDuct"
@@ -31,19 +47,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints" />
 
-            <!--        <ImageView-->
-            <!--            android:id="@+id/tvStar"-->
-            <!--            android:layout_width="12dp"-->
-            <!--            android:layout_height="12dp"-->
-            <!--            android:layout_marginTop="12dp"-->
-            <!--            android:layout_marginEnd="16dp"-->
-            <!--            android:text="Giay Yonex"-->
-            <!--            android:textSize="15sp"-->
-            <!--            android:textStyle="bold"-->
-            <!--            app:layout_constraintEnd_toEndOf="parent"-->
-            <!--            app:layout_constraintTop_toBottomOf="@+id/imgProDuct"-->
-            <!--            android:src="@drawable/star"-->
-            <!--            tools:ignore="MissingConstraints" />-->
+
 
             <TextView
                 android:id="@+id/tvNameProduct"
@@ -63,16 +67,28 @@
                 android:id="@+id/tvPriceProduct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
                 android:text="Price: 300$"
                 android:textColor="#FF0000"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.053"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvNameProduct"
-                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tvPricePDSale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:text="600$"
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/tvPriceProduct"
+                app:layout_constraintTop_toBottomOf="@+id/tvNameProduct"
                 tools:ignore="MissingConstraints" />
 
             <TextView
@@ -84,10 +100,10 @@
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.083"
+                app:layout_constraintHorizontal_bias="0.117"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvPriceProduct"
-                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintVertical_bias="1.0"
                 tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

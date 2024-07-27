@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.graduationthesis.R
 import com.example.graduationthesis.databinding.FragmentPayBinding
+import com.example.graduationthesis.ui.GUI.userSignIn
 
 
 class PayFragment : Fragment() {
@@ -37,6 +38,13 @@ class PayFragment : Fragment() {
             Toast.makeText(context, "Thanh toán thành công", Toast.LENGTH_SHORT).show()
             binding.linearInFo.visibility = ImageView.GONE
             uncheckOtherCheckBoxes(checkBox = binding.checkBox1)
+        }
+        userSignIn?.let {
+            binding.tvName.text = it.name
+            binding.tvAddress.text = it.address
+            binding.tvPhone.text=it.numberPhone
+            binding.email.text = it.email
+
         }
     }
     private fun uncheckOtherCheckBoxes(checkBox: CheckBox) {

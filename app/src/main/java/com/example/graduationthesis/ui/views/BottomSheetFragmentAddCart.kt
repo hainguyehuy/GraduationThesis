@@ -107,7 +107,7 @@ class BottomSheetFragmentAddCart(private var price: Double,private var url : Str
         }
         //handle reduced and increase and reduced
         binding.minus.setOnClickListener {
-            if (count > 0) {
+            if (count > 1) {
                 count--
                 binding.tvCount.text = count.toString()
                 binding.tvChillCount.text = StringBuilder().append("Số lượng: $count")

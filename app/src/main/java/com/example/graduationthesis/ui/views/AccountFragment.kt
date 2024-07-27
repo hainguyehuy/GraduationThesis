@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.example.graduationthesis.data.model.User
 import com.example.graduationthesis.databinding.DialogChangepasswordBinding
 import com.example.graduationthesis.databinding.FragmentAccountBinding
@@ -49,10 +50,12 @@ class AccountFragment : Fragment() {
         userSignIn?.let {
             binding.name.text = it.name
             binding.gender.text = it.gender
-            binding.date.text = it.dateBirht
+            binding.date.text = it.dateBirth
             binding.phone.text = it.numberPhone
             binding.address.text = it.address
             binding.email.text = it.email
+            Glide.with(binding.imageView.context).load(it.imgUser)
+                .into(binding.imageView)
         }
         binding.changePassWord.setOnClickListener {
             showDialog()
@@ -71,12 +74,15 @@ class AccountFragment : Fragment() {
         val newPass = dialogBiding.edtPWNEW.text.toString()
         val confirmNewPass = dialogBiding.edtPWNEW.text.toString()
         dialogBiding.buttonSubmit.setOnClickListener {
-            updateData(newPass,confirmNewPass)
+            updateData()
         }
         dialog.show()
+        dialogBiding.tvClose.setOnClickListener {
+            dialog.dismiss()
+        }
     }
 
-    private fun updateData(newPass: String, confirmNewPass: String) {
+    private fun updateData() {
         userSignIn?.let {
 
         }

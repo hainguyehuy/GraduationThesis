@@ -1,6 +1,9 @@
 package com.example.graduationthesis.ui.GUI
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +21,8 @@ import kotlinx.coroutines.GlobalScope
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -30,38 +35,32 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnSignIn.setOnClickListener {
-            val email = binding.emailEt.text.toString()
-            val password = binding.passET.text.toString()
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                loginUser( "admin")
-            } else {
-                Toast.makeText(this, "Empty field are not allowed", Toast.LENGTH_LONG).show()
-            }
+            loginUser()
+        }
+        binding.savePass.setOnClickListener {
+            saveDataLogin()
         }
 
     }
 
-    private fun loginUser( status: String) {
+    @SuppressLint("SuspiciousIndentation")
+    private fun loginUser() {
 
         FirebaseDatabase.getInstance().getReference("User")
-            .get().addOnSuccessListener { snapShot ->
-                for (Doc in snapShot.children) {
+            .get().addOnSuccessListener {
+                for (Doc in it.children) {
                     val userData = Doc.getValue(User::class.java)
-                    if (userData != null) {
-                        if (userData.status == "admin" )
-                        {
-                            startActivity(Intent(this, MainAdminActivity::class.java))
-                            Toast.makeText(this, "admin", Toast.LENGTH_LONG).show()
-                        }
-                        else{
-
-                            startActivity(Intent(this, MainActivity::class.java))
-                            Toast.makeText(this, "user", Toast.LENGTH_LONG).show()
-
-                        }
-                        userSignIn = userData
-                        break
+                    val email = binding.emailEt.text.toString()
+                    val password = binding.passET.text.toString()
+                    if (userData != null && userData.status == "admin" && userData.email == email && userData.passWord == password && email.isNotEmpty() && password.isNotEmpty()) {
+                        startActivity(Intent(this, MainAdminActivity::class.java))
+                        Toast.makeText(this, "admin", Toast.LENGTH_LONG).show()
+                    } else {
+                        startActivity(Intent(this, MainActivity::class.java))
+                        Toast.makeText(this, "user", Toast.LENGTH_LONG).show()
                     }
+                    userSignIn = userData
+                    break
                 }
 
             }
@@ -75,14 +74,26 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
-    override fun onStart() {
-        super.onStart()
-//        if(firebaseAuth.currentUser!= null){
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//        }
-    }
+//    override fun onPause() {
+//        super.onPause()
+//        saveDataLogin()
+//    }
 
+    private fun saveDataLogin() {
+        sharedPreferences = this.getSharedPreferences("saveDataLogin", Context.MODE_PRIVATE)
+        val email = binding.emailEt.text.toString()
+        val password = binding.passET.text.toString()
+        val editor = sharedPreferences.edit()
+        editor.putString("email", email)
+        editor.putString("password", password)
+        editor.apply()
+        Toast.makeText(
+            applicationContext,
+            "Save data completed",
+            Toast.LENGTH_LONG
+        )
+            .show()
+    }
 }
 
 var userSignIn: User? = null
