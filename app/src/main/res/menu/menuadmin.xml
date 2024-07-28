@@ -14,4 +14,8 @@
         android:title="Quản lý người dùng"
         android:id="@+id/users"
         android:icon="@drawable/users"/>
+    <item
+        android:title="Thoát"
+        android:id="@+id/exit"
+        android:icon="@drawable/exit"/>
 </menu>

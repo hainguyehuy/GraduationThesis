@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.graduationthesis.data.model.ItemCart
+import com.example.graduationthesis.data.model.SamPlePD
 import com.example.graduationthesis.databinding.FragmentCartBinding
 import com.example.graduationthesis.ui.GUI.OrderActivity
 import com.example.graduationthesis.ui.MainActivity
@@ -24,10 +25,10 @@ import com.google.firebase.database.FirebaseDatabase
 
 class CartFragment : Fragment() {
     private var listItemCart = mutableListOf<ItemCart>()
-    private lateinit var adapterCart: ItemCartProductAdapter
     private lateinit var binding: FragmentCartBinding
-    private lateinit var viewModelCartProduct: CartProductViewModel
     private lateinit var adapterNew: ItemCartAdapter
+    val dataRef = FirebaseDatabase.getInstance().getReference("CartProduct")
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,31 +44,32 @@ class CartFragment : Fragment() {
     @SuppressLint("FragmentLiveDataObserve")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvCart.layoutManager = LinearLayoutManager(context)
-        binding.rvCart.setHasFixedSize(true)
-        adapterNew = ItemCartAdapter {
-            totalPrice = 0.0
-            it.forEach {
-                totalPrice += it.priceItemCart * it.count
+        dataRef.get().addOnSuccessListener {
+            for (Doc in it.children) {
+                Doc.getValue(ItemCart::class.java)?.let { it1 -> listItemCart.add(it1) }
             }
-            binding.edtMoney.text = totalPrice.toCurrency()
+            binding.rvCart.layoutManager = LinearLayoutManager(context)
+            binding.rvCart.setHasFixedSize(true)
+            adapterNew = ItemCartAdapter {
+                totalPrice = 0.0
+                it.forEach {
+                    totalPrice += it.priceItemCart * it.count
+                }
+                binding.edtMoney.text = totalPrice.toCurrency()
+            }
+
+            binding.rvCart.adapter = adapterNew
+            adapterNew.setItem(listItemCart)
+
+//        MainActivity.viewModelCart.listCartData.observe(viewLifecycleOwner, Observer {
+////            binding.numberCart.text = StringBuilder().append("${it.size} SẢN PHẨM")
+//            adapterNew.setItem(it)
+//
+//        })
+            binding.btnOrder.setOnClickListener {
+                startActivity(Intent(context, OrderActivity::class.java))
+            }
         }
 
-        binding.rvCart.adapter = adapterNew
-
-        MainActivity.viewModelCart.listCartData.observe(viewLifecycleOwner, Observer {
-//            binding.numberCart.text = StringBuilder().append("${it.size} SẢN PHẨM")
-            adapterNew.setItem(it)
-
-        })
-        binding.btnOrder.setOnClickListener {
-            startActivity(Intent(context,OrderActivity::class.java))
-//            val oderFragment = OderFragment()
-//            val bundle = Bundle()
-//            bundle.putString("price",totalPrice.toCurrency())
-//            oderFragment.arguments = bundle
-        }
     }
-
-
 }

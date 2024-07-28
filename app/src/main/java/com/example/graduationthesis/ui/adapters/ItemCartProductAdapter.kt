@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.graduationthesis.R
@@ -12,7 +13,9 @@ import com.example.graduationthesis.data.model.ItemCart
 import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.ItemCartBinding
 import com.example.graduationthesis.utils.toCurrency
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import java.text.NumberFormat
 
 class ItemCartProductAdapter(private val onClickItemProduct: ((ItemCart) -> Unit)) : RecyclerView.Adapter<ItemCartProductAdapter.ItemCartViewHolder>() {
@@ -128,7 +131,38 @@ class ItemCartAdapter(var updatePrice :(ArrayList<ItemCart>) -> Unit) : Recycler
                 }
             }
             binding.delete.setOnClickListener {
-                removeItem(layoutPosition)
+                MaterialAlertDialogBuilder(itemView.context)
+                    .setTitle("Xoá sản phẩm")
+                    .setMessage("Bạn có muốn xoá sản phẩm này không?")
+                    .setPositiveButton("Có") { _, _ ->
+                        val dataRef =
+                            FirebaseDatabase.getInstance().getReference("CartProduct")
+                        dataRef.child(listItem[layoutPosition].idItemCart).removeValue()
+                            .addOnSuccessListener {
+                                Toast.makeText(
+                                    itemView.context,
+                                    "Xoá Thành Công!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                            .addOnFailureListener {
+                                Toast.makeText(
+                                    itemView.context,
+                                    "Xoá Không Thành Công!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                    }
+                    .setNegativeButton("Không") { _, _
+                        ->
+                        Toast.makeText(
+                            itemView.context,
+                            "Quay Lại",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                    }
+                    .show()
             }
         }
     }
