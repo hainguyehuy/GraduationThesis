@@ -13,6 +13,7 @@ import com.example.graduationthesis.data.model.User
 import com.example.graduationthesis.databinding.DialogChangepasswordBinding
 import com.example.graduationthesis.databinding.FragmentAccountBinding
 import com.example.graduationthesis.ui.GUI.LoginActivity
+import com.example.graduationthesis.ui.GUI.OderProductActivity
 import com.example.graduationthesis.ui.GUI.userSignIn
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -63,6 +64,9 @@ class AccountFragment : Fragment() {
         binding.logOut.setOnClickListener {
             val intent = Intent(context,LoginActivity::class.java)
             startActivity(intent)
+        }
+        binding.watchOder.setOnClickListener {
+            startActivity(Intent(context, OderProductActivity::class.java))
         }
     }
 

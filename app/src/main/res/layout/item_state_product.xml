@@ -93,7 +93,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="135dp"
-            android:text="Trạng thái: Đã chờ giao hàng "
+            android:text="Trạng thái: Chờ giao hàng "
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
