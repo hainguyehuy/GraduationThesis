@@ -39,7 +39,7 @@ class BeginCategoryFragment : Fragment() {
         childItem.add(Brand(R.drawable.vs))
         childItem.add(Brand(R.drawable.mizuno))
         listParentBrand = arrayListOf()
-        listParentBrand.add(ListBrand("Thương Hiệu", childItem,false))
+        listParentBrand.add(ListBrand("Thương Hiệu", childItem,true))
     }
 
     override fun onCreateView(

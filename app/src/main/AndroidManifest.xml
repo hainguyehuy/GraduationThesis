@@ -18,7 +18,10 @@
         android:theme="@style/Theme.GraduationThesis"
         tools:targetApi="31">
         <activity
-            android:name=".ui.GUI.OderProductActivity"
+            android:name=".ui.GUI.OrderPDAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.GUI.OrderProductActivity"
             android:exported="false" />
         <activity
             android:name=".ui.GUI.UsersActivity"

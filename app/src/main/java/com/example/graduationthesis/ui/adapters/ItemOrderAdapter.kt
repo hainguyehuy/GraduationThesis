@@ -5,11 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.graduationthesis.data.model.ItemCart
-import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.ItemOrderBinding
 import com.example.graduationthesis.utils.toCurrency
 
-class ItemOderAdapter(var updatePrice :(ArrayList<ItemCart>) -> Unit) : RecyclerView.Adapter<ItemOderAdapter.ItemOderViewHolder>() {
+class ItemOrderAdapter(var updatePrice :(ArrayList<ItemCart>) -> Unit) : RecyclerView.Adapter<ItemOrderAdapter.ItemOderViewHolder>() {
     private val listItemOder = ArrayList<ItemCart>()
 
     fun setItem(listItemCart : List<ItemCart>){

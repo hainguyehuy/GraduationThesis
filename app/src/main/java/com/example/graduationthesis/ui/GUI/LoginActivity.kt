@@ -54,10 +54,10 @@ class LoginActivity : AppCompatActivity() {
                     val password = binding.passET.text.toString()
                     if (userData != null && userData.status == "admin" && userData.email == email && userData.passWord == password && email.isNotEmpty() && password.isNotEmpty()) {
                         startActivity(Intent(this, MainAdminActivity::class.java))
-                        Toast.makeText(this, "admin", Toast.LENGTH_LONG).show()
+//                        Toast.makeText(this, "admin", Toast.LENGTH_LONG).show()
                     } else {
                         startActivity(Intent(this, MainActivity::class.java))
-                        Toast.makeText(this, "user", Toast.LENGTH_LONG).show()
+//                        Toast.makeText(this, "user", Toast.LENGTH_LONG).show()
                     }
                     userSignIn = userData
                     break

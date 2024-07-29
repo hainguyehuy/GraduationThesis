@@ -1,31 +1,22 @@
 package com.example.graduationthesis.ui.GUI
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.graduationthesis.R
 import com.example.graduationthesis.data.model.ItemCart
-import com.example.graduationthesis.data.model.ItemOderProduct
-import com.example.graduationthesis.databinding.ActivityOderProductBinding
-import com.example.graduationthesis.ui.adapters.ItemCartAdapter
-import com.example.graduationthesis.ui.adapters.ItemOderPDAdapter
-import com.example.graduationthesis.utils.toCurrency
+import com.example.graduationthesis.databinding.ActivityOderPdadminBinding
+import com.example.graduationthesis.ui.adapters.ItemOrderPDAdminAdapter
 import com.google.firebase.database.FirebaseDatabase
 
-class OderProductActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityOderProductBinding
-//    private lateinit var adapter: ItemOderPDAdapter
-//    private var listItemCart = mutableListOf<ItemOderProduct>()
-
-
+class OrderPDAdminActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityOderPdadminBinding
     private var listItemCart = mutableListOf<ItemCart>()
-    private lateinit var adapterOrderPD: ItemOderPDAdapter
+    private lateinit var adapterOrderPD: ItemOrderPDAdminAdapter
     val dataRef = FirebaseDatabase.getInstance().getReference("CartProduct")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityOderProductBinding.inflate(layoutInflater)
+        binding = ActivityOderPdadminBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         dataRef.get().addOnSuccessListener {
@@ -34,12 +25,10 @@ class OderProductActivity : AppCompatActivity() {
             }
             binding.rvOderPD.layoutManager = LinearLayoutManager(this)
             binding.rvOderPD.setHasFixedSize(true)
-            adapterOrderPD = ItemOderPDAdapter()
+            adapterOrderPD = ItemOrderPDAdminAdapter()
             binding.rvOderPD.adapter = adapterOrderPD
             adapterOrderPD.setItem(listItemCart)
 
         }
-
-
     }
 }

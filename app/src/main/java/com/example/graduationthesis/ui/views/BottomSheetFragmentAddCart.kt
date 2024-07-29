@@ -150,7 +150,8 @@ class BottomSheetFragmentAddCart(private var price: Double,private var url : Str
             )
             database.setValue(itemCart)
             .addOnSuccessListener {
-                Toast.makeText(context, "save data success", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Thêm giỏ hàng thành công!", Toast.LENGTH_SHORT).show()
+                    dismiss()
             }
                 .addOnFailureListener {
                     Toast.makeText(context, "save data fail", Toast.LENGTH_SHORT).show()

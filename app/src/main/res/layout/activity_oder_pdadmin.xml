@@ -11,14 +11,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.GUI.OrderProductActivity">
+        tools:context=".ui.GUI.OrderPDAdminActivity">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:gravity="center"
-            android:text="Danh sách đơn hàng"
+            android:text="Đơn hàng đã đặt "
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold|italic"
@@ -35,7 +35,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="16dp"
-            tools:listitem="@layout/item_oder_product"
+            tools:listitem="@layout/item_order_adminw"
             tools:itemCount="1"
             android:scrollbars="none" />
     </androidx.constraintlayout.widget.ConstraintLayout>

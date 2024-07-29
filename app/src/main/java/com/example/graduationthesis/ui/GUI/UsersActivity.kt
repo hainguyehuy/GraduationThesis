@@ -2,10 +2,7 @@ package com.example.graduationthesis.ui.GUI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.graduationthesis.R
-import com.example.graduationthesis.databinding.ActivityOrderBinding
 import com.example.graduationthesis.databinding.ActivityUsersBinding
-import com.example.graduationthesis.ui.adapters.OderAdapter
 import com.example.graduationthesis.ui.adapters.UsersAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
