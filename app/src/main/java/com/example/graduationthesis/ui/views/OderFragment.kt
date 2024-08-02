@@ -65,6 +65,5 @@ class OderFragment : Fragment() {
         val currentDateTime = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val formattedDate = dateFormat.format(currentDateTime)
-        binding.tvDate.text = formattedDate
     }
 }

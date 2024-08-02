@@ -73,12 +73,15 @@ class SalesStatisticsFragment : Fragment() {
         dataRef.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 var totalAmount = 0.0
+                var count = 0
                 for (snapshot in task.result.children) {
+                    count++
                     val amount = snapshot.child("priceItemCart").getValue(Double::class.java)
                     if (amount != null) {
                         totalAmount += amount
                     }
                 }
+                binding.textViewResultCount.text = StringBuilder().append("Số sản phẩm đã bán: $count")
                 binding.textViewResult.text = totalAmount.toCurrency()
             }
             else{

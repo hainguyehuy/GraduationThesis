@@ -8,6 +8,8 @@ import com.example.graduationthesis.data.model.ItemCart
 import com.example.graduationthesis.databinding.ItemOderProductBinding
 import com.example.graduationthesis.databinding.ItemOrderAdminwBinding
 import com.example.graduationthesis.utils.toCurrency
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class ItemOrderPDAdminAdapter() : RecyclerView.Adapter<ItemOrderPDAdminAdapter.ViewHolder>() {
 
@@ -20,10 +22,13 @@ class ItemOrderPDAdminAdapter() : RecyclerView.Adapter<ItemOrderPDAdminAdapter.V
 
     inner class ViewHolder(val binding: ItemOrderAdminwBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
+        val currentDate = LocalDate.now()
+        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+        val formattedDate = currentDate.format(formatter)
         fun setData(item: ItemCart) {
             binding.namePD.text = item.nameItemCart
             binding.pricePD.text = item.priceItemCart.toCurrency()
+            binding.tvDateOder.text = formattedDate
             Glide.with(binding.imgPD.context).load(item.urlItemCart)
                 .into(binding.imgPD)
 

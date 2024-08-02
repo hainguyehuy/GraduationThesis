@@ -10,7 +10,8 @@ data class ItemCart(
     val priceItemCart : Double = 0.0,
     val sizeItemCart : String = "",
     val urlItemCart : String = "" ,
-    var count : Int = 1
+    var count : Int = 1,
+    val statusOrderProduct : String = ""
     ): Serializable{
 
     }

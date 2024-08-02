@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.graduationthesis.data.model.Notification
 import com.example.graduationthesis.data.model.SamPlePD
@@ -17,13 +18,16 @@ import com.example.graduationthesis.databinding.DialogChangepasswordBinding
 import com.example.graduationthesis.databinding.FragmentProductManagementBinding
 import com.example.graduationthesis.ui.adapters.ListProductManagementAdapter
 import com.example.graduationthesis.ui.adapters.NotificationAdapter
+import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.FirebaseDatabase
+import java.util.Locale
 
 
 class ProductManagementFragment : Fragment() {
     private lateinit var binding: FragmentProductManagementBinding
     private lateinit var dialogBinding: AddProductBinding
     private val listPD = mutableListOf<SamPlePD>()
+    private val newListPD = mutableListOf<SamPlePD>()
     private lateinit var adapter: ListProductManagementAdapter
     val dataRef =
         FirebaseDatabase.getInstance().getReference("ManagementProduct").child("ChildManager")
@@ -36,6 +40,8 @@ class ProductManagementFragment : Fragment() {
             }
             binding.rvListM.layoutManager = LinearLayoutManager(context)
             binding.rvListM.setHasFixedSize(true)
+
+
             adapter = ListProductManagementAdapter()
             binding.rvListM.adapter = adapter
             adapter.updatePD(listPD)
@@ -43,9 +49,30 @@ class ProductManagementFragment : Fragment() {
         binding.addProduct.setOnClickListener {
             showDialogAddPD()
         }
+        binding.searchPD.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val searchText = newText!!.lowercase(Locale.getDefault())
+                if (searchText.isNotEmpty()){
+                    adapter.updatePD(listPD.filter {
+                        it -> it.namePD.lowercase().contains(searchText)
+                    })
+                }
+                else
+                {
+                    listPD.clear()
+                    listPD.addAll(newListPD)
+                    adapter.updatePD(listPD)
+                }
+                return false
+            }
+
+        })
 
     }
-
     private fun showDialogAddPD() {
         dialogBinding = AddProductBinding.inflate(LayoutInflater.from(context))
         val dialog = AlertDialog.Builder(context)
@@ -60,16 +87,7 @@ class ProductManagementFragment : Fragment() {
             dialog.dismiss()
         }
     }
-//
-//    private fun clearPD() {
-//        dialogBinding.edtName.text =
-//        dialogBinding.edtBrand.text.toString() =
-//        dialogBinding.edtColor.text.toString()
-//        dialogBinding.edtSize.text.toString()
-//        dialogBinding.edtPrice.text.toString().toDouble()
-//        dialogBinding.edtTitle.text.toString()
-//        dialogBinding.edtURLIMG.text.toString()
-//    }
+
 
     private fun saveDataPD() {
         val name = dialogBinding.edtName.text.toString()

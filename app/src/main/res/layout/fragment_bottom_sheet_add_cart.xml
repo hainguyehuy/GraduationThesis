@@ -184,92 +184,116 @@
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
             tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/tvChoseSize"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:id="@+id/linearOfSize"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
-            android:text="Kích thước: 39"
+            android:layout_marginTop="4dp"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvChoseColor"
-            tools:ignore="MissingConstraints" />
+            android:visibility="gone"
+            tools:ignore="MissingConstraints">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/s39"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="13dp"
-            android:background="@drawable/custom_itemsize"
-            android:text="39"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvChoseSize"
-            tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/tvChoseSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="40dp"
+                android:text="Kích thước: 39"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvChoseColor"
+                tools:ignore="MissingConstraints" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/s40"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="13dp"
-            android:background="@drawable/custom_itemsize"
-            android:text="40"
-            app:layout_constraintStart_toEndOf="@+id/s39"
-            app:layout_constraintTop_toBottomOf="@+id/tvChoseSize"
-            tools:ignore="MissingConstraints" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                tools:ignore="MissingConstraints"
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/s41"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="13dp"
-            android:background="@drawable/custom_itemsize"
-            android:text="41"
-            app:layout_constraintStart_toEndOf="@+id/s40"
-            app:layout_constraintTop_toBottomOf="@+id/tvChoseSize"
-            tools:ignore="MissingConstraints" />
+                >
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/s42"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="13dp"
-            android:background="@drawable/custom_itemsize"
-            android:text="42"
-            app:layout_constraintStart_toEndOf="@+id/s41"
-            app:layout_constraintTop_toBottomOf="@+id/tvChoseSize"
-            tools:ignore="MissingConstraints" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/s39"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/custom_itemsize"
+                    android:text="39"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearOfSize"
+                    tools:ignore="MissingConstraints" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/s43"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="13dp"
-            android:background="@drawable/custom_itemsize"
-            android:text="43"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/s42"
-            app:layout_constraintTop_toBottomOf="@+id/tvChoseSize"
-            tools:ignore="MissingConstraints" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/s40"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/custom_itemsize"
+                    android:text="40"
+                    app:layout_constraintStart_toEndOf="@+id/s39"
+                    app:layout_constraintTop_toBottomOf="@+id/linearOfSize"
+                    tools:ignore="MissingConstraints" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/s41"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/custom_itemsize"
+                    android:text="41"
+                    app:layout_constraintStart_toEndOf="@+id/s40"
+                    app:layout_constraintTop_toBottomOf="@+id/linearOfSize"
+                    tools:ignore="MissingConstraints" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/s42"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/custom_itemsize"
+                    android:text="42"
+                    app:layout_constraintStart_toEndOf="@+id/s41"
+                    app:layout_constraintTop_toBottomOf="@+id/linearOfSize"
+                    tools:ignore="MissingConstraints" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/s43"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/custom_itemsize"
+                    android:text="43"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/s42"
+                    app:layout_constraintTop_toBottomOf="@+id/linearOfSize"
+                    tools:ignore="MissingConstraints" />
+            </LinearLayout>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tvParentCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="328dp"
             android:text="Số lượng"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/s39"
+            app:layout_constraintTop_toBottomOf="@+id/linearOfSize"
             tools:ignore="MissingConstraints" />
 
         <LinearLayout
@@ -280,7 +304,6 @@
             android:layout_marginTop="24dp"
             android:background="@drawable/custom_itemcount"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvParentCount"
@@ -302,7 +325,9 @@
                 android:layout_marginRight="4dp"
                 android:gravity="center"
                 android:text="1"
-                android:textSize="25dp" />
+                android:textStyle="bold"
+                android:paddingTop="7dp"
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/plus"
@@ -311,8 +336,26 @@
                 android:layout_marginEnd="4dp"
                 android:gravity="center"
                 android:text="+"
-                android:textSize="25dp" />
+                android:textSize="20dp" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/errorNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="28dp"
+            android:drawableLeft="@drawable/baseline_error_outline_24"
+            android:gravity="center"
+            android:text="Số lượng không hợp lệ"
+            android:textColor="#FF0000"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.212"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout9"
+            app:layout_constraintTop_toBottomOf="@+id/tvParentCount"
+            tools:ignore="MissingConstraints" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAddCart"

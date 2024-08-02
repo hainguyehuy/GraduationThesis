@@ -29,16 +29,51 @@
             app:layout_constraintTop_toBottomOf="@+id/addProduct"
             tools:ignore="MissingConstraints" />
 
+<!--        <LinearLayout-->
+<!--            android:id="@+id/lnTitle"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView4"-->
+<!--            tools:ignore="MissingConstraints">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/textView7"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:paddingLeft="85dp"-->
+<!--                android:text="Tên Sản Phẩm" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/textView8"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:paddingLeft="90dp"-->
+<!--                android:text="Giá Sản Phẩm" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/textView5"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:paddingRight="20dp"-->
+<!--                android:text="Xử Lý" />-->
+<!--        </LinearLayout>-->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvListM"
-            android:layout_width="wrap_content"
-            android:layout_height="550dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="492dp"
             android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints"
             tools:itemCount="1"
             tools:listitem="@layout/list_product" />
@@ -47,7 +82,7 @@
             android:id="@+id/logo"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
             android:src="@drawable/logo"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,28 +90,30 @@
             app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints" />
 
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchPD"
+            android:layout_width="200dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/stroke_searchview"
+            app:iconifiedByDefault="false"
+            app:layout_constraintStart_toEndOf="@+id/logo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="Tìm kiếm ...">
+
+        </androidx.appcompat.widget.SearchView>
+
         <ImageView
             android:id="@+id/addProduct"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginStart="196dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:src="@drawable/add"
-            app:layout_constraintStart_toEndOf="@+id/logo"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <ImageView
-            android:id="@+id/searchPD"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="41dp"
-            android:src="@drawable/search"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/addProduct"
+            app:layout_constraintHorizontal_bias="0.235"
+            app:layout_constraintStart_toEndOf="@+id/searchPD"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 

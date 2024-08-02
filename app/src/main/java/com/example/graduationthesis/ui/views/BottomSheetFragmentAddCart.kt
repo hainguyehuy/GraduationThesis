@@ -21,7 +21,8 @@ import java.text.NumberFormat
 import kotlin.text.StringBuilder
 
 
-class BottomSheetFragmentAddCart(private var price: Double,private var url : String) : BottomSheetDialogFragment() {
+class BottomSheetFragmentAddCart(private var price: Double, private var url: String) :
+    BottomSheetDialogFragment() {
     private lateinit var binding: FragmentBottomSheetAddCartBinding
     private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,8 +59,9 @@ class BottomSheetFragmentAddCart(private var price: Double,private var url : Str
                 uncheckOtherCheckBoxes(binding.red)
                 binding.tvColorProduct.text = StringBuilder().append("Màu sắc: ${binding.red.text}")
                 binding.tvChoseColor.text = StringBuilder().append("Màu sắc: ${binding.red.text}")
+                binding.linearOfSize.visibility = View.VISIBLE
             } else {
-                ""
+                binding.linearOfSize.visibility = View.GONE
             }
         }
         binding.blue.setOnCheckedChangeListener { _, isChecked
@@ -69,6 +71,11 @@ class BottomSheetFragmentAddCart(private var price: Double,private var url : Str
                 binding.tvColorProduct.text =
                     StringBuilder().append("Màu sắc: ${binding.blue.text}")
                 binding.tvChoseColor.text = StringBuilder().append("Màu sắc: ${binding.blue.text}")
+                binding.linearOfSize.visibility = View.VISIBLE
+
+            } else {
+                binding.linearOfSize.visibility = View.GONE
+
             }
         }
         binding.white.setOnCheckedChangeListener { _, isChecked
@@ -78,6 +85,11 @@ class BottomSheetFragmentAddCart(private var price: Double,private var url : Str
                 binding.tvColorProduct.text =
                     StringBuilder().append("Màu sắc: ${binding.white.text}")
                 binding.tvChoseColor.text = StringBuilder().append("Màu sắc: ${binding.white.text}")
+                binding.linearOfSize.visibility = View.VISIBLE
+
+            } else {
+                binding.linearOfSize.visibility = View.GONE
+
             }
         }
         //handle click checkboxSize
@@ -107,25 +119,63 @@ class BottomSheetFragmentAddCart(private var price: Double,private var url : Str
         }
         //handle reduced and increase and reduced
         binding.minus.setOnClickListener {
-            if (count > 1) {
+            if (count in 2..10) {
                 count--
                 binding.tvCount.text = count.toString()
                 binding.tvChillCount.text = StringBuilder().append("Số lượng: $count")
+                binding.errorNumber.visibility = View.GONE
+                updatePricePD()
+            }
+            else{
+                count--
+                binding.tvCount.text = count.toString()
+                binding.tvChillCount.text = StringBuilder().append("Số lượng: $count")
+                binding.errorNumber.visibility = View.VISIBLE
                 updatePricePD()
             }
         }
         binding.plus.setOnClickListener {
             count++
-            binding.tvCount.text = count.toString()
-            binding.tvChillCount.text = StringBuilder().append("Số lượng: $count")
-            updatePricePD()
+            if (count > 10) {
+                binding.errorNumber.visibility = View.VISIBLE
+                binding.tvCount.text = count.toString()
+//                binding.plus.isClickable = true
+            }
+            else
+            {
+                binding.errorNumber.visibility = View.GONE
+                binding.tvCount.text = count.toString()
+                binding.tvChillCount.text = StringBuilder().append("Số lượng: $count")
+                updatePricePD()
+            }
+
+
+//            FirebaseDatabase.getInstance().getReference("SampleCate").child("Category").child("Products")
+//                .get().addOnCompleteListener {
+//                    task ->
+//                    if (task.isSuccessful){
+//                        for (snapshot in task.result.children) {
+//                            val amount = snapshot.child("quantityOfGoods").getValue(Int::class.java)
+//                            if (count > amount!! && amount != null) {
+//                                binding.errorNumber.visibility = View.VISIBLE
+//
+//                            }
+//                            else{
+//                                binding.tvCount.text = count.toString()
+//                                binding.tvChillCount.text = StringBuilder().append("Số lượng: $count")
+//                            }
+//                        }
+//                    }
+//                }
+
+
         }
         //handle click button addCart
         binding.btnAddCart.setOnClickListener {
             saveItemCart()
         }
         binding.rightIcon.setOnClickListener {
-           dismiss()
+            dismiss()
         }
         return binding.root
     }
@@ -137,6 +187,7 @@ class BottomSheetFragmentAddCart(private var price: Double,private var url : Str
         val priceItemCart = price
         val sizeItemCart = binding.tvSizeProduct.text.toString()
         val urlItemCart = url
+        val statusOrderPD = "Đã đặt hàng"
 
         try {
             database = FirebaseDatabase.getInstance().getReference("CartProduct").push()
@@ -146,13 +197,16 @@ class BottomSheetFragmentAddCart(private var price: Double,private var url : Str
                 colorItemCart,
                 priceItemCart,
                 sizeItemCart,
-                urlItemCart
+                urlItemCart,
+                1,
+                statusOrderPD
+
             )
             database.setValue(itemCart)
-            .addOnSuccessListener {
-                Toast.makeText(context, "Thêm giỏ hàng thành công!", Toast.LENGTH_SHORT).show()
+                .addOnSuccessListener {
+                    Toast.makeText(context, "Thêm giỏ hàng thành công!", Toast.LENGTH_SHORT).show()
                     dismiss()
-            }
+                }
                 .addOnFailureListener {
                     Toast.makeText(context, "save data fail", Toast.LENGTH_SHORT).show()
                 }

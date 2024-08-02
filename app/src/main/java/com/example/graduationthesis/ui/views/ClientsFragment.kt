@@ -11,6 +11,7 @@ import com.example.graduationthesis.data.model.Notification
 import com.example.graduationthesis.data.model.User
 import com.example.graduationthesis.databinding.FragmentClientsBinding
 import com.example.graduationthesis.ui.adapters.ItemClientAdapter
+import com.example.graduationthesis.ui.adapters.ItemClientAdapter2
 import com.example.graduationthesis.ui.adapters.NotificationAdapter
 import com.google.firebase.database.FirebaseDatabase
 
@@ -27,7 +28,7 @@ private const val ARG_PARAM2 = "param2"
 class ClientsFragment : Fragment() {
     private lateinit var binding : FragmentClientsBinding
     private val listClient = mutableListOf<User>()
-    private lateinit var adapterClient : ItemClientAdapter
+    private lateinit var adapterClient : ItemClientAdapter2
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         FirebaseDatabase.getInstance().getReference("User")
@@ -41,7 +42,7 @@ class ClientsFragment : Fragment() {
                 }
                 binding.rvClient.layoutManager = LinearLayoutManager(context)
                 binding.rvClient.setHasFixedSize(true)
-                adapterClient = ItemClientAdapter(listClient)
+                adapterClient = ItemClientAdapter2(listClient)
                 binding.rvClient.adapter = adapterClient
             }
     }

@@ -48,6 +48,7 @@ class CartFragment : Fragment() {
             for (Doc in it.children) {
                 Doc.getValue(ItemCart::class.java)?.let { it1 -> listItemCart.add(it1) }
             }
+
             binding.rvCart.layoutManager = LinearLayoutManager(context)
             binding.rvCart.setHasFixedSize(true)
             adapterNew = ItemCartAdapter {

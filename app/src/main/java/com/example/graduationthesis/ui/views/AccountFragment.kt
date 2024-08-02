@@ -8,35 +8,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.example.graduationthesis.R
 import com.example.graduationthesis.data.model.User
 import com.example.graduationthesis.databinding.DialogChangepasswordBinding
 import com.example.graduationthesis.databinding.FragmentAccountBinding
 import com.example.graduationthesis.ui.GUI.LoginActivity
 import com.example.graduationthesis.ui.GUI.OrderProductActivity
+import com.example.graduationthesis.ui.GUI.TruckActivity
+import com.example.graduationthesis.ui.GUI.WaitOrderActivity
+import com.example.graduationthesis.ui.GUI.WaitconfirmOrderActivity
 import com.example.graduationthesis.ui.GUI.userSignIn
 import com.google.firebase.database.DatabaseReference
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AccountFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AccountFragment : Fragment() {
     private lateinit var binding: FragmentAccountBinding
-    private lateinit var database: DatabaseReference
-    private lateinit var user : User
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAccountBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -56,10 +48,27 @@ class AccountFragment : Fragment() {
             showDialog()
         }
         binding.logOut.setOnClickListener {
-            val intent = Intent(context,LoginActivity::class.java)
+            val intent = Intent(context, LoginActivity::class.java)
             startActivity(intent)
         }
         binding.watchOder.setOnClickListener {
+            binding.statusOrder.visibility = View.VISIBLE
+            onClickItem()
+        }
+    }
+
+    private fun onClickItem() {
+
+        binding.waitconfirm.setOnClickListener {
+            startActivity(Intent(context, WaitconfirmOrderActivity::class.java))
+        }
+        binding.waitOrder.setOnClickListener {
+            startActivity(Intent(context, WaitOrderActivity::class.java))
+        }
+        binding.truck.setOnClickListener {
+            startActivity(Intent(context, TruckActivity::class.java))
+        }
+        binding.history.setOnClickListener {
             startActivity(Intent(context, OrderProductActivity::class.java))
         }
     }

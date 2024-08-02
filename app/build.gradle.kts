@@ -75,4 +75,10 @@ dependencies {
     annotationProcessor ("com.github.bumptech.glide:compiler:4.13.0")
     implementation ("com.intuit.ssp:ssp-android:1.0.6")
     implementation ("com.intuit.sdp:sdp-android:1.0.6")
+
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.5.3")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.5.3")
+
+    implementation ("com.firebaseui:firebase-ui-database:8.0.1")
 }

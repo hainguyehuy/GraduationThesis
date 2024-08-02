@@ -10,4 +10,5 @@ data class SamPlePD(
     val titlePD : String= "",
     val colorPD : String= "",
     val sizePD : String= "",
+    val quantityOfGoods : Double = 0.0
 ): Serializable

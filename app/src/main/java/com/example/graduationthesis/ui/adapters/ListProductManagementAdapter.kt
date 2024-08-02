@@ -10,12 +10,19 @@ import com.example.graduationthesis.data.model.lining.CategorysLining
 import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.ListProductBinding
 import com.example.graduationthesis.utils.toCurrency
+import com.firebase.ui.database.FirebaseRecyclerAdapter
+import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.database.FirebaseDatabase
 
-class ListProductManagementAdapter() :
-    RecyclerView.Adapter<ListProductManagementAdapter.ListProductManagementViewHolder>() {
+//class ListProductManagementAdapter(options: FirebaseRecyclerOptions<SamPlePD>) :
+//    FirebaseRecyclerAdapter<SamPlePD, ListProductManagementAdapter.ListProductManagementViewHolder>(options) {
+    class ListProductManagementAdapter() :
+        RecyclerView.Adapter<ListProductManagementAdapter.ListProductManagementViewHolder>() {
+
+
     private val listPD = ArrayList<SamPlePD>()
+
     fun updatePD(pdList: List<SamPlePD>) {
         this.listPD.clear()
         this.listPD.addAll(pdList)
@@ -28,8 +35,10 @@ class ListProductManagementAdapter() :
         fun setData(item: SamPlePD) {
             binding.namePD.text = item.namePD
             binding.pricePD.text = item.pricePD.toCurrency()
+            binding.quantityOfGoods.text = StringBuilder().append("Số lượng: ${item.quantityOfGoods.toLong()} sản phẩm")
             Glide.with(binding.imgPD.context).load(item.urlPD)
                 .into(binding.imgPD)
+            binding.executePendingBindings()
             binding.deletePD.setOnClickListener {
                 MaterialAlertDialogBuilder(itemView.context)
                     .setTitle("Xoá sản phẩm")
@@ -68,9 +77,7 @@ class ListProductManagementAdapter() :
         }
     }
 
-    private fun removeItem(layoutPosition: Int) {
 
-    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -79,6 +86,8 @@ class ListProductManagementAdapter() :
         val binding = ListProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ListProductManagementViewHolder(binding)
     }
+
+
 
     override fun getItemCount(): Int {
         return listPD.size

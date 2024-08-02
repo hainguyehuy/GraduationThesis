@@ -6,23 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.graduationthesis.data.model.HotProduct
 import com.example.graduationthesis.data.model.lining.CategoryLining
+import com.example.graduationthesis.data.model.lining.CategorysLining
 import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.FragmentHomeBinding
 import com.example.graduationthesis.ui.GUI.AddressActivity
 import com.example.graduationthesis.ui.GUI.DetailProductLiningActivity
 import com.example.graduationthesis.ui.adapters.HotProductAdapter
 import com.example.graduationthesis.ui.adapters.liningAdapter.CategorysLiningAdapter
+import com.example.graduationthesis.ui.adapters.liningAdapter.ChildProductLiningAdapter
 import com.example.graduationthesis.ui.adapters.liningAdapter.ParentProductLiningAdapter
 import com.example.graduationthesis.ui.viewModel.BannerViewModel
 import com.example.graduationthesis.ui.viewModel.HotProductViewModel
 import com.example.graduationthesis.ui.viewModel.ProductLiningViewModel
 import com.google.firebase.database.FirebaseDatabase
+import java.util.Locale
 
 
 class HomeFragment : Fragment() {
@@ -32,8 +36,9 @@ class HomeFragment : Fragment() {
     private lateinit var viewModelPDLining: ProductLiningViewModel
     private lateinit var adapter: HotProductAdapter
     private lateinit var adapterProductLining: CategorysLiningAdapter
+    private lateinit var adapterChildProductLining: ChildProductLiningAdapter
     private var listHotProduct = mutableListOf<HotProduct>()
-    private var listProductLining = mutableListOf<CategoryLining>()
+    private var listProductLining = mutableListOf<ProductLining>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -64,6 +69,29 @@ class HomeFragment : Fragment() {
         viewModelPDLining.parentCategory.observe(viewLifecycleOwner, Observer {
             adapterProductLining.updateCategorys(it)
         })
+//        binding.searchAddress.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                val searchText = newText!!.lowercase(Locale.getDefault())
+//                if (searchText.isNotEmpty()){
+//                    adapterChildProductLining = ChildProductLiningAdapter(listProductLining, onItemClick )
+//                    adapterProductLining.updateCategorys(listProductLining.filter {
+//                          it->
+//                    })
+//                }
+//                else
+//                {
+//                    listPD.clear()
+//                    listPD.addAll(newListPD)
+//                    adapter.updatePD(listPD)
+//                }
+//                return false
+//            }
+//
+//        })
     }
 
     private fun onItemClick(itemResponse: ProductLining) {

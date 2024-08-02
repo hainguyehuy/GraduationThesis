@@ -18,6 +18,15 @@
         android:theme="@style/Theme.GraduationThesis"
         tools:targetApi="31">
         <activity
+            android:name=".ui.GUI.TruckActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.GUI.WaitOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.GUI.WaitconfirmOrderActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.GUI.OrderPDAdminActivity"
             android:exported="false" />
         <activity

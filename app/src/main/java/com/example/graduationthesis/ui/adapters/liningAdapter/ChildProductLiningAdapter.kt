@@ -25,6 +25,7 @@ class ChildProductLiningAdapter(
                 binding.tvPriceProduct.text = item.pricePD.toCurrency()
                 binding.tvPricePDSale.text = spannableString
                 binding.numberSale.text = item.numberSale
+                binding.tvState.text = StringBuilder().append("Trạng thái: Còn ${item.quantityOfGoods.toLong()} sản phẩm ")
                 Glide.with(binding.imgProDuct.context).load(item.urlPD)
                     .into(binding.imgProDuct)
                 binding.root.setOnClickListener {

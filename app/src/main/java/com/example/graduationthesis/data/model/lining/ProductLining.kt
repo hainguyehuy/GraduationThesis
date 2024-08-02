@@ -11,7 +11,8 @@ data class ProductLining(
     val colorPD : String= "",
     val sizePD : String= "",
     val numberSale : String = "",
-    val priceSale : Double = 0.0
+    val priceSale : Double = 0.0,
+    val quantityOfGoods : Double = 0.0
 ): Serializable{
 
 }
