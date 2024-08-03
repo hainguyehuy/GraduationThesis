@@ -9,9 +9,9 @@ data class ItemCart(
     val colorItemCart : String = "",
     val priceItemCart : Double = 0.0,
     val sizeItemCart : String = "",
-    val urlItemCart : String = "" ,
+    val urlItemCart : String = "",
     var count : Int = 1,
-    val statusOrderProduct : String = ""
+    var statusOrderProduct : String = ""
     ): Serializable{
 
     }

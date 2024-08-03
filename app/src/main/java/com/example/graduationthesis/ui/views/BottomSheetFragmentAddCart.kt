@@ -187,7 +187,7 @@ class BottomSheetFragmentAddCart(private var price: Double, private var url: Str
         val priceItemCart = price
         val sizeItemCart = binding.tvSizeProduct.text.toString()
         val urlItemCart = url
-        val statusOrderPD = "Đã đặt hàng"
+        val statusOrderProduct = "Đã đặt hàng"
 
         try {
             database = FirebaseDatabase.getInstance().getReference("CartProduct").push()
@@ -199,7 +199,7 @@ class BottomSheetFragmentAddCart(private var price: Double, private var url: Str
                 sizeItemCart,
                 urlItemCart,
                 1,
-                statusOrderPD
+                statusOrderProduct
 
             )
             database.setValue(itemCart)

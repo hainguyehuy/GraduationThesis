@@ -7,367 +7,465 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".ui.views.AccountFragment">
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="4dp"
-            android:paddingBottom="30dp"
-            android:src="@drawable/logo"
-            app:layout_constraintBottom_toTopOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="VNB Shop"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold|italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.201"
-            app:layout_constraintStart_toEndOf="@+id/logo"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="4dp"
-            android:src="@drawable/lining"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            tools:ignore="MissingConstraints" />
-
-        <LinearLayout
-            android:id="@+id/info"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            tools:ignore="MissingConstraints"
-            android:visibility="gone">
+            android:scrollbars="none">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.views.AccountFragment">
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="4dp"
+                android:paddingBottom="30dp"
+                android:src="@drawable/logo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:text="VNB Shop"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_30sdp"
+                android:textStyle="bold|italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.111"
+                app:layout_constraintStart_toEndOf="@+id/logo"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tvTitlePage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="12dp"
+                android:text="Trang Tài Khoản"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tvHello"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                android:text="Xin Chào: Nguyễn Huy Hải"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitlePage"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tvInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/info"
+                android:drawablePadding="20dp"
+                android:paddingLeft="10dp"
+                android:text="Thông tin tài khoản"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHello"
+                tools:ignore="MissingConstraints" />
 
             <LinearLayout
-                android:id="@+id/linearLayout"
+                android:id="@+id/info"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
-                tools:ignore="MissingConstraints">
+                app:layout_constraintTop_toBottomOf="@+id/tvInfo"
+                tools:ignore="MissingConstraints"
+                android:visibility="gone">
 
-                <TextView
-                    android:id="@+id/tvName"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_marginRight="100dp"
-                    android:text="Họ và tên"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:text="Nguyễn Huy Hải" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-                tools:ignore="MissingConstraints">
-
-                <TextView
-                    android:id="@+id/tvGt"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_marginRight="100dp"
-                    android:text="Giới tính"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/gender"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_marginRight="140dp"
-                    android:text="Nam"
-                    android:textSize="15sp" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout3"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-                tools:ignore="MissingConstraints">
-
-                <TextView
-                    android:id="@+id/tvDate"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_marginRight="100dp"
-                    android:text="Ngày sinh "
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:text="02/01/2002" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout4"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-                tools:ignore="MissingConstraints">
-
-                <TextView
-                    android:id="@+id/tvPhone"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_marginRight="100dp"
-                    android:text="Số điện thoại  "
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:text="0396101631" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout5"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-                tools:ignore="MissingConstraints">
-
-
-                <TextView
-                    android:id="@+id/tvAddress"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_marginRight="100dp"
-                    android:text="Địa chỉ "
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/address"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:text="Vinh Phuc" />
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView"
+                    tools:ignore="MissingConstraints">
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="100dp"
+                        android:text="Họ và tên"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="Nguyễn Huy Hải" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                    tools:ignore="MissingConstraints">
+
+                    <TextView
+                        android:id="@+id/tvGt"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="100dp"
+                        android:text="Giới tính"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/gender"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="140dp"
+                        android:text="Nam"
+                        android:textSize="15sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                    tools:ignore="MissingConstraints">
+
+                    <TextView
+                        android:id="@+id/tvDate"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="100dp"
+                        android:text="Ngày sinh "
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="02/01/2002" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout4"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+                    tools:ignore="MissingConstraints">
+
+                    <TextView
+                        android:id="@+id/tvPhone"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="100dp"
+                        android:text="Số điện thoại  "
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="0396101631" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+                    tools:ignore="MissingConstraints">
+
+
+                    <TextView
+                        android:id="@+id/tvAddress"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="100dp"
+                        android:text="Địa chỉ "
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="Vinh Phuc" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.75"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+                    tools:ignore="MissingConstraints">
+
+                    <TextView
+                        android:id="@+id/tvGmail"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="100dp"
+                        android:text="Địa chỉ Email"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="hain3628@gmail.com"
+
+                        />
+
+                </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/linearLayoutAddress"
+            <TextView
+                android:id="@+id/tvPass"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginHorizontal="8dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:orientation="horizontal"
+                android:drawableLeft="@drawable/password"
+                android:drawablePadding="20dp"
+                android:paddingLeft="10dp"
+                android:text="Đổi mật khẩu"
+                android:textSize="18dp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.75"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+                app:layout_constraintTop_toBottomOf="@+id/info"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tvOrderPD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:drawableLeft="@drawable/packagee"
+                android:drawablePadding="20dp"
+                android:paddingLeft="10dp"
+                android:text="Đơn hàng của tôi"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPass"
+                tools:ignore="MissingConstraints" />
+            <LinearLayout
+                android:id="@+id/statusOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvOrderPD"
+                android:visibility="visible"
                 tools:ignore="MissingConstraints">
 
                 <TextView
-                    android:id="@+id/tvGmail"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_marginRight="100dp"
-                    android:text="Địa chỉ Email"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/email"
+                    android:id="@+id/waitconfirm"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:text="hain3628@gmail.com"
-
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Chờ xác nhận"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:drawableTop="@drawable/waitconfirm"
                     />
 
+                <TextView
+                    android:id="@+id/waitOrder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Chờ lấy hàng"
+                    android:textSize="12sp"
+                    android:drawableTop="@drawable/img_1"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/truck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Chờ giao hàng"
+                    android:textSize="12sp"
+                    android:drawableTop="@drawable/truck"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Lịch sử mua hàng"
+                    android:drawableTop="@drawable/history"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
             </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linearLayout6"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="12dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/info"
-            tools:ignore="MissingConstraints">
 
             <TextView
-                android:id="@+id/tvChangePass"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="250dp"
-                android:text="Đổi mật khẩu "
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/changePassWord"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/baseline_arrow_forward_ios_24" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout8"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="12dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
-            tools:ignore="MissingConstraints">
-
-            <TextView
-                android:id="@+id/tvHistoryOder"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="200dp"
-                android:text="Lịch sử mua hàng"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/watchOder"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/baseline_arrow_forward_ios_24" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/statusOrder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout8"
-            android:visibility="gone"
-            tools:ignore="MissingConstraints">
-
-            <TextView
-                android:id="@+id/waitconfirm"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvLogOut"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Chờ xác nhận"
-                android:textSize="12sp"
+                android:layout_marginTop="12dp"
+                android:drawableLeft="@drawable/exit2"
+                android:drawablePadding="20dp"
+                android:paddingLeft="10dp"
+                android:text="Đăng xuất"
+                android:textSize="18dp"
                 android:textStyle="bold"
-                android:drawableTop="@drawable/waitconfirm"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/statusOrder"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="MissingConstraints" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/waitOrder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Chờ lấy hàng"
-                android:textSize="12sp"
-                android:drawableTop="@drawable/img_1"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/truck"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Chờ giao hàng"
-                android:textSize="12sp"
-                android:drawableTop="@drawable/truck"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/history"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Lịch sử mua hàng"
-                android:drawableTop="@drawable/history"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/logOut"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginHorizontal="4dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/button2_boder"
-            android:text="Đăng Xuất"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/statusOrder"
-            tools:ignore="MissingConstraints" />
+        </ScrollView>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linearLayout6"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginHorizontal="8dp"-->
+<!--            android:layout_marginTop="308dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="1.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/info"-->
+<!--            tools:ignore="MissingConstraints">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvChangePass"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginRight="250dp"-->
+<!--                android:text="Đổi mật khẩu "-->
+<!--                android:textSize="15sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/changePassWord"-->
+<!--                android:layout_width="24dp"-->
+<!--                android:layout_height="24dp"-->
+<!--                android:src="@drawable/baseline_arrow_forward_ios_24" />-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linearLayout8"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginHorizontal="8dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/linearLayout6"-->
+<!--            tools:ignore="MissingConstraints">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvHistoryOder"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginRight="200dp"-->
+<!--                android:text="Lịch sử mua hàng"-->
+<!--                android:textSize="15sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/watchOder"-->
+<!--                android:layout_width="24dp"-->
+<!--                android:layout_height="24dp"-->
+<!--                android:src="@drawable/baseline_arrow_forward_ios_24" />-->
+<!--        </LinearLayout>-->
+
+
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/logOut"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginHorizontal="4dp"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:background="@drawable/button2_boder"-->
+<!--            android:text="Đăng Xuất"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="15sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/statusOrder"-->
+<!--            tools:ignore="MissingConstraints" />-->
 </layout>

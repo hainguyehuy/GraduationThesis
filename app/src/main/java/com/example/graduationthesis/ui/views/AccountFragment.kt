@@ -41,24 +41,30 @@ class AccountFragment : Fragment() {
             binding.phone.text = it.numberPhone
             binding.address.text = it.address
             binding.email.text = it.email
-            Glide.with(binding.imageView.context).load(it.imgUser)
-                .into(binding.imageView)
+//            Glide.with(binding.imageView.context).load(it.imgUser)
+//                .into(binding.imageView)
+            binding.tvHello.text = StringBuilder().append("Xin chào: ${it.name}")
         }
-        binding.changePassWord.setOnClickListener {
+        binding.tvInfo.setOnClickListener {
+            binding.info.visibility = View.VISIBLE
+            binding.statusOrder.visibility = View.GONE
+        }
+        binding.tvPass.setOnClickListener {
+            binding.info.visibility = View.GONE
             showDialog()
         }
-        binding.logOut.setOnClickListener {
+        binding.tvLogOut.setOnClickListener {
             val intent = Intent(context, LoginActivity::class.java)
             startActivity(intent)
         }
-        binding.watchOder.setOnClickListener {
+        binding.tvOrderPD.setOnClickListener {
             binding.statusOrder.visibility = View.VISIBLE
+            binding.info.visibility = View.GONE
             onClickItem()
         }
     }
 
     private fun onClickItem() {
-
         binding.waitconfirm.setOnClickListener {
             startActivity(Intent(context, WaitconfirmOrderActivity::class.java))
         }
