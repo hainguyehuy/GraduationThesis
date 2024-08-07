@@ -7,89 +7,94 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".ui.views.HomeFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchAddress"
-            android:layout_width="331dp"
-            android:layout_height="49dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/stroke_searchview"
-            app:iconifiedByDefault="false"
-            app:layout_constraintEnd_toStartOf="@+id/imgAddressShop"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:queryBackground="@android:color/transparent"
-            app:queryHint="Tìm kiếm sản phẩm ..." />
-
-        <ImageView
-            android:id="@+id/imgAddressShop"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/address"
-            app:layout_constraintBottom_toTopOf="@+id/imgBanner"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.432"
-            app:tint="#FF7D29"
-            tools:ignore="MissingConstraints" />
-
-        <ImageView
-            android:id="@+id/imgBanner"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="150sp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/b1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchAddress"
-            tools:ignore="MissingConstraints" />
+            android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvItemHotProduct"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgBanner"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints"
-            tools:itemCount="5"
-            tools:listitem="@layout/item_hotproduct" />
+            <!-- TODO: Update blank fragment layout -->
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvItemCate"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal"
-            android:scrollbars="none"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvItemHotProduct"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints"
-            tools:itemCount="2"
-            tools:listitem="@layout/item_category" />
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchAddress"
+                android:layout_width="331dp"
+                android:layout_height="49dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/stroke_searchview"
+                app:iconifiedByDefault="false"
+                app:layout_constraintEnd_toStartOf="@+id/imgAddressShop"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:queryBackground="@android:color/transparent"
+                app:queryHint="Tìm kiếm sản phẩm ..." />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imgAddressShop"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/address"
+                app:layout_constraintBottom_toTopOf="@+id/imgBanner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.432"
+                app:tint="#FF7D29"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/imgBanner"
+                android:layout_width="match_parent"
+                android:layout_height="150sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/b1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchAddress"
+                tools:ignore="MissingConstraints" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvItemHotProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgBanner"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="MissingConstraints"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_hotproduct" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvItemCate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                android:scrollbars="none"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvItemHotProduct"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="MissingConstraints"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_category" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 </layout>

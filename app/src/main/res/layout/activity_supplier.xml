@@ -11,32 +11,46 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.GUI.WaitOrderActivity">
+        tools:context=".ui.GUI.SupplierActivity">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:gravity="center"
-            android:text="Chuẩn bị đơn hàng "
+            android:text="Quản lý nhà cung cấp"
             android:textColor="@color/black"
             android:textSize="25sp"
-            android:textStyle="bold|italic"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvWaitOderPD"
+            android:id="@+id/rvSupplier"
             android:layout_width="match_parent"
-            android:layout_height="650dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="16dp"
-            tools:listitem="@layout/item_order_adminw"
             tools:itemCount="1"
-            android:scrollbars="none" />
+            tools:listitem="@layout/item_supplier" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:src="@android:drawable/ic_input_add"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

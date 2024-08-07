@@ -32,13 +32,10 @@ import java.util.Locale
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: BannerViewModel
-    private lateinit var viewModelHP: HotProductViewModel
-    private lateinit var viewModelPDLining: ProductLiningViewModel
     private lateinit var adapter: HotProductAdapter
-    private lateinit var adapterProductLining: CategorysLiningAdapter
-    private lateinit var adapterChildProductLining: ChildProductLiningAdapter
     private var listHotProduct = mutableListOf<HotProduct>()
-    private var listProductLining = mutableListOf<ProductLining>()
+    private lateinit var viewModelPDLining: ProductLiningViewModel
+    private lateinit var adapterProductLining: CategorysLiningAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

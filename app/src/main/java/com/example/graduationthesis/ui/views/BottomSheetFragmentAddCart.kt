@@ -187,7 +187,7 @@ class BottomSheetFragmentAddCart(private var price: Double, private var url: Str
         val priceItemCart = price
         val sizeItemCart = binding.tvSizeProduct.text.toString()
         val urlItemCart = url
-        val statusOrderProduct = "Đã đặt hàng"
+        val statusOrderProduct = "Chờ xác nhận"
 
         try {
             database = FirebaseDatabase.getInstance().getReference("CartProduct").push()
@@ -200,7 +200,6 @@ class BottomSheetFragmentAddCart(private var price: Double, private var url: Str
                 urlItemCart,
                 1,
                 statusOrderProduct
-
             )
             database.setValue(itemCart)
                 .addOnSuccessListener {
@@ -213,8 +212,6 @@ class BottomSheetFragmentAddCart(private var price: Double, private var url: Str
         } catch (e: Exception) {
             Log.e("data", e.message.toString())
         }
-
-
     }
 
     private fun updatePricePD() {

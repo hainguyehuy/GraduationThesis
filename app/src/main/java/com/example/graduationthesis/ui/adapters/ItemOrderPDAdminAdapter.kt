@@ -36,25 +36,28 @@ class ItemOrderPDAdminAdapter() : RecyclerView.Adapter<ItemOrderPDAdminAdapter.V
             binding.tvDateOder.text = formattedDate
             Glide.with(binding.imgPD.context).load(item.urlItemCart)
                 .into(binding.imgPD)
-            binding.tvStatusOrderPD.text =
-                StringBuilder().append("Trạng thái đơn: ${item.statusOrderProduct}")
+            binding.tvStatusOrderPD.text = item.statusOrderProduct
             binding.tvStatusOrderPD.setOnClickListener {
-                val newColor = Color.RED
                 val newBackColor = Color.GREEN
-                val newStatus = "Đơn hàng giao thành công"
-//                binding.tvStatusOrderPD.setTextColor(newColor)
-                binding.tvStatusOrderPD.setBackgroundColor(newBackColor)
-                updateUserInFirebase(item.idItemCart, newStatus) { isSuccess ->
-                    if (isSuccess) {
+                var newStatus = "Đơn hàng giao thành công"
+                updateDataInFirebase(item.idItemCart, newStatus) { isSuccess ->
+                    if (isSuccess && listItem[position].statusOrderProduct == "Đơn hàng đang giao") {
                         listItem[position].statusOrderProduct = newStatus
+                        binding.tvStatusOrderPD.setBackgroundColor(newBackColor)
                         notifyItemChanged(position)
                     }
+//                    else if (isSuccess && listItem[position].statusOrderProduct == "Đơn hàng đang giao") {
+//                        newStatus = "Đơn hàng giao thành công"
+//                        listItem[position].statusOrderProduct = newStatus
+//                        binding.tvStatusOrderPD.setBackgroundColor(newBackColor)
+//                        notifyItemChanged(position)
+//                    }
                 }
-
             }
+
         }
 
-        private fun updateUserInFirebase(
+        private fun updateDataInFirebase(
             idItemCart: String,
             newStatus: String,
             callback: (Boolean) -> Unit
@@ -84,7 +87,7 @@ class ItemOrderPDAdminAdapter() : RecyclerView.Adapter<ItemOrderPDAdminAdapter.V
                     ->
                     Toast.makeText(
                         itemView.context,
-                        "Quay Lại",
+                        "Chưa thay đổi trạng thái",
                         Toast.LENGTH_SHORT
                     ).show()
 

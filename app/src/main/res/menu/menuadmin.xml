@@ -18,9 +18,34 @@
         android:id="@+id/users"
         android:icon="@drawable/users"/>
     <item
-        android:title="Đơn hàng đã bán"
-        android:id="@+id/list"
-        android:icon="@drawable/img"/>
+        android:title="Quản lý nhập hàng"
+        android:id="@+id/addpd"
+        android:icon="@drawable/addpd"/>
+    <item
+        android:title="Quản lý sản phẩm"
+        android:id="@+id/product"
+        android:icon="@drawable/product"/>
+    <item
+        android:title="Quản lý nhà cung cấp"
+        android:id="@+id/supplier"
+        android:icon="@drawable/supplier"/>
+    <item android:title="Quản lý đơn hàng">
+        <menu>
+            <item
+                android:title="Đơn hàng chờ xác nhận"
+                android:id="@+id/waitconfirm"
+                android:icon="@drawable/waitconfirm2"/>
+            <item
+                android:title="Đơn hàng chờ lấy hàng"
+                android:id="@+id/img_1"
+                android:icon="@drawable/img_2"/>
+            <item
+                android:title="Đơn hàng giao thành công"
+                android:id="@+id/truck"
+                android:icon="@drawable/truck2"/>
+        </menu>
+    </item>
+
     <item android:title="Tài khoản">
         <menu>
             <item

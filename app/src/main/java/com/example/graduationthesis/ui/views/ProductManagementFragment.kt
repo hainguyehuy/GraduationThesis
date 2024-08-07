@@ -31,7 +31,6 @@ class ProductManagementFragment : Fragment() {
     private lateinit var adapter: ListProductManagementAdapter
     val dataRef =
         FirebaseDatabase.getInstance().getReference("ManagementProduct").child("ChildManager")
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dataRef.get().addOnSuccessListener {
@@ -110,7 +109,6 @@ class ProductManagementFragment : Fragment() {
         }
             .addOnFailureListener {
                 Toast.makeText(context, "Lỗi ${it.message}", Toast.LENGTH_SHORT).show()
-
             }
     }
 
