@@ -11,15 +11,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import com.example.graduationthesis.data.model.ItemCart
 import com.example.graduationthesis.databinding.FragmentSalesStatisticsBinding
 import com.example.graduationthesis.ui.GUI.OrderPDAdminActivity
 import com.example.graduationthesis.utils.toCurrency
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import java.util.Locale
 
 
 class SalesStatisticsFragment : Fragment() {
-    private lateinit var binding : FragmentSalesStatisticsBinding
+    private lateinit var binding: FragmentSalesStatisticsBinding
     val dataRef = FirebaseDatabase.getInstance().getReference("CartProduct")
 
 
@@ -28,7 +32,7 @@ class SalesStatisticsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentSalesStatisticsBinding.inflate(inflater,container,false)
+        binding = FragmentSalesStatisticsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -47,11 +51,15 @@ class SalesStatisticsFragment : Fragment() {
             if (startDateStr.isNotEmpty() && endDateStr.isNotEmpty()) {
                 calculateTotalAmount(startDateStr, endDateStr)
             } else {
-                Toast.makeText(context, "Please select both start and end dates", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    "Hãy nhập ngày bắt đầu và ngày kết thúc",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
         binding.btnWatchOrderPD.setOnClickListener {
-            startActivity(Intent(context,OrderPDAdminActivity::class.java))
+            startActivity(Intent(context, OrderPDAdminActivity::class.java))
         }
     }
 
@@ -70,25 +78,49 @@ class SalesStatisticsFragment : Fragment() {
     }
 
     private fun fetchTotalAmountFromFirebase(startTime: Long, endTime: Long) {
-        dataRef.get().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
+        val query = dataRef.orderByChild("statusOrderProduct").equalTo("Đơn hàng giao thành công")
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
                 var totalAmount = 0.0
                 var count = 0
-                for (snapshot in task.result.children) {
+                for (snapshot in dataSnapshot.children) {
                     count++
                     val amount = snapshot.child("priceItemCart").getValue(Double::class.java)
-                    if (amount != null) {
+                    val item = snapshot.getValue(ItemCart::class.java)
+                    item?.let {
+                        if(amount != null){
                         totalAmount += amount
+                        }
                     }
                 }
-                binding.textViewResultCount.text = StringBuilder().append("Số sản phẩm đã bán$count")
-                binding.textViewResult.text = totalAmount.toCurrency()
+                binding.textViewResultCount.text = StringBuilder().append("Số sản phẩm đã bán:               $count")
+                binding.textViewResult.text = StringBuilder().append("Tổng tiền:               ${totalAmount.toCurrency()}")
             }
-            else{
-                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show()
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                println("Database error: ${databaseError.message}")
             }
-        }
+        })
+//        dataRef.get().addOnCompleteListener { task ->
+//            if (task.isSuccessful) {
+//                var totalAmount = 0.0
+//                var count = 0
+//                for (snapshot in task.result.children) {
+//                    count++
+//                    val amount = snapshot.child("priceItemCart").getValue(Double::class.java)
+//                    if (amount != null) {
+//                        totalAmount += amount
+//                    }
+//                }
+//                binding.textViewResultCount.text = StringBuilder().append("Số sản phẩm đã bán: $count")
+//                binding.textViewResult.text = totalAmount.toCurrency()
+//            }
+//            else{
+//                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show()
+//            }
+//        }
     }
+
     private fun showDatePickerDialog(edtDate: EditText) {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)

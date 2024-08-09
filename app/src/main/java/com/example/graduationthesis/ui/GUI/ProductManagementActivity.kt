@@ -1,6 +1,7 @@
 package com.example.graduationthesis.ui.GUI
 
 import android.app.AlertDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -36,7 +37,10 @@ class ProductManagementActivity : AppCompatActivity() {
             binding.rvListM.setHasFixedSize(true)
 
 
-            adapter = ListProductManagementAdapter()
+            adapter = ListProductManagementAdapter(){
+                    hai -> onItemClick(hai)
+            }
+
             binding.rvListM.adapter = adapter
             adapter.updatePD(listPD)
         }
@@ -66,6 +70,19 @@ class ProductManagementActivity : AppCompatActivity() {
 
         })
     }
+
+    private fun onItemClick(hai: SamPlePD) {
+        var intent = Intent(this,DetailAdminActivity::class.java).apply {
+            putExtra("namePD",hai.namePD)
+            putExtra("urlPD",hai.urlPD)
+            putExtra("pricePD",hai.pricePD)
+            putExtra("titlePD",hai.titlePD)
+            putExtra("colorPD",hai.colorPD)
+            putExtra("sizePD",hai.sizePD)
+        }
+        startActivity(intent)
+    }
+
     private fun showDialogAddPD() {
         dialogBinding = AddProductBinding.inflate(LayoutInflater.from(this))
         val dialog = AlertDialog.Builder(this)

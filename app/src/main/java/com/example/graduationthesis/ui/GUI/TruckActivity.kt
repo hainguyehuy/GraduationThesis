@@ -21,6 +21,7 @@ class TruckActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTruckBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.rvOderPD.layoutManager = LinearLayoutManager(this)
         binding.rvOderPD.setHasFixedSize(true)
         adapterOrderPD = ItemOrderPDAdminAdapter()

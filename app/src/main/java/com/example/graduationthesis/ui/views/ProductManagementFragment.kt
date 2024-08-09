@@ -1,6 +1,7 @@
 package com.example.graduationthesis.ui.views
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +17,8 @@ import com.example.graduationthesis.data.model.lining.ProductLining
 import com.example.graduationthesis.databinding.AddProductBinding
 import com.example.graduationthesis.databinding.DialogChangepasswordBinding
 import com.example.graduationthesis.databinding.FragmentProductManagementBinding
+import com.example.graduationthesis.ui.GUI.DetailAdminActivity
+import com.example.graduationthesis.ui.GUI.DetailProductLiningActivity
 import com.example.graduationthesis.ui.adapters.ListProductManagementAdapter
 import com.example.graduationthesis.ui.adapters.NotificationAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
@@ -41,7 +44,9 @@ class ProductManagementFragment : Fragment() {
             binding.rvListM.setHasFixedSize(true)
 
 
-            adapter = ListProductManagementAdapter()
+            adapter = ListProductManagementAdapter(){
+                hai -> onClickItem(hai)
+            }
             binding.rvListM.adapter = adapter
             adapter.updatePD(listPD)
         }
@@ -72,6 +77,20 @@ class ProductManagementFragment : Fragment() {
         })
 
     }
+
+    private fun onClickItem(hai: SamPlePD) {
+        var intent = Intent(context, DetailAdminActivity::class.java).apply {
+            putExtra("namePD",hai.namePD)
+            putExtra("urlPD",hai.urlPD)
+            putExtra("pricePD",hai.pricePD)
+            putExtra("titlePD",hai.titlePD)
+            putExtra("colorPD",hai.colorPD)
+            putExtra("sizePD",hai.sizePD)
+        }
+        startActivity(intent)
+    }
+
+
     private fun showDialogAddPD() {
         dialogBinding = AddProductBinding.inflate(LayoutInflater.from(context))
         val dialog = AlertDialog.Builder(context)

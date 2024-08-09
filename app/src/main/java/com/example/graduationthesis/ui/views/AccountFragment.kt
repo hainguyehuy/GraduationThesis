@@ -74,9 +74,9 @@ class AccountFragment : Fragment() {
         binding.truck.setOnClickListener {
             startActivity(Intent(context, TruckActivity::class.java))
         }
-        binding.history.setOnClickListener {
-            startActivity(Intent(context, OrderProductActivity::class.java))
-        }
+//        binding.history.setOnClickListener {
+//            startActivity(Intent(context, OrderProductActivity::class.java))
+//        }
     }
 
     private fun showDialog() {

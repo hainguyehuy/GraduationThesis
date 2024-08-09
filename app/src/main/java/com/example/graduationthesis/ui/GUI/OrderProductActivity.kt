@@ -15,8 +15,6 @@ import com.google.firebase.database.ValueEventListener
 class OrderProductActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOderProductBinding
     private var listItemCart = mutableListOf<ItemCart>()
-
-    //    private lateinit var adapterOrderPD: ItemOrderPDAdapter
     private lateinit var adapterOrderPD: ItemOrderPDAdminAdapter
     val dataRef = FirebaseDatabase.getInstance().getReference("CartProduct")
 
@@ -25,20 +23,27 @@ class OrderProductActivity : AppCompatActivity() {
         binding = ActivityOderProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        dataRef.get().addOnSuccessListener {
-            for (Doc in it.children) {
-                Doc.getValue(ItemCart::class.java)?.let { it1 -> listItemCart.add(it1) }
-            }
-            binding.rvOderPD.layoutManager = LinearLayoutManager(this)
-            binding.rvOderPD.setHasFixedSize(true)
-            adapterOrderPD = ItemOrderPDAdminAdapter()
-            binding.rvOderPD.adapter = adapterOrderPD
-            fetchUsersByField("statusOrderProduct", "Đơn hàng giao thành công") {
-
+//        dataRef.get().addOnSuccessListener {
+//            for (Doc in it.children) {
+//                Doc.getValue(ItemCart::class.java)?.let { it1 -> listItemCart.add(it1) }
+//            }
+//            binding.rvOderPD.layoutManager = LinearLayoutManager(this)
+//            binding.rvOderPD.setHasFixedSize(true)
+//            adapterOrderPD = ItemOrderPDAdminAdapter()
+//            binding.rvOderPD.adapter = adapterOrderPD
+//            fetchUsersByField("statusOrderProduct", "Đơn hàng giao thành công") {
+//
+//                adapterOrderPD.setItem(listItemCart)
+//            }
+//
+//        }
+        binding.rvOderPD.layoutManager = LinearLayoutManager(this)
+        binding.rvOderPD.setHasFixedSize(true)
+        adapterOrderPD = ItemOrderPDAdminAdapter()
+        binding.rvOderPD.adapter = adapterOrderPD
+        fetchUsersByField("statusOrderProduct", "Đơn hàng giao thành công") {
                 adapterOrderPD.setItem(listItemCart)
             }
-
-        }
     }
 
     private fun fetchUsersByField(

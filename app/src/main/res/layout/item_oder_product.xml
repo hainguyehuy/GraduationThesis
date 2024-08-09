@@ -85,18 +85,21 @@
                 app:layout_constraintVertical_bias="0.111"
                 tools:ignore="MissingConstraints" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
+                android:background="@drawable/button2_boder"
                 android:text="Trạng thái đơn: ..."
+                android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:textSize="13dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.086"
+                app:layout_constraintHorizontal_bias="0.352"
                 app:layout_constraintStart_toEndOf="@+id/tvDateOder"
                 app:layout_constraintTop_toBottomOf="@+id/llText"
                 app:layout_constraintVertical_bias="0.0"

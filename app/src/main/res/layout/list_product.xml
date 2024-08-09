@@ -20,8 +20,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         >
-
-
         <ImageView
             android:id="@+id/imgPD"
             android:layout_width="@dimen/_50sdp"

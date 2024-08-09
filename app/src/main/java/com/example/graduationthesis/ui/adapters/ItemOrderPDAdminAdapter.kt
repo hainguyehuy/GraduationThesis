@@ -1,6 +1,7 @@
 package com.example.graduationthesis.ui.adapters
 
 import android.graphics.Color
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -32,6 +33,8 @@ class ItemOrderPDAdminAdapter() : RecyclerView.Adapter<ItemOrderPDAdminAdapter.V
         val formattedDate = currentDate.format(formatter)
         fun setData(item: ItemCart) {
             binding.namePD.text = item.nameItemCart
+            binding.namePD.maxLines = 2
+            binding.namePD.ellipsize = TextUtils.TruncateAt.END
             binding.pricePD.text = item.priceItemCart.toCurrency()
             binding.tvDateOder.text = formattedDate
             Glide.with(binding.imgPD.context).load(item.urlItemCart)
@@ -39,9 +42,9 @@ class ItemOrderPDAdminAdapter() : RecyclerView.Adapter<ItemOrderPDAdminAdapter.V
             binding.tvStatusOrderPD.text = item.statusOrderProduct
             binding.tvStatusOrderPD.setOnClickListener {
                 val newBackColor = Color.GREEN
-                var newStatus = "Đơn hàng giao thành công"
+                var newStatus = "Đơn hàng đang giao"
                 updateDataInFirebase(item.idItemCart, newStatus) { isSuccess ->
-                    if (isSuccess && listItem[position].statusOrderProduct == "Đơn hàng đang giao") {
+                    if (isSuccess && listItem[position].statusOrderProduct == "Chờ xác nhận") {
                         listItem[position].statusOrderProduct = newStatus
                         binding.tvStatusOrderPD.setBackgroundColor(newBackColor)
                         notifyItemChanged(position)

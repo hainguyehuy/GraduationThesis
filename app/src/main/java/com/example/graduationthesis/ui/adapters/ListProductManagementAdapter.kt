@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.graduationthesis.data.model.SamPlePD
-import com.example.graduationthesis.databinding.ListProductnearBinding
+import com.example.graduationthesis.data.model.Supplie
+import com.example.graduationthesis.databinding.ListProductBinding
 import com.example.graduationthesis.utils.toCurrency
 
-    class ListProductManagementAdapter :
+    class ListProductManagementAdapter(private val onItemClick: (SamPlePD) -> Unit) :
         RecyclerView.Adapter<ListProductManagementAdapter.ListProductManagementViewHolder>() {
 
 
@@ -23,7 +24,7 @@ import com.example.graduationthesis.utils.toCurrency
         notifyDataSetChanged()
     }
 
-    inner class ListProductManagementViewHolder(val binding: ListProductnearBinding) :
+    inner class ListProductManagementViewHolder(val binding: ListProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun setData(item: SamPlePD) {
@@ -35,6 +36,10 @@ import com.example.graduationthesis.utils.toCurrency
             binding.quantityOfGoods.text = StringBuilder().append("Còn: ${item.quantityOfGoods.toLong()} sản phẩm")
             Glide.with(binding.imgPD.context).load(item.urlPD)
                 .into(binding.imgPD)
+
+            itemView.setOnClickListener {
+                onItemClick(item)
+            }
             binding.executePendingBindings()
 //            binding.deletePD.setOnClickListener {
 //                MaterialAlertDialogBuilder(itemView.context)
@@ -80,7 +85,7 @@ import com.example.graduationthesis.utils.toCurrency
         parent: ViewGroup,
         viewType: Int
     ): ListProductManagementViewHolder {
-        val binding = ListProductnearBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ListProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ListProductManagementViewHolder(binding)
     }
 

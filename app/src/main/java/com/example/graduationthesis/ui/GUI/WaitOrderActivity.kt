@@ -29,7 +29,6 @@ class WaitOrderActivity : AppCompatActivity() {
         adapterOrderPD = ItemOrderPDAdminAdapter()
         binding.rvWaitOderPD.adapter = adapterOrderPD
         fetchUsersByField("statusOrderProduct","Đơn hàng đang giao"){
-
             adapterOrderPD.setItem(listItemCart)
         }
     }
