@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:gravity="center"
-            android:text="Chuẩn bị đơn hàng "
+            android:text="Đơn hàng đang giao"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold|italic"

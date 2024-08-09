@@ -11,6 +11,7 @@ import com.example.graduationthesis.databinding.ActivityMainAdminBinding
 import com.example.graduationthesis.ui.GUI.AddPDActivity
 import com.example.graduationthesis.ui.GUI.LoginActivity
 import com.example.graduationthesis.ui.GUI.OrderPDAdminActivity
+import com.example.graduationthesis.ui.GUI.ReceiptActivity
 import com.example.graduationthesis.ui.GUI.SupplierActivity
 import com.example.graduationthesis.ui.GUI.TruckActivity
 import com.example.graduationthesis.ui.GUI.UsersActivity
@@ -48,7 +49,7 @@ class MainAdminActivity : AppCompatActivity() {
                 R.id.truck -> startActivity(Intent(this,TruckActivity::class.java))
                 R.id.waitconfirm -> startActivity(Intent(this,WaitconfirmOrderActivity::class.java))
                 R.id.img_1 -> startActivity(Intent(this,WaitOrderActivity::class.java))
-                R.id.addpd -> startActivity(Intent(this, AddPDActivity::class.java))
+                R.id.addpd -> startActivity(Intent(this, ReceiptActivity::class.java))
             }
             true
         }

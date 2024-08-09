@@ -18,17 +18,22 @@
         android:id="@+id/users"
         android:icon="@drawable/users"/>
     <item
-        android:title="Quản lý nhập hàng"
-        android:id="@+id/addpd"
-        android:icon="@drawable/addpd"/>
-    <item
         android:title="Quản lý sản phẩm"
         android:id="@+id/product"
         android:icon="@drawable/product"/>
-    <item
-        android:title="Quản lý nhà cung cấp"
-        android:id="@+id/supplier"
-        android:icon="@drawable/supplier"/>
+    <item android:title="Quản lý nhập hàng">
+        <menu>
+            <item
+                android:title="Quản lý nhập hàng"
+                android:id="@+id/addpd"
+                android:icon="@drawable/addpd"/>
+
+            <item
+                android:title="Quản lý nhà cung cấp"
+                android:id="@+id/supplier"
+                android:icon="@drawable/supplier"/>
+        </menu>
+    </item>
     <item android:title="Quản lý đơn hàng">
         <menu>
             <item

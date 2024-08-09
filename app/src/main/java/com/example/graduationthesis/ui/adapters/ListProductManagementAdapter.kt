@@ -1,5 +1,6 @@
 package com.example.graduationthesis.ui.adapters
 
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -34,6 +35,8 @@ import com.google.firebase.database.FirebaseDatabase
 
         fun setData(item: SamPlePD) {
             binding.namePD.text = item.namePD
+            binding.namePD.maxLines = 2
+            binding.namePD.ellipsize = TextUtils.TruncateAt.END
             binding.pricePD.text = item.pricePD.toCurrency()
             binding.quantityOfGoods.text = StringBuilder().append("Số lượng: ${item.quantityOfGoods.toLong()} sản phẩm")
             Glide.with(binding.imgPD.context).load(item.urlPD)

@@ -41,8 +41,7 @@ class AccountFragment : Fragment() {
             binding.phone.text = it.numberPhone
             binding.address.text = it.address
             binding.email.text = it.email
-//            Glide.with(binding.imageView.context).load(it.imgUser)
-//                .into(binding.imageView)
+
             binding.tvHello.text = StringBuilder().append("Xin chào: ${it.name}")
         }
         binding.tvInfo.setOnClickListener {
@@ -51,6 +50,7 @@ class AccountFragment : Fragment() {
         }
         binding.tvPass.setOnClickListener {
             binding.info.visibility = View.GONE
+            binding.statusOrder.visibility = View.GONE
             showDialog()
         }
         binding.tvLogOut.setOnClickListener {

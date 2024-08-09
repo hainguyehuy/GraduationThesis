@@ -81,7 +81,7 @@ class SalesStatisticsFragment : Fragment() {
                         totalAmount += amount
                     }
                 }
-                binding.textViewResultCount.text = StringBuilder().append("Số sản phẩm đã bán: $count")
+                binding.textViewResultCount.text = StringBuilder().append("Số sản phẩm đã bán$count")
                 binding.textViewResult.text = totalAmount.toCurrency()
             }
             else{

@@ -3,6 +3,7 @@ package com.example.graduationthesis.ui.views
 
 import android.net.Uri
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -39,6 +40,8 @@ class BottomSheetFragmentAddCart(private var price: Double, private var url: Str
         // Inflate the layout for this fragment
         binding = FragmentBottomSheetAddCartBinding.inflate(inflater, container, false)
         val namePD = arguments?.getString("namePD")
+        binding.tvNameProduct.maxLines=1
+        binding.tvNameProduct.ellipsize = TextUtils.TruncateAt.END
         binding.tvNameProduct.text = namePD
         val colorPD = arguments?.getString("colorPD")
         binding.tvColorProduct.text = colorPD

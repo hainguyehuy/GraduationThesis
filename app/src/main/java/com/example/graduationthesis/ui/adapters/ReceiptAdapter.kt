@@ -1,22 +1,21 @@
 package com.example.graduationthesis.ui.adapters
 
+import android.annotation.SuppressLint
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.graduationthesis.data.model.SamPlePD
-import com.example.graduationthesis.data.model.Supplie
+import com.example.graduationthesis.data.model.ItemCart
+import com.example.graduationthesis.data.model.ReceiptPD
 import com.example.graduationthesis.databinding.ItemReceiptBinding
-import com.example.graduationthesis.databinding.ItemSupplierBinding
 import com.example.graduationthesis.utils.toCurrency
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.firebase.database.FirebaseDatabase
 
-class ReceiptAdapter() : RecyclerView.Adapter<ReceiptAdapter.ReceiptViewHolder>() {
+class ReceiptAdapter(var updatePrice :(ArrayList<ReceiptPD>) -> Unit) : RecyclerView.Adapter<ReceiptAdapter.ReceiptViewHolder>() {
 
-    private val itemPDReceipt = ArrayList<SamPlePD>()
-    fun updateRPD(slList: List<SamPlePD>) {
+    private val itemPDReceipt = ArrayList<ReceiptPD>()
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateRPD(slList: List<ReceiptPD>) {
         this.itemPDReceipt.clear()
         this.itemPDReceipt.addAll(slList)
         notifyDataSetChanged()
@@ -24,15 +23,18 @@ class ReceiptAdapter() : RecyclerView.Adapter<ReceiptAdapter.ReceiptViewHolder>(
 
     inner class ReceiptViewHolder(val binding: ItemReceiptBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun setData(samplePD: SamPlePD) {
-            binding.tvNameProduct.text = samplePD.namePD
-            binding.tvColorProduct.text = samplePD.colorPD
-            binding.tvPriceProduct.text = samplePD.pricePD.toCurrency()
-            binding.tvSizeProduct.text = samplePD.sizePD
-            binding.tvNumberPD.text = samplePD.quantityOfGoods.toCurrency()
+        fun setData(samplePD: ReceiptPD) {
+            binding.tvNameProduct.text = StringBuilder().append("Tên sản phẩm: ${samplePD.namePD}")
+            binding.tvNameProduct.maxLines =2
+            binding.tvNameProduct.ellipsize = TextUtils.TruncateAt.END
+            binding.tvColorProduct.text = StringBuilder().append("Màu sắc: ${samplePD.colorPD}")
+            binding.tvSizeProduct.text = StringBuilder().append("Kích thước: ${samplePD.sizePD}")
+            binding.tvNumberPD.text = StringBuilder().append("Số lượng: ${samplePD.quantityOfGoods.toInt()}")
+            binding.tvPriceProduct.text = StringBuilder().append("Giá: ${samplePD.pricePD.toCurrency()}")
             Glide.with(binding.imgItemProductCart.context).load(samplePD.urlPD)
                 .into(binding.imgItemProductCart)
-            binding.tvTotals.text = (samplePD.pricePD * samplePD.quantityOfGoods).toCurrency()
+            binding.tvTotals.text = StringBuilder().append("Thành tiền: ${(samplePD.pricePD * samplePD.quantityOfGoods).toCurrency()}")
+            updatePrice.invoke(itemPDReceipt)
         }
 
     }
@@ -48,7 +50,7 @@ class ReceiptAdapter() : RecyclerView.Adapter<ReceiptAdapter.ReceiptViewHolder>(
     }
 
     override fun onBindViewHolder(holder: ReceiptViewHolder, position: Int) {
-        holder.setData(itemPDReceipt.get(position))
+        holder.setData(itemPDReceipt[position])
     }
 }
 

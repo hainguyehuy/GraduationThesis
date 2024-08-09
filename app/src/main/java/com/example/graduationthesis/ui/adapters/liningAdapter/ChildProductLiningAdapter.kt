@@ -2,6 +2,7 @@ package com.example.graduationthesis.ui.adapters.liningAdapter
 
 import android.text.SpannableString
 import android.text.Spanned
+import android.text.TextUtils
 import android.text.style.StrikethroughSpan
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -22,6 +23,8 @@ class ChildProductLiningAdapter(
                 val spannableString = SpannableString("${item.priceSale.toCurrency()}")
                 spannableString.setSpan(StrikethroughSpan(),0,spannableString.length-1,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
                 binding.tvNameProduct.text = item.namePD
+                binding.tvNameProduct.maxLines = 2
+                binding.tvNameProduct.ellipsize = TextUtils.TruncateAt.END
                 binding.tvPriceProduct.text = item.pricePD.toCurrency()
                 binding.tvPricePDSale.text = spannableString
                 binding.numberSale.text = item.numberSale
