@@ -18,6 +18,12 @@
         android:theme="@style/Theme.GraduationThesis"
         tools:targetApi="31">
         <activity
+            android:name=".ui.GUI.ProductManagementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.GUI.BrandActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.GUI.ReceiptActivity"
             android:exported="false" />
         <activity

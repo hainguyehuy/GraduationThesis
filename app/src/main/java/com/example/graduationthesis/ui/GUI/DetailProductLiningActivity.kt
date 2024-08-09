@@ -33,11 +33,11 @@ class DetailProductLiningActivity : AppCompatActivity() {
         val title = intent.getStringExtra("titlePD")
         val size = intent.getStringExtra("sizePD")
 
-        binding.tvNamePD.text = name
+        binding.tvNamePD.text = StringBuilder().append("Tên sản phẩm: $name")
         binding.tvPricePD.text = price.toCurrency()
         binding.tvColor.text = StringBuilder().append("Màu sắc: $color")
         binding.tvSize.text = StringBuilder().append("Kích thước: $size")
-        binding.tvTitle.text = StringBuilder().append("Mô tả: $title")
+        binding.tvTitle.text = StringBuilder().append("Mô tả sản phẩm:\n$title")
         if (url != null){
             Glide.with(applicationContext)
                 .load(url)

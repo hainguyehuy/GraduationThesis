@@ -18,7 +18,7 @@
         android:id="@+id/users"
         android:icon="@drawable/users"/>
     <item
-        android:title="Quản lý sản phẩm"
+        android:title="Quản lý thương hiệu"
         android:id="@+id/product"
         android:icon="@drawable/product"/>
     <item android:title="Quản lý nhập hàng">

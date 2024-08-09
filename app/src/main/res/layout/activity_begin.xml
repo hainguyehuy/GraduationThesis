@@ -59,7 +59,7 @@
                 android:layout_width="200dp"
                 android:layout_height="45dp"
                 android:backgroundTint="#FF7D29"
-                android:text="Đăng ký" />
+                android:text="Đăng Ký" />
 
         </LinearLayout>
     </RelativeLayout>

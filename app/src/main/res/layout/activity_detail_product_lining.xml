@@ -20,8 +20,7 @@
             <ImageView
                 android:id="@+id/imgProductLining"
                 android:layout_width="match_parent"
-                android:layout_height="170sp"
-                android:layout_marginHorizontal="10dp"
+                android:layout_height="200sp"
                 android:scaleType="centerInside"
                 android:src="@drawable/b1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +37,7 @@
                 android:layout_marginTop="8dp"
                 android:text="298.000đ"
                 android:textColor="#FF0000"
-                android:textSize="30sp"
+                android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="16dp"
-                android:text="Mô tả: "
+                android:text="Mô tả sản phầm: "
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +98,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnBuyNow"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="16dp"
@@ -118,8 +117,7 @@
                 android:layout_height="45dp"
                 android:layout_marginStart="99dp"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="61dp"
+                android:layout_marginEnd="20dp"
                 android:background="@drawable/button2_boder"
                 android:text="Thêm vào giỏ hàng"
                 android:textColor="@color/white"
@@ -129,19 +127,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitle"
                 tools:ignore="MissingConstraints" />
+
             <TextView
                 android:id="@+id/tvTitleSp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="134dp"
                 android:text="Sản phẩm xem gần đây"
                 android:textColor="@color/black"
-                android:layout_marginTop="10dp"
                 android:textSize="25sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnBuyNow"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="0dp"
-                />
+                tools:ignore="MissingConstraints" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPDNear"
@@ -149,11 +150,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitleSp"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="0dp"
-                tools:listitem="@layout/list_product"
-                tools:itemCount="1"/>
+                tools:itemCount="1"
+                tools:listitem="@layout/list_productnear" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.graduationthesis.R
 import com.example.graduationthesis.databinding.ActivityMainAdminBinding
 import com.example.graduationthesis.ui.GUI.AddPDActivity
+import com.example.graduationthesis.ui.GUI.BrandActivity
 import com.example.graduationthesis.ui.GUI.LoginActivity
 import com.example.graduationthesis.ui.GUI.OrderPDAdminActivity
 import com.example.graduationthesis.ui.GUI.ReceiptActivity
@@ -40,7 +41,8 @@ class MainAdminActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         binding.navi.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.product -> replaceFragment(ProductManagementFragment())
+//                R.id.product -> replaceFragment(ProductManagementFragment())
+                R.id.product -> startActivity(Intent(this,BrandActivity::class.java))
                 R.id.app -> startActivity(Intent(this,MainADActivity::class.java))
                 R.id.supplier -> startActivity(Intent(this,SupplierActivity::class.java))
                 R.id.users -> startActivity(Intent(this, UsersActivity::class.java))
